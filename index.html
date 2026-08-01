@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Outway - Free Online HTML5 Games</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">🎮 <span>Game Outway</span></div>
+        <p>Play Free Online Games - No Download Required!</p>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchGames()" placeholder="🔍 Search 100+ games (e.g. Bike, Car, Puzzle)...">
+        </div>
+
+        <!-- Poki Style Category Filter Buttons -->
+        <div class="category-bar">
+            <button class="cat-btn active" onclick="filterCategory('all')">🔥 All Games</button>
+            <button class="cat-btn" onclick="filterCategory('racing')">🏎️ Racing</button>
+            <button class="cat-btn" onclick="filterCategory('puzzle')">🧩 Puzzle</button>
+            <button class="cat-btn" onclick="filterCategory('action')">🎯 Action</button>
+        </div>
+    </header>
+
+    <!-- Main Game Section -->
+    <main class="container">
+        <h2 class="section-title">⚡ Trending Games</h2>
+        
+        <div class="game-grid" id="gameGrid">
+            
+            <!-- Game 1: Moto X3M (Racing) -->
+            <div class="game-card" data-category="racing">
+                <div class="game-frame">
+                    <iframe src="https://html5.gamedistribution.com/rvvAS300/a18b76c5b967484398103c8346e49e29/index.html" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div class="card-footer">
+                    <h3>Moto X3M Bike Race</h3>
+                    <span class="tag racing">Racing</span>
+                </div>
+            </div>
+
+            <!-- Game 2: Tic Tac Toe (Puzzle) -->
+            <div class="game-card" data-category="puzzle">
+                <div class="game-frame">
+                    <iframe src="https://html5.gamedistribution.com/131c905b63014a48a04df596397394d2/" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div class="card-footer">
+                    <h3>Tic Tac Toe Master</h3>
+                    <span class="tag puzzle">Puzzle</span>
+                </div>
+            </div>
+
+            <!-- Game 3: Car Parking (Action / Racing) -->
+            <div class="game-card" data-category="action">
+                <div class="game-frame">
+                    <iframe src="https://html5.gamedistribution.com/3c81216b23d944c6883f3e12591e1273/" frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div class="card-footer">
+                    <h3>Classic Car Parking</h3>
+                    <span class="tag action">Action</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <strong>Game Outway</strong>. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script for Search & Category Filter -->
+    <script>
+        function searchGames() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('game-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "block";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        function filterCategory(category) {
+            let cards = document.getElementsByClassName('game-card');
+            let buttons = document.getElementsByClassName('cat-btn');
+
+            // Active button state change
+            for (let btn of buttons) {
+                btn.classList.remove('active');
+            }
+            event.target.classList.add('active');
+
+            // Filter cards
+            for (let card of cards) {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
