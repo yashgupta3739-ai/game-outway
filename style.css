@@ -6,8 +6,8 @@
 }
 
 body {
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: #f8fafc; /* Original Clean Light Background */
+  color: #0f172a; /* Dark Text */
   padding: 20px;
 }
 
@@ -27,15 +27,15 @@ header {
 .logo {
   font-size: 26px;
   font-weight: bold;
-  color: #38bdf8;
+  color: #000000; /* Original Black Logo */
 }
 
 .search-container input {
   padding: 10px 18px;
   border-radius: 20px;
-  border: 1px solid #334155;
-  background: #1e293b;
-  color: #fff;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
   outline: none;
   width: 220px;
 }
@@ -51,9 +51,9 @@ header {
 
 .category-btn {
   padding: 8px 18px;
-  border: 1px solid #334155;
-  background: #1e293b;
-  color: #94a3b8;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
   border-radius: 20px;
   cursor: pointer;
   font-weight: 500;
@@ -62,9 +62,9 @@ header {
 }
 
 .category-btn.active, .category-btn:hover {
-  background: #0284c7;
+  background: #0f172a;
   color: #ffffff;
-  border-color: #0284c7;
+  border-color: #0f172a;
 }
 
 /* Game Categories & Cards */
@@ -75,7 +75,8 @@ header {
 .game-category h2 {
   font-size: 20px;
   margin-bottom: 15px;
-  color: #38bdf8;
+  color: #000000; /* Black Category Headings */
+  font-weight: 700;
 }
 
 .games-grid {
@@ -85,18 +86,19 @@ header {
 }
 
 .game-card {
-  background: #1e293b;
+  background: #ffffff;
   border-radius: 12px;
   padding: 12px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
-  border: 1px solid #334155;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .game-card:hover {
-  transform: translateY(-5px);
-  background: #334155;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .game-card img {
@@ -104,18 +106,19 @@ header {
   height: 120px;
   object-fit: cover;
   border-radius: 8px;
-  background-color: #0f172a;
+  background-color: #f1f5f9;
 }
 
 .game-card h3 {
   font-size: 14px;
   margin: 10px 0 4px 0;
-  color: #f8fafc;
+  color: #000000;
+  font-weight: 600;
 }
 
 .tag {
   font-size: 11px;
-  color: #38bdf8;
+  color: #64748b;
   text-transform: uppercase;
   font-weight: bold;
 }
