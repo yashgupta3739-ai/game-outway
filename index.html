@@ -19,14 +19,14 @@
     <div class="header-container">
       <div class="logo"><span>Game Outway</span></div>
       <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="🔍 Search games...">
+        <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="🔍 Search 60+ games...">
       </div>
     </div>
   </header>
 
   <!-- Category Filter Buttons -->
   <div class="categories">
-    <button class="category-btn active" onclick="selectCategory('all')">All Games (30)</button>
+    <button class="category-btn active" onclick="selectCategory('all')">All Games (60)</button>
     <button class="category-btn" onclick="selectCategory('racing')">🏎️ Racing & Cars</button>
     <button class="category-btn" onclick="selectCategory('2player')">🤼 2 Player</button>
     <button class="category-btn" onclick="selectCategory('stickman')">🤸 Stickman</button>
@@ -37,194 +37,282 @@
 
   <main class="main-container">
 
-    <!-- 🏎️ RACING & CAR GAMES -->
+    <!-- 🏎️ RACING & CAR GAMES (10 Games) -->
     <section class="game-category" data-category="racing">
-      <h2>🏎️ Mario & Racing Games</h2>
+      <h2>🏎️ Mario, Cars & Racing</h2>
       <div class="games-grid">
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585/')">
           <img src="https://tse1.mm.bing.net/th?q=Moto+X3M+game+icon&w=300&h=300&c=7&rs=1" alt="Moto X3M" loading="lazy">
-          <h3>Moto X3M Bike</h3>
-          <span class="tag">Racing</span>
+          <h3>Moto X3M Bike</h3><span class="tag">Racing</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e/')">
           <img src="https://tse1.mm.bing.net/th?q=Drift+Boss+game+icon&w=300&h=300&c=7&rs=1" alt="Drift Boss" loading="lazy">
-          <h3>Drift Boss</h3>
-          <span class="tag">Racing</span>
+          <h3>Drift Boss</h3><span class="tag">Racing</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/drive-mad')">
+          <img src="https://tse1.mm.bing.net/th?q=Drive+Mad+game+icon&w=300&h=300&c=7&rs=1" alt="Drive Mad" loading="lazy">
+          <h3>Drive Mad</h3><span class="tag">Racing</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/13bbd8e0638541a7884d6537b0d77292/')">
           <img src="https://tse1.mm.bing.net/th?q=Hill+Climb+Racing+game+icon&w=300&h=300&c=7&rs=1" alt="Hill Climb" loading="lazy">
-          <h3>Hill Climb Racing</h3>
-          <span class="tag">Racing</span>
+          <h3>Hill Climb Racing</h3><span class="tag">Racing</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/crazy-cars')">
           <img src="https://tse1.mm.bing.net/th?q=Crazy+Cars+game+icon&w=300&h=300&c=7&rs=1" alt="Crazy Cars" loading="lazy">
-          <h3>Crazy Cars</h3>
-          <span class="tag">Racing</span>
+          <h3>Crazy Cars</h3><span class="tag">Racing</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/5e28a506bf8741ff8e91f16d91223298/')">
           <img src="https://tse1.mm.bing.net/th?q=Mario+Kart+game+icon&w=300&h=300&c=7&rs=1" alt="Mario Kart" loading="lazy">
-          <h3>Mario Kart Runner</h3>
-          <span class="tag">Racing</span>
+          <h3>Mario Kart Runner</h3><span class="tag">Racing</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/retro-bowl')">
+          <img src="https://tse1.mm.bing.net/th?q=Retro+Bowl+game+icon&w=300&h=300&c=7&rs=1" alt="Retro Bowl" loading="lazy">
+          <h3>Retro Bowl</h3><span class="tag">Racing</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/car-simulator-arena')">
+          <img src="https://tse1.mm.bing.net/th?q=Car+Simulator+game+icon&w=300&h=300&c=7&rs=1" alt="Car Simulator" loading="lazy">
+          <h3>Car Simulator</h3><span class="tag">Racing</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/offroader-v5')">
+          <img src="https://tse1.mm.bing.net/th?q=Offroad+4x4+game+icon&w=300&h=300&c=7&rs=1" alt="Offroad 4x4" loading="lazy">
+          <h3>Offroad 4x4</h3><span class="tag">Racing</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/highway-racer-3d')">
+          <img src="https://tse1.mm.bing.net/th?q=Highway+Racer+game+icon&w=300&h=300&c=7&rs=1" alt="Highway Racer" loading="lazy">
+          <h3>Highway Racer</h3><span class="tag">Racing</span>
         </div>
       </div>
     </section>
 
-    <!-- 🤼 2 PLAYER GAMES -->
+    <!-- 🤼 2 PLAYER GAMES (10 Games) -->
     <section class="game-category" data-category="2player">
-      <h2>🤼 2 Player Multiplayer Games</h2>
+      <h2>🤼 2 Player & Board Games</h2>
       <div class="games-grid">
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626/')">
           <img src="https://tse1.mm.bing.net/th?q=Tic+Tac+Toe+game+icon&w=300&h=300&c=7&rs=1" alt="Tic Tac Toe" loading="lazy">
-          <h3>Tic Tac Toe 2P</h3>
-          <span class="tag">2 Player</span>
+          <h3>Tic Tac Toe 2P</h3><span class="tag">2 Player</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/f97b69324e75424cb91244e82df42323/')">
           <img src="https://tse1.mm.bing.net/th?q=Chess+Classic+game+icon&w=300&h=300&c=7&rs=1" alt="Chess" loading="lazy">
-          <h3>Chess Classic 2P</h3>
-          <span class="tag">2 Player</span>
+          <h3>Chess Classic 2P</h3><span class="tag">2 Player</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/8-ball-pool-with-buddies')">
           <img src="https://tse1.mm.bing.net/th?q=8+Ball+Pool+game+icon&w=300&h=300&c=7&rs=1" alt="8 Ball Pool" loading="lazy">
-          <h3>8 Ball Pool 2P</h3>
-          <span class="tag">2 Player</span>
+          <h3>8 Ball Pool 2P</h3><span class="tag">2 Player</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/basketball-stars')">
           <img src="https://tse1.mm.bing.net/th?q=Basketball+Stars+game+icon&w=300&h=300&c=7&rs=1" alt="Basketball Stars" loading="lazy">
-          <h3>Basketball Stars 2P</h3>
-          <span class="tag">2 Player</span>
+          <h3>Basketball Stars 2P</h3><span class="tag">2 Player</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/393d6d56d25d4e19864d43640b37e583/')">
           <img src="https://tse1.mm.bing.net/th?q=Ludo+King+game+icon&w=300&h=300&c=7&rs=1" alt="Ludo Hero" loading="lazy">
-          <h3>Ludo Hero 4P</h3>
-          <span class="tag">2 Player</span>
+          <h3>Ludo Hero 4P</h3><span class="tag">2 Player</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/ping-pong-chaos')">
+          <img src="https://tse1.mm.bing.net/th?q=Ping+Pong+Chaos+game+icon&w=300&h=300&c=7&rs=1" alt="Ping Pong" loading="lazy">
+          <h3>Ping Pong Chaos</h3><span class="tag">2 Player</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/air-hockey-championship')">
+          <img src="https://tse1.mm.bing.net/th?q=Air+Hockey+game+icon&w=300&h=300&c=7&rs=1" alt="Air Hockey" loading="lazy">
+          <h3>Air Hockey</h3><span class="tag">2 Player</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/uno-online')">
+          <img src="https://tse1.mm.bing.net/th?q=Uno+Online+game+icon&w=300&h=300&c=7&rs=1" alt="Uno" loading="lazy">
+          <h3>Uno Online</h3><span class="tag">2 Player</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/battleship-war')">
+          <img src="https://tse1.mm.bing.net/th?q=Battleship+game+icon&w=300&h=300&c=7&rs=1" alt="Battleship" loading="lazy">
+          <h3>Battleship</h3><span class="tag">2 Player</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/rock-paper-scissors')">
+          <img src="https://tse1.mm.bing.net/th?q=Rock+Paper+Scissors+game+icon&w=300&h=300&c=7&rs=1" alt="Rock Paper Scissors" loading="lazy">
+          <h3>Rock Paper Scissors</h3><span class="tag">2 Player</span>
         </div>
       </div>
     </section>
 
-    <!-- 🤸 STICKMAN GAMES -->
+    <!-- 🤸 STICKMAN GAMES (10 Games) -->
     <section class="game-category" data-category="stickman">
       <h2>🤸 Stickman Trending Games</h2>
       <div class="games-grid">
         <div class="game-card" onclick="playGame('https://poki.com/en/g/stickman-hook')">
           <img src="https://tse1.mm.bing.net/th?q=Stickman+Hook+game+icon&w=300&h=300&c=7&rs=1" alt="Stickman Hook" loading="lazy">
-          <h3>Stickman Hook</h3>
-          <span class="tag">Stickman</span>
+          <h3>Stickman Hook</h3><span class="tag">Stickman</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd/')">
           <img src="https://tse1.mm.bing.net/th?q=Stickman+Parkour+game+icon&w=300&h=300&c=7&rs=1" alt="Stickman Parkour" loading="lazy">
-          <h3>Stickman Parkour</h3>
-          <span class="tag">Stickman</span>
+          <h3>Stickman Parkour</h3><span class="tag">Stickman</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/97bf68d6f937402aa1e3cf556c6a4574/')">
           <img src="https://tse1.mm.bing.net/th?q=Stick+War+game+icon&w=300&h=300&c=7&rs=1" alt="Stick War" loading="lazy">
-          <h3>Stickman War Battle</h3>
-          <span class="tag">Stickman</span>
+          <h3>Stickman War Battle</h3><span class="tag">Stickman</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/bf9bbf3d671844b2a8d38a8e1b5fcd82/')">
           <img src="https://tse1.mm.bing.net/th?q=Stickman+Archer+game+icon&w=300&h=300&c=7&rs=1" alt="Stickman Archer" loading="lazy">
-          <h3>Stickman Archer</h3>
-          <span class="tag">Stickman</span>
+          <h3>Stickman Archer</h3><span class="tag">Stickman</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/839446d338f94d3a863cfdfb1754402a/')">
           <img src="https://tse1.mm.bing.net/th?q=Stickman+Run+game+icon&w=300&h=300&c=7&rs=1" alt="Stickman Run" loading="lazy">
-          <h3>Stickman Escape Run</h3>
-          <span class="tag">Stickman</span>
+          <h3>Stickman Escape</h3><span class="tag">Stickman</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/stickman-fighter-epic-battle')">
+          <img src="https://tse1.mm.bing.net/th?q=Stickman+Fighter+game+icon&w=300&h=300&c=7&rs=1" alt="Stickman Fighter" loading="lazy">
+          <h3>Stickman Fighter</h3><span class="tag">Stickman</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/stick-merge')">
+          <img src="https://tse1.mm.bing.net/th?q=Stick+Merge+game+icon&w=300&h=300&c=7&rs=1" alt="Stick Merge" loading="lazy">
+          <h3>Stick Merge</h3><span class="tag">Stickman</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/stickman-bike-pr')">
+          <img src="https://tse1.mm.bing.net/th?q=Stickman+Bike+game+icon&w=300&h=300&c=7&rs=1" alt="Stickman Bike" loading="lazy">
+          <h3>Stickman Bike</h3><span class="tag">Stickman</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/stick-defenders')">
+          <img src="https://tse1.mm.bing.net/th?q=Stick+Defenders+game+icon&w=300&h=300&c=7&rs=1" alt="Stick Defenders" loading="lazy">
+          <h3>Stick Defenders</h3><span class="tag">Stickman</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/stickman-climb-2')">
+          <img src="https://tse1.mm.bing.net/th?q=Stickman+Climb+game+icon&w=300&h=300&c=7&rs=1" alt="Stickman Climb" loading="lazy">
+          <h3>Stickman Climb</h3><span class="tag">Stickman</span>
         </div>
       </div>
-    </section>
-
-    <!-- 💣 ACTION & SHOOTING -->
+    </section><!-- 💣 ACTION & SHOOTING (10 Games) -->
     <section class="game-category" data-category="action">
-      <h2>💣 Action & Shooting Games</h2>
+      <h2>💣 Action, FPS & Battle</h2>
       <div class="games-grid">
         <div class="game-card" onclick="playGame('https://poki.com/en/g/venge-io')">
           <img src="https://tse1.mm.bing.net/th?q=Venge.io+game+icon&w=300&h=300&c=7&rs=1" alt="Venge.io" loading="lazy">
-          <h3>Venge.io FPS 3D</h3>
-          <span class="tag">Action</span>
+          <h3>Venge.io FPS</h3><span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/shell-shockers')">
+          <img src="https://tse1.mm.bing.net/th?q=Shell+Shockers+game+icon&w=300&h=300&c=7&rs=1" alt="Shell Shockers" loading="lazy">
+          <h3>Shell Shockers</h3><span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/smash-karts')">
+          <img src="https://tse1.mm.bing.net/th?q=Smash+Karts+game+icon&w=300&h=300&c=7&rs=1" alt="Smash Karts" loading="lazy">
+          <h3>Smash Karts</h3><span class="tag">Action</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/zombie-rush')">
           <img src="https://tse1.mm.bing.net/th?q=Zombie+Shooter+game+icon&w=300&h=300&c=7&rs=1" alt="Zombie Rush" loading="lazy">
-          <h3>Zombie Shooter</h3>
-          <span class="tag">Action</span>
+          <h3>Zombie Shooter</h3><span class="tag">Action</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/sniper-3d')">
           <img src="https://tse1.mm.bing.net/th?q=Sniper+3D+game+icon&w=300&h=300&c=7&rs=1" alt="Sniper 3D" loading="lazy">
-          <h3>Sniper 3D Assassin</h3>
-          <span class="tag">Action</span>
+          <h3>Sniper 3D Assassin</h3><span class="tag">Action</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df/')">
           <img src="https://tse1.mm.bing.net/th?q=Tank+Stars+game+icon&w=300&h=300&c=7&rs=1" alt="Tanks" loading="lazy">
-          <h3>Super Tank Wars</h3>
-          <span class="tag">Action</span>
+          <h3>Super Tank Wars</h3><span class="tag">Action</span>
         </div>
-        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/d934bb01323348f0a0788d927c3bc4db/')">
-          <img src="https://tse1.mm.bing.net/th?q=Metal+Slug+game+icon&w=300&h=300&c=7&rs=1" alt="Metal Shooter" loading="lazy">
-          <h3>Metal Commando</h3>
-          <span class="tag">Action</span>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/raft-wars-2')">
+          <img src="https://tse1.mm.bing.net/th?q=Raft+Wars+game+icon&w=300&h=300&c=7&rs=1" alt="Raft Wars" loading="lazy">
+          <h3>Raft Wars</h3><span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/getaway-shootout')">
+          <img src="https://tse1.mm.bing.net/th?q=Getaway+Shootout+game+icon&w=300&h=300&c=7&rs=1" alt="Getaway Shootout" loading="lazy">
+          <h3>Getaway Shootout</h3><span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/gun-mayhem')">
+          <img src="https://tse1.mm.bing.net/th?q=Gun+Mayhem+game+icon&w=300&h=300&c=7&rs=1" alt="Gun Mayhem" loading="lazy">
+          <h3>Gun Mayhem</h3><span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/iron-snout')">
+          <img src="https://tse1.mm.bing.net/th?q=Iron+Snout+game+icon&w=300&h=300&c=7&rs=1" alt="Iron Snout" loading="lazy">
+          <h3>Iron Snout</h3><span class="tag">Action</span>
         </div>
       </div>
     </section>
 
-    <!-- 🧩 PUZZLE & MIND -->
+    <!-- 🧩 PUZZLE & MIND (10 Games) -->
     <section class="game-category" data-category="puzzle">
-      <h2>🧩 Puzzle & Brain Games</h2>
+      <h2>🧩 Puzzle, Brain & Casual</h2>
       <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/monkey-mart')">
+          <img src="https://tse1.mm.bing.net/th?q=Monkey+Mart+game+icon&w=300&h=300&c=7&rs=1" alt="Monkey Mart" loading="lazy">
+          <h3>Monkey Mart</h3><span class="tag">Puzzle</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/blocky-blast-puzzle')">
+          <img src="https://tse1.mm.bing.net/th?q=Blocky+Blast+Puzzle+game+icon&w=300&h=300&c=7&rs=1" alt="Blocky Blast" loading="lazy">
+          <h3>Blocky Blast</h3><span class="tag">Puzzle</span>
+        </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/e4834283bce2457980b6cb1da52c1430/')">
           <img src="https://tse1.mm.bing.net/th?q=2048+game+icon&w=300&h=300&c=7&rs=1" alt="2048" loading="lazy">
-          <h3>2048 Classic</h3>
-          <span class="tag">Puzzle</span>
+          <h3>2048 Classic</h3><span class="tag">Puzzle</span>
         </div>
         <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840/')">
           <img src="https://tse1.mm.bing.net/th?q=Bubble+Shooter+game+icon&w=300&h=300&c=7&rs=1" alt="Bubble Shooter" loading="lazy">
-          <h3>Bubble Shooter Pro</h3>
-          <span class="tag">Puzzle</span>
+          <h3>Bubble Shooter</h3><span class="tag">Puzzle</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/water-sort-puzzle')">
           <img src="https://tse1.mm.bing.net/th?q=Water+Sort+Puzzle+game+icon&w=300&h=300&c=7&rs=1" alt="Water Sort" loading="lazy">
-          <h3>Water Sort Puzzle</h3>
-          <span class="tag">Puzzle</span>
+          <h3>Water Sort</h3><span class="tag">Puzzle</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/sweet-world')">
           <img src="https://tse1.mm.bing.net/th?q=Candy+Crush+game+icon&w=300&h=300&c=7&rs=1" alt="Candy Match" loading="lazy">
-          <h3>Candy Match</h3>
-          <span class="tag">Puzzle</span>
+          <h3>Candy Match</h3><span class="tag">Puzzle</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/sudoku')">
           <img src="https://tse1.mm.bing.net/th?q=Sudoku+game+icon&w=300&h=300&c=7&rs=1" alt="Sudoku" loading="lazy">
-          <h3>Sudoku Master</h3>
-          <span class="tag">Puzzle</span>
+          <h3>Sudoku Master</h3><span class="tag">Puzzle</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/tetris')">
+          <img src="https://tse1.mm.bing.net/th?q=Tetris+game+icon&w=300&h=300&c=7&rs=1" alt="Tetris" loading="lazy">
+          <h3>Tetris Classic</h3><span class="tag">Puzzle</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/mahjong-classic')">
+          <img src="https://tse1.mm.bing.net/th?q=Mahjong+Classic+game+icon&w=300&h=300&c=7&rs=1" alt="Mahjong" loading="lazy">
+          <h3>Mahjong</h3><span class="tag">Puzzle</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/wordle')">
+          <img src="https://tse1.mm.bing.net/th?q=Wordle+game+icon&w=300&h=300&c=7&rs=1" alt="Wordle" loading="lazy">
+          <h3>Wordle Game</h3><span class="tag">Puzzle</span>
         </div>
       </div>
     </section>
 
-    <!-- 🗡️ ADVENTURE & ARCADE -->
+    <!-- 🗡️ ADVENTURE & ARCADE (10 Games) -->
     <section class="game-category" data-category="adventure">
-      <h2>🗡️ Adventure & Arcade Games</h2>
+      <h2>🗡️ Adventure, Arcade & Fun</h2>
       <div class="games-grid">
-        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/f04268e376044e1d90f23023812836d5/')">
-          <img src="https://tse1.mm.bing.net/th?q=Fireboy+and+Watergirl+game+icon&w=300&h=300&c=7&rs=1" alt="Fireboy Watergirl" loading="lazy">
-          <h3>Fireboy & Watergirl</h3>
-          <span class="tag">Adventure</span>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/level-devil')">
+          <img src="https://tse1.mm.bing.net/th?q=Level+Devil+game+icon&w=300&h=300&c=7&rs=1" alt="Level Devil" loading="lazy">
+          <h3>Level Devil</h3><span class="tag">Adventure</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/subway-surfers')">
           <img src="https://tse1.mm.bing.net/th?q=Subway+Surfers+game+icon&w=300&h=300&c=7&rs=1" alt="Subway Surfers" loading="lazy">
-          <h3>Subway Surfers</h3>
-          <span class="tag">Adventure</span>
+          <h3>Subway Surfers</h3><span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/f04268e376044e1d90f23023812836d5/')">
+          <img src="https://tse1.mm.bing.net/th?q=Fireboy+and+Watergirl+game+icon&w=300&h=300&c=7&rs=1" alt="Fireboy Watergirl" loading="lazy">
+          <h3>Fireboy & Watergirl</h3><span class="tag">Adventure</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/temple-run-2')">
           <img src="https://tse1.mm.bing.net/th?q=Temple+Run+2+game+icon&w=300&h=300&c=7&rs=1" alt="Temple Run 2" loading="lazy">
-          <h3>Temple Run 2</h3>
-          <span class="tag">Adventure</span>
+          <h3>Temple Run 2</h3><span class="tag">Adventure</span>
         </div>
         <div class="game-card" onclick="playGame('https://poki.com/en/g/red-ball-4')">
           <img src="https://tse1.mm.bing.net/th?q=Red+Ball+4+game+icon&w=300&h=300&c=7&rs=1" alt="Red Ball 4" loading="lazy">
-          <h3>Red Ball 4</h3>
-          <span class="tag">Adventure</span>
+          <h3>Red Ball 4</h3><span class="tag">Adventure</span>
         </div>
-        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/7123bf0133c64c7694f4c278fb128d5d/')">
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/fruit-ninja')">
           <img src="https://tse1.mm.bing.net/th?q=Fruit+Ninja+game+icon&w=300&h=300&c=7&rs=1" alt="Fruit Ninja" loading="lazy">
-          <h3>Fruit Slicer Ninja</h3>
-          <span class="tag">Adventure</span>
+          <h3>Fruit Ninja</h3><span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/jetpack-joyride')">
+          <img src="https://tse1.mm.bing.net/th?q=Jetpack+Joyride+game+icon&w=300&h=300&c=7&rs=1" alt="Jetpack Joyride" loading="lazy">
+          <h3>Jetpack Joyride</h3><span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/cut-the-rope')">
+          <img src="https://tse1.mm.bing.net/th?q=Cut+the+Rope+game+icon&w=300&h=300&c=7&rs=1" alt="Cut The Rope" loading="lazy">
+          <h3>Cut The Rope</h3><span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/crossy-road')">
+          <img src="https://tse1.mm.bing.net/th?q=Crossy+Road+game+icon&w=300&h=300&c=7&rs=1" alt="Crossy Road" loading="lazy">
+          <h3>Crossy Road</h3><span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://poki.com/en/g/flappy-bird')">
+          <img src="https://tse1.mm.bing.net/th?q=Flappy+Bird+game+icon&w=300&h=300&c=7&rs=1" alt="Flappy Bird" loading="lazy">
+          <h3>Flappy Bird</h3><span class="tag">Adventure</span>
         </div>
       </div>
     </section>
