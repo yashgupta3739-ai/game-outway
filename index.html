@@ -1,186 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Outway - Free Online Games</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Outway - Free Online Games</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <div class="header-container">
-            <div class="logo">🎮 <span>Game Outway</span></div>
-            
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" id="searchInput" onkeyup="searchGames()" placeholder="🔍 Search games...">
-            </div>
-        </div>
-
-        <!-- Category Filter Buttons -->
-        <div class="category-bar">
-            <button class="cat-btn active" onclick="filterCategory('all')">🔥 All Games</button>
-            <button class="cat-btn" onclick="filterCategory('racing')">🏎️ Racing</button>
-            <button class="cat-btn" onclick="filterCategory('puzzle')">🧩 Puzzle</button>
-            <button class="cat-btn" onclick="filterCategory('action')">🎯 Action</button>
-            <button class="cat-btn" onclick="filterCategory('arcade')">🕹️ Arcade</button>
-        </div>
-    </header>
-
-    <!-- Main Game Section (Full Screen Grid) -->
-    <main class="main-layout">
-        <h2 class="section-title">⚡ Featured Games</h2>
-        
-        <div class="game-grid" id="gameGrid">
-            
-            <!-- Game 1: Moto X3M -->
-            <div class="game-card" data-category="racing" onclick="playGame('https://maddoxpr.github.gq/moto-x3m/', 'Moto X3M Bike Race')">
-                <div class="thumb-box">
-                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&q=80" alt="Moto X3M">
-                </div>
-                <div class="card-info">
-                    <h3>Moto X3M Bike</h3>
-                    <span class="tag racing">Racing</span>
-                </div>
-            </div>
-
-            <!-- Game 2: Tic Tac Toe -->
-            <div class="game-card" data-category="puzzle" onclick="playGame('https://playtictactoe.org/', 'Tic Tac Toe Master')">
-                <div class="thumb-box">
-                    <img src="https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=400&q=80" alt="Tic Tac Toe">
-                </div>
-                <div class="card-info">
-                    <h3>Tic Tac Toe</h3>
-                    <span class="tag puzzle">Puzzle</span>
-                </div>
-            </div>
-
-            <!-- Game 3: 2048 Game -->
-            <div class="game-card" data-category="puzzle" onclick="playGame('https://play2048.co/', '2048 Classic')">
-                <div class="thumb-box">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&q=80" alt="2048">
-                </div>
-                <div class="card-info">
-                    <h3>2048 Classic</h3>
-                    <span class="tag puzzle">Puzzle</span>
-                </div>
-            </div>
-
-            <!-- Game 4: Drift Boss -->
-            <div class="game-card" data-category="racing" onclick="playGame('https://html5.gamemonetize.co/8k4c62v83p0g1g3j7l94w6136m86b978/', 'Drift Boss')">
-                <div class="thumb-box">
-                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400&q=80" alt="Drift Boss">
-                </div>
-                <div class="card-info">
-                    <h3>Drift Boss</h3>
-                    <span class="tag racing">Racing</span>
-                </div>
-            </div>
-
-            <!-- Game 5: Pacman Arcade -->
-            <div class="game-card" data-category="arcade" onclick="playGame('https://freepacman.org/', 'Classic Pacman')">
-                <div class="thumb-box">
-                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&q=80" alt="Pacman">
-                </div>
-                <div class="card-info">
-                    <h3>Classic Pacman</h3>
-                    <span class="tag arcade">Arcade</span>
-                </div>
-            </div>
-
-            <!-- Game 6: Flappy Bird -->
-            <div class="game-card" data-category="arcade" onclick="playGame('https://flappybird.io/', 'Flappy Bird')">
-                <div class="thumb-box">
-                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&q=80" alt="Flappy Bird">
-                </div>
-                <div class="card-info">
-                    <h3>Flappy Bird</h3>
-                    <span class="tag arcade">Arcade</span>
-                </div>
-            </div>
-
-            <!-- Game 7: Tower Building -->
-            <div class="game-card" data-category="action" onclick="playGame('https://html5.gamemonetize.co/3a5u18e11n0i6b4m2o7w9532l175a867/', 'Tower Builder')">
-                <div class="thumb-box">
-                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&q=80" alt="Tower Builder">
-                </div>
-                <div class="card-info">
-                    <h3>Tower Builder</h3>
-                    <span class="tag action">Action</span>
-                </div>
-            </div>
-
-            <!-- Game 8: Retro Snake -->
-            <div class="game-card" data-category="arcade" onclick="playGame('https://playsnake.org/', 'Classic Snake Game')">
-                <div class="thumb-box">
-                    <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400&q=80" alt="Snake">
-                </div>
-                <div class="card-info">
-                    <h3>Classic Snake</h3>
-                    <span class="tag arcade">Arcade</span>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <!-- Game Player Modal Popup -->
-    <div id="gameModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalGameTitle">Playing Game</h2>
-                <button class="close-btn" onclick="closeGame()">❌ Close Game</button>
-            </div>
-            <iframe id="gameFrame" src="" frameborder="0" allowfullscreen></iframe>
-        </div>
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <div class="logo"><span>Game Outway</span></div>
+      <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="🔍 Search games...">
+      </div>
     </div>
+  </header>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 <strong>Game Outway</strong>. All Rights Reserved.</p>
-    </footer>
+  <!-- Category Filter Buttons -->
+  <div class="categories">
+    <button class="category-btn active" onclick="selectCategory('all')">All Games</button>
+    <button class="category-btn" onclick="selectCategory('action')">Action</button>
+    <button class="category-btn" onclick="selectCategory('puzzle')">Puzzle</button>
+    <button class="category-btn" onclick="selectCategory('adventure')">Adventure</button>
+    <button class="category-btn" onclick="selectCategory('arcade')">Racing & Arcade</button>
+  </div>
 
-    <!-- Interactive Script -->
-    <script>
-        function playGame(gameUrl, title) {
-            document.getElementById('modalGameTitle').innerText = title;
-            document.getElementById('gameFrame').src = gameUrl;
-            document.getElementById('gameModal').style.display = "flex";
+  <main class="main-container">
+
+    <!-- 💣 Action Games Section -->
+    <section class="game-category" data-category="action">
+      <h2>💣 Trending Action Games</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/moto-x3m/')">
+          <img src="https://img.gamemonetize.com/moto-x3m/512x512.png" alt="Moto X3M">
+          <h3>Moto X3M</h3>
+          <span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/drift-boss/')">
+          <img src="https://img.gamemonetize.com/drift-boss/512x512.png" alt="Drift Boss">
+          <h3>Drift Boss</h3>
+          <span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/stickman-hook/')">
+          <img src="https://img.gamemonetize.com/stickman-hook/512x512.png" alt="Stickman Hook">
+          <h3>Stickman Hook</h3>
+          <span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/highway-racer/')">
+          <img src="https://img.gamemonetize.com/highway-racer/512x512.png" alt="Highway Racer">
+          <h3>Highway Racer</h3>
+          <span class="tag">Action</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/tank-battle/')">
+          <img src="https://img.gamemonetize.com/tank-battle/512x512.png" alt="Tank Battle">
+          <h3>Tank Battle</h3>
+          <span class="tag">Action</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🧩 Puzzle Games Section -->
+    <section class="game-category" data-category="puzzle">
+      <h2>🧩 Trending Puzzle Games</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/2048-classic/')">
+          <img src="https://img.gamemonetize.com/2048-classic/512x512.png" alt="2048">
+          <h3>2048 Classic</h3>
+          <span class="tag">Puzzle</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/cut-the-rope/')">
+          <img src="https://img.gamemonetize.com/cut-the-rope/512x512.png" alt="Cut the Rope">
+          <h3>Cut the Rope</h3>
+          <span class="tag">Puzzle</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/bubble-shooter/')">
+          <img src="https://img.gamemonetize.com/bubble-shooter/512x512.png" alt="Bubble Shooter">
+          <h3>Bubble Shooter</h3>
+          <span class="tag">Puzzle</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/sudoku-master/')">
+          <img src="https://img.gamemonetize.com/sudoku-master/512x512.png" alt="Sudoku">
+          <h3>Sudoku Master</h3>
+          <span class="tag">Puzzle</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/match-3-jewels/')">
+          <img src="https://img.gamemonetize.com/match-3-jewels/512x512.png" alt="Match 3">
+          <h3>Match 3 Jewels</h3>
+          <span class="tag">Puzzle</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🗡️ Adventure Games Section -->
+    <section class="game-category" data-category="adventure">
+      <h2>🗡️ Trending Adventure Games</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/fireboy-and-watergirl-1/')">
+          <img src="https://img.gamemonetize.com/fireboy-and-watergirl-1/512x512.png" alt="Fireboy & Watergirl">
+          <h3>Fireboy & Watergirl</h3>
+          <span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/bob-the-robber/')">
+          <img src="https://img.gamemonetize.com/bob-the-robber/512x512.png" alt="Bob the Robber">
+          <h3>Bob the Robber</h3>
+          <span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/tomb-runner/')">
+          <img src="https://img.gamemonetize.com/tomb-runner/512x512.png" alt="Tomb Runner">
+          <h3>Tomb Runner</h3>
+          <span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/craft-miner/')">
+          <img src="https://img.gamemonetize.com/craft-miner/512x512.png" alt="Craft Miner">
+          <h3>Craft Miner</h3>
+          <span class="tag">Adventure</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/maze-escape/')">
+          <img src="https://img.gamemonetize.com/maze-escape/512x512.png" alt="Maze Escape">
+          <h3>Maze Escape</h3>
+          <span class="tag">Adventure</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🏎️ Racing & Arcade Section -->
+    <section class="game-category" data-category="arcade">
+      <h2>🏎️ Racing & Arcade Games</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/flappy-bird/')">
+          <img src="https://img.gamemonetize.com/flappy-bird/512x512.png" alt="Flappy Bird">
+          <h3>Flappy Bird</h3>
+          <span class="tag">Arcade</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/classic-snake/')">
+          <img src="https://img.gamemonetize.com/classic-snake/512x512.png" alt="Snake">
+          <h3>Classic Snake</h3>
+          <span class="tag">Arcade</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/tic-tac-toe/')">
+          <img src="https://img.gamemonetize.com/tic-tac-toe/512x512.png" alt="Tic Tac Toe">
+          <h3>Tic Tac Toe</h3>
+          <span class="tag">Arcade</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/car-rush/')">
+          <img src="https://img.gamemonetize.com/car-rush/512x512.png" alt="Car Rush">
+          <h3>Car Rush</h3>
+          <span class="tag">Arcade</span>
+        </div>
+        <div class="game-card" onclick="playGame('https://game3.gamemonetize.com/ludo-classic/')">
+          <img src="https://img.gamemonetize.com/ludo-classic/512x512.png" alt="Ludo">
+          <h3>Ludo Classic</h3>
+          <span class="tag">Arcade</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Game Play Function
+    function playGame(url) {
+      window.open(url, '_blank');
+    }
+
+    // Category Filter Function
+    function selectCategory(cat) {
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const sections = document.querySelectorAll('.game-category');
+      sections.forEach(sec => {
+        if (cat === 'all' || sec.getAttribute('data-category') === cat) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
         }
+      });
+    }
 
-        function closeGame() {
-            document.getElementById('gameModal').style.display = "none";
-            document.getElementById('gameFrame').src = "";
+    // Search Filter Function
+    function filterGames() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.game-card');
+      
+      cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        if (title.includes(query)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
         }
-
-        function searchGames() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('game-card');
-
-            for (let i = 0; i < cards.length; i++) {
-                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-                cards[i].style.display = title.includes(input) ? "flex" : "none";
-            }
-        }
-
-        function filterCategory(category) {
-            let cards = document.getElementsByClassName('game-card');
-            let buttons = document.getElementsByClassName('cat-btn');
-
-            for (let btn of buttons) btn.classList.remove('active');
-            event.target.classList.add('active');
-
-            for (let card of cards) {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            }
-        }
-    </script>
+      });
+    }
+  </script>
 
 </body>
 </html>
