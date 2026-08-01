@@ -1,260 +1,121 @@
-/* Modern Clean White Theme - Game Outway */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Inter, system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f8fafc;
-    color: #0f172a;
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 20px;
 }
 
-/* Header */
+/* Header Section */
 header {
-    background-color: #ffffff;
-    padding: 15px 30px;
-    border-bottom: 1px solid #e2e8f0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  margin-bottom: 20px;
 }
 
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-/* Logo Text - Black Color */
 .logo {
-    font-size: 26px;
-    font-weight: 800;
-    color: #000000;
+  font-size: 26px;
+  font-weight: bold;
+  color: #38bdf8;
 }
 
-.logo span {
-    color: #000000; /* Ab "Game Outway" ka span bhi pure black hai */
+.search-container input {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #fff;
+  outline: none;
+  width: 220px;
 }
 
-/* Search Box */
-.search-container {
-    flex-grow: 1;
-    max-width: 400px;
-    margin: 0 20px;
+/* Category Filter Buttons */
+.categories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  padding-bottom: 5px;
 }
 
-#searchInput {
-    width: 100%;
-    padding: 10px 18px;
-    font-size: 14px;
-    border-radius: 20px;
-    border: 1px solid #cbd5e1;
-    background-color: #f1f5f9;
-    color: #0f172a;
-    outline: none;
-    transition: all 0.2s ease;
+.category-btn {
+  padding: 8px 18px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #94a3b8;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.3s ease;
 }
 
-#searchInput:focus {
-    border-color: #000000;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+.category-btn.active, .category-btn:hover {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
 }
 
-/* Categories Bar */
-.category-bar {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-x: auto;
-    padding-bottom: 5px;
+/* Game Categories & Cards */
+.game-category {
+  margin-bottom: 35px;
 }
 
-.cat-btn {
-    background-color: #f1f5f9;
-    color: #475569;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: all 0.2s;
+.game-category h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #38bdf8;
 }
 
-.cat-btn:hover {
-    background-color: #e2e8f0;
-    color: #0f172a;
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 15px;
 }
 
-.cat-btn.active {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-/* Main Layout (Full Screen Coverage) */
-.main-layout {
-    max-width: 1400px;
-    margin: 25px auto;
-    padding: 0 20px;
-}
-
-.section-title {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: #1e293b;
-}
-
-/* Compact Game Grid (5-6 items per row) */
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 18px;
-}
-
-/* Game Cards */
 .game-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  border: 1px solid #334155;
 }
 
 .game-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: #000000;
+  transform: translateY(-5px);
+  background: #334155;
 }
 
-.thumb-box {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    background-color: #e2e8f0;
-}
-
-.thumb-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
-}
-
-.game-card:hover .thumb-box img {
-    transform: scale(1.05);
-}
-
-.card-info {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+.game-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  background-color: #0f172a;
 }
 
 .game-card h3 {
-    font-size: 14px;
-    color: #0f172a;
-    font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 14px;
+  margin: 10px 0 4px 0;
+  color: #f8fafc;
 }
 
 .tag {
-    font-size: 10px;
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 4px;
-    width: fit-content;
-    text-transform: uppercase;
-}
-
-.tag.racing { background-color: #dcfce7; color: #15803d; }
-.tag.puzzle { background-color: #dbeafe; color: #1d4ed8; }
-.tag.action { background-color: #fee2e2; color: #b91c1c; }
-
-/* Game Player Modal Overlay */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(15, 23, 42, 0.85);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(4px);
-}
-
-.modal-content {
-    background-color: #ffffff;
-    width: 90%;
-    max-width: 1000px;
-    height: 85vh;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-}
-
-.modal-header {
-    padding: 12px 20px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-header h2 {
-    font-size: 18px;
-    color: #0f172a;
-}
-
-.close-btn {
-    background-color: #ef4444;
-    color: #ffffff;
-    border: none;
-    padding: 6px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-.close-btn:hover {
-    background-color: #dc2626;
-}
-
-.modal-content iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-footer {
-    text-align: center;
-    padding: 25px;
-    color: #64748b;
-    font-size: 13px;
-    margin-top: 40px;
-    border-top: 1px solid #e2e8f0;
-    background-color: #ffffff;
+  font-size: 11px;
+  color: #38bdf8;
+  text-transform: uppercase;
+  font-weight: bold;
 }
