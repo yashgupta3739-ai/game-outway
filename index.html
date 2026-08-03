@@ -23,7 +23,7 @@
 </head>
 <body>
 
-  <!-- 🔮 FLOATING PURPLE BALL -->
+  <!-- 🔮 FLOATING PURPLE BALL (80px) -->
   <div id="floatingBall"></div>
 
   <header>
@@ -51,7 +51,7 @@
 
   <main class="main-container">
 
-    <!-- 🚨 NEW CATEGORY: US/UK TRENDING GAMES (50 GAMES) 🚨 -->
+    <!-- 🚨 NEW CATEGORY: US/UK TRENDING GAMES 🚨 -->
     <section class="game-category" data-category="trending">
       <h2>🔥 US/UK Most Played (Trending Now)</h2>
       <div class="games-grid">
@@ -341,10 +341,10 @@
       });
     }
 
-    // 🔮 FLOATING PURPLE BALL THROW PHYSICS 🔮
+    // 🔮 FLOATING PURPLE BALL THROW PHYSICS (80px BALL)
     const ball = document.getElementById('floatingBall');
-    let posX = window.innerWidth - 70;
-    let posY = window.innerHeight - 130;
+    let posX = window.innerWidth - 100;
+    let posY = window.innerHeight - 150;
     let vx = 0, vy = 0;
     let gravity = 0.6;
     let bounce = 0.7;
@@ -357,9 +357,9 @@
         posX += vx;
         posY += vy;
 
-        // Floor collision (42px ball size)
-        if (posY + 42 > window.innerHeight) { 
-          posY = window.innerHeight - 42;
+        // Floor collision (80px ball size)
+        if (posY + 80 > window.innerHeight) { 
+          posY = window.innerHeight - 80;
           vy *= -bounce;
           vx *= 0.95; // Friction
         }
@@ -369,8 +369,8 @@
           vy *= -bounce;
         }
         // Right wall
-        if (posX + 42 > window.innerWidth) {
-          posX = window.innerWidth - 42;
+        if (posX + 80 > window.innerWidth) {
+          posX = window.innerWidth - 80;
           vx *= -bounce;
         }
         // Left wall
@@ -397,7 +397,6 @@
 
     function moveDrag(e) {
       if (!isDragging) return;
-      // Prevent default scrolling on mobile when dragging the ball
       e.preventDefault(); 
       
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -406,8 +405,8 @@
       vx = clientX - lastMouseX;
       vy = clientY - lastMouseY;
 
-      posX = clientX - 21; // Center offset (42/2)
-      posY = clientY - 21;
+      posX = clientX - 40; // Center offset (80/2)
+      posY = clientY - 40;
 
       ball.style.left = posX + 'px';
       ball.style.top = posY + 'px';
