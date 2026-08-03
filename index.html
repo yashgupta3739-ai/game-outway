@@ -20,12 +20,6 @@
   <!-- 🔮 FLOATING PURPLE BALL (80px) -->
   <div id="floatingBall"></div>
 
-  <!-- 🎮 IN-SITE GAME PLAYER -->
-  <div id="gameModal">
-    <button class="close-btn" onclick="closeGame()">&times; CLOSE GAME & GO BACK</button>
-    <iframe id="gameFrame" src="" allowfullscreen></iframe>
-  </div>
-
   <header>
     <div class="header-container">
       <div class="logo"><span>Game Outway</span></div>
@@ -95,19 +89,9 @@
   </main>
 
   <script>
-    // 🎮 IN-SITE PLAYER LOGIC
+    // DIRECT NEW TAB OPEN
     function playGame(url) {
-      const modal = document.getElementById('gameModal');
-      const frame = document.getElementById('gameFrame');
-      frame.src = url;
-      modal.style.display = 'flex';
-    }
-
-    function closeGame() {
-      const modal = document.getElementById('gameModal');
-      const frame = document.getElementById('gameFrame');
-      frame.src = "";
-      modal.style.display = 'none';
+      window.open(url, '_blank');
     }
 
     function selectCategory(cat) {
