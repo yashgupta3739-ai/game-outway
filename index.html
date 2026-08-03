@@ -23,6 +23,9 @@
 </head>
 <body>
 
+  <!-- 🔮 FLOATING PURPLE BALL -->
+  <div id="floatingBall"></div>
+
   <header>
     <div class="header-container">
       <div class="logo"><span>Game Outway</span></div>
@@ -120,6 +123,7 @@
         <div class="game-card" onclick="playGame('https://poki.com/en/g/bowling-stars')"><img src="https://tse1.mm.bing.net/th?q=Bowling+Stars+game+icon&w=300&h=300&c=7&rs=1" alt="Bowling" loading="lazy"><h3>Bowling Stars</h3><span class="tag">Sports</span></div>
       </div>
     </section>
+
     <section class="game-category" data-category="action">
       <h2>💣 Action, FPS & Battle</h2>
       <div class="games-grid">
@@ -150,7 +154,6 @@
         <div class="game-card" onclick="playGame('https://poki.com/en/g/gladiator-true-story')"><img src="https://tse1.mm.bing.net/th?q=Gladiator+Arena+game+icon&w=300&h=300&c=7&rs=1" alt="Gladiator" loading="lazy"><h3>Gladiator Arena</h3><span class="tag">Action</span></div>
       </div>
     </section>
-
     <section class="game-category" data-category="racing">
       <h2>🏎️ Mario, Cars & Racing</h2>
       <div class="games-grid">
@@ -216,6 +219,7 @@
         <div class="game-card" onclick="playGame('https://poki.com/en/g/g-switch-3')"><img src="https://tse1.mm.bing.net/th?q=G-Switch+3+game+icon&w=300&h=300&c=7&rs=1" alt="G-Switch 3" loading="lazy"><h3>G-Switch 3</h3><span class="tag">2 Player</span></div>
       </div>
     </section>
+
     <section class="game-category" data-category="stickman">
       <h2>🤸 Stickman Trending Games</h2>
       <div class="games-grid">
@@ -269,7 +273,6 @@
         <div class="game-card" onclick="playGame('https://poki.com/en/g/love-pins')"><img src="https://tse1.mm.bing.net/th?q=Love+Pins+game+icon&w=300&h=300&c=7&rs=1" alt="Love Pins" loading="lazy"><h3>Love Pins</h3><span class="tag">Puzzle</span></div>
       </div>
     </section>
-
     <section class="game-category" data-category="horror">
       <h2>👻 Horror & Scary Creepypasta</h2>
       <div class="games-grid">
@@ -337,6 +340,100 @@
         }
       });
     }
+
+    // 🔮 FLOATING PURPLE BALL THROW PHYSICS 🔮
+    const ball = document.getElementById('floatingBall');
+    let posX = window.innerWidth - 70;
+    let posY = window.innerHeight - 130;
+    let vx = 0, vy = 0;
+    let gravity = 0.6;
+    let bounce = 0.7;
+    let isDragging = false;
+    let lastMouseX = 0, lastMouseY = 0;
+
+    function updateBall() {
+      if (!isDragging) {
+        vy += gravity;
+        posX += vx;
+        posY += vy;
+
+        // Floor collision (42px ball size)
+        if (posY + 42 > window.innerHeight) { 
+          posY = window.innerHeight - 42;
+          vy *= -bounce;
+          vx *= 0.95; // Friction
+        }
+        // Ceiling collision
+        if (posY < 0) {
+          posY = 0;
+          vy *= -bounce;
+        }
+        // Right wall
+        if (posX + 42 > window.innerWidth) {
+          posX = window.innerWidth - 42;
+          vx *= -bounce;
+        }
+        // Left wall
+        if (posX < 0) {
+          posX = 0;
+          vx *= -bounce;
+        }
+
+        ball.style.left = posX + 'px';
+        ball.style.top = posY + 'px';
+      }
+      requestAnimationFrame(updateBall);
+    }
+
+    function startDrag(e) {
+      isDragging = true;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      lastMouseX = clientX;
+      lastMouseY = clientY;
+      vx = 0;
+      vy = 0;
+    }
+
+    function moveDrag(e) {
+      if (!isDragging) return;
+      // Prevent default scrolling on mobile when dragging the ball
+      e.preventDefault(); 
+      
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      vx = clientX - lastMouseX;
+      vy = clientY - lastMouseY;
+
+      posX = clientX - 21; // Center offset (42/2)
+      posY = clientY - 21;
+
+      ball.style.left = posX + 'px';
+      ball.style.top = posY + 'px';
+
+      lastMouseX = clientX;
+      lastMouseY = clientY;
+    }
+
+    function endDrag() {
+      if (isDragging) {
+        isDragging = false;
+      }
+    }
+
+    // Mouse events
+    ball.addEventListener('mousedown', startDrag);
+    window.addEventListener('mousemove', moveDrag, { passive: false });
+    window.addEventListener('mouseup', endDrag);
+
+    // Touch events for mobile
+    ball.addEventListener('touchstart', startDrag, { passive: false });
+    window.addEventListener('touchmove', moveDrag, { passive: false });
+    window.addEventListener('touchend', endDrag);
+
+    // Start physics loop
+    updateBall();
   </script>
 
   <!-- 🎯 Adsterra Social Bar Ad Code -->
