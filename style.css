@@ -172,8 +172,8 @@ header {
 
 /* 🔮 MEDIUM PURPLE FLOATING BALL (UI/UX ADDITION) */
 #floatingBall {
-  width: 42px;
-  height: 42px;
+  width: 80px;
+  height: 80px;
   background: radial-gradient(circle at 30% 30%, #c084fc, #7e22ce);
   border-radius: 50%;
   position: fixed;
