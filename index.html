@@ -2,22 +2,363 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>3D Games Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Outway - Play Free Games Online</title>
+  
+  <!-- 🎯 Adsterra Popunder Ad Code -->
+  <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
+
   <style>
-    body { font-family: sans-serif; background: #0f172a; color: white; text-align: center; padding: 20px; }
-    .game-box { width: 100%; max-width: 800px; height: 500px; margin: 20px auto; border: 2px solid #a855f7; border-radius: 12px; overflow: hidden; }
-    iframe { width: 100%; height: 100%; border: none; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* 🖤 BLACK & WHITE THEME */
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    header {
+      margin-bottom: 25px;
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      background: #111111;
+      padding: 14px 24px;
+      border-radius: 16px;
+      border: 1px solid #333333;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #a855f7;
+    }
+
+    .search-container input {
+      padding: 10px 18px;
+      border-radius: 20px;
+      border: 1.5px solid #444444;
+      background: #1a1a1a;
+      color: #ffffff;
+      outline: none;
+      width: 240px;
+      font-size: 14px;
+    }
+
+    .search-container input:focus {
+      border-color: #ffffff;
+    }
+
+    /* Categories */
+    .categories {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .category-btn {
+      padding: 9px 20px;
+      border: 1px solid #333333;
+      background: #111111;
+      color: #cccccc;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .category-btn.active, .category-btn:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    /* Game Section */
+    .game-category h2 {
+      font-size: 20px;
+      margin-bottom: 18px;
+      color: #ffffff;
+      font-weight: 800;
+      border-bottom: 1px solid #222222;
+      padding-bottom: 8px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .game-card {
+      background: #111111;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid #222222;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      border-color: #ffffff;
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      background-color: #222222;
+    }
+
+    .game-card h3 {
+      font-size: 14px;
+      margin: 10px 0 4px 0;
+      color: #ffffff;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tag {
+      font-size: 11px;
+      color: #888888;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* 🔮 FLOATING PURPLE BALL (80px x 80px) */
+    #floatingBall {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #c084fc, #7e22ce);
+      border-radius: 50%;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 9999;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.65), inset 0 0 12px rgba(255, 255, 255, 0.8);
+      cursor: grab;
+      touch-action: none;
+      user-select: none;
+    }
+
+    #floatingBall:active {
+      cursor: grabbing;
+      transform: scale(0.92);
+    }
+
+    /* 🎮 IN-SITE GAME PLAYER MODAL */
+    #gameModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: #000000;
+      z-index: 100000;
+      flex-direction: column;
+    }
+
+    .close-btn {
+      background: #ffffff;
+      color: #000000;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .close-btn:hover { background: #e2e8f0; }
+
+    #gameFrame {
+      width: 100%;
+      flex-grow: 1;
+      border: none;
+      background: #000000;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 12px; }
+      .games-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .search-container input { width: 100%; }
+    }
   </style>
 </head>
 <body>
 
-  <h1>🎮 Direct 3D Working Game Test</h1>
-  <p>Yeh games bina kisi error ya block ke site par hi chalegi:</p>
+  <!-- 🔮 80px PURPLE BALL -->
+  <div id="floatingBall"></div>
 
-  <!-- 3D Car Game (GamePix Direct Link) -->
-  <div class="game-box">
-    <iframe src="https://www.gamepix.com/play/slither-io" allowfullscreen></iframe>
+  <!-- 🎮 IN-SITE GAME PLAYER -->
+  <div id="gameModal">
+    <button class="close-btn" onclick="closeGame()">&times; CLOSE GAME & GO BACK</button>
+    <iframe id="gameFrame" src="" allowfullscreen></iframe>
   </div>
 
+  <header>
+    <div class="header-container">
+      <div class="logo"><span>Game Outway</span></div>
+      <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="🔍 Search games...">
+      </div>
+    </div>
+  </header>
+
+  <div class="categories">
+    <button class="category-btn active" onclick="selectCategory('all')">All Games</button>
+    <button class="category-btn" onclick="selectCategory('action')">💣 Action & 3D</button>
+    <button class="category-btn" onclick="selectCategory('racing')">🏎️ Racing</button>
+    <button class="category-btn" onclick="selectCategory('puzzle')">🧩 Casual & Fun</button>
+  </div>
+
+  <main class="main-container">
+
+    <section class="game-category" data-category="action">
+      <h2>🔥 3D & Action Games</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/slither-io')"><img src="https://tse1.mm.bing.net/th?q=Slither.io+game+icon&w=300&h=300&c=7&rs=1" alt="Slither.io"><h3>Slither.io</h3><span class="tag">Action</span></div>
+        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/subway-surfers')"><img src="https://tse1.mm.bing.net/th?q=Subway+Surfers+game+icon&w=300&h=300&c=7&rs=1" alt="Subway Surfers"><h3>Subway Surfers</h3><span class="tag">Runner</span></div>
+        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/temple-run-2')"><img src="https://tse1.mm.bing.net/th?q=Temple+Run+2+game+icon&w=300&h=300&c=7&rs=1" alt="Temple Run 2"><h3>Temple Run 2</h3><span class="tag">3D Runner</span></div>
+        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/geometry-dash')"><img src="https://tse1.mm.bing.net/th?q=Geometry+Dash+game+icon&w=300&h=300&c=7&rs=1" alt="Geometry Dash"><h3>Geometry Dash</h3><span class="tag">Action</span></div>
+      </div>
+    </section>
+
+    <section class="game-category" data-category="racing">
+      <h2>🏎️ Racing & Driving</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/moto-x3m')"><img src="https://tse1.mm.bing.net/th?q=Moto+X3M+game+icon&w=300&h=300&c=7&rs=1" alt="Moto X3M"><h3>Moto X3M</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/drift-boss')"><img src="https://tse1.mm.bing.net/th?q=Drift+Boss+game+icon&w=300&h=300&c=7&rs=1" alt="Drift Boss"><h3>Drift Boss</h3><span class="tag">Racing</span></div>
+      </div>
+    </section>
+
+    <section class="game-category" data-category="puzzle">
+      <h2>🧩 Puzzle & Board</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/2048')"><img src="https://tse1.mm.bing.net/th?q=2048+game+icon&w=300&h=300&c=7&rs=1" alt="2048"><h3>2048 Classic</h3><span class="tag">Puzzle</span></div>
+        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/uno-online')"><img src="https://tse1.mm.bing.net/th?q=Uno+Online+game+icon&w=300&h=300&c=7&rs=1" alt="Uno"><h3>Uno Online</h3><span class="tag">Board</span></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // 🎮 WORKING EMBED PLAYER
+    function playGame(url) {
+      const modal = document.getElementById('gameModal');
+      const frame = document.getElementById('gameFrame');
+      frame.src = url;
+      modal.style.display = 'flex';
+    }
+
+    function closeGame() {
+      const modal = document.getElementById('gameModal');
+      const frame = document.getElementById('gameFrame');
+      frame.src = "";
+      modal.style.display = 'none';
+    }
+
+    function selectCategory(cat) {
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const sections = document.querySelectorAll('.game-category');
+      sections.forEach(sec => {
+        if (cat === 'all' || sec.getAttribute('data-category') === cat) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
+
+    function filterGames() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        card.style.display = title.includes(query) ? 'block' : 'none';
+      });
+    }
+
+    // 🔮 FLOATING PURPLE BALL PHYSICS (80px)
+    const ball = document.getElementById('floatingBall');
+    let posX = window.innerWidth - 100;
+    let posY = window.innerHeight - 150;
+    let vx = 0, vy = 0, gravity = 0.6, bounce = 0.7;
+    let isDragging = false, lastMouseX = 0, lastMouseY = 0;
+
+    function updateBall() {
+      if (!isDragging) {
+        vy += gravity; posX += vx; posY += vy;
+        if (posY + 80 > window.innerHeight) { posY = window.innerHeight - 80; vy *= -bounce; vx *= 0.95; }
+        if (posY < 0) { posY = 0; vy *= -bounce; }
+        if (posX + 80 > window.innerWidth) { posX = window.innerWidth - 80; vx *= -bounce; }
+        if (posX < 0) { posX = 0; vx *= -bounce; }
+        ball.style.left = posX + 'px'; ball.style.top = posY + 'px';
+      }
+      requestAnimationFrame(updateBall);
+    }
+
+    function startDrag(e) {
+      isDragging = true;
+      lastMouseX = e.touches ? e.touches[0].clientX : e.clientX;
+      lastMouseY = e.touches ? e.touches[0].clientY : e.clientY;
+      vx = 0; vy = 0;
+    }
+
+    function moveDrag(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      vx = clientX - lastMouseX; vy = clientY - lastMouseY;
+      posX = clientX - 40; posY = clientY - 40;
+      ball.style.left = posX + 'px'; ball.style.top = posY + 'px';
+      lastMouseX = clientX; lastMouseY = clientY;
+    }
+
+    function endDrag() { isDragging = false; }
+
+    ball.addEventListener('mousedown', startDrag);
+    window.addEventListener('mousemove', moveDrag, { passive: false });
+    window.addEventListener('mouseup', endDrag);
+    ball.addEventListener('touchstart', startDrag, { passive: false });
+    window.addEventListener('touchmove', moveDrag, { passive: false });
+    window.addEventListener('touchend', endDrag);
+    updateBall();
+  </script>
+
+  <!-- 🎯 Adsterra Social Bar Ad Code -->
+  <script src="https://pl30634565.effectivecpmnetwork.com/68/ad/b4/68adb474ce18ec28f317ed7b086c1b90.js"></script>
 </body>
 </html>
