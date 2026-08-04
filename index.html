@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Outway - Play Free Games Online</title>
-  
+  <title>Game Outway - Play 50+ Free HTML5 Unblocked Games</title>
+
   <!-- 🎯 Adsterra Popunder Ad Code -->
   <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
 
@@ -13,19 +13,19 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* 🖤 BLACK & WHITE THEME */
+    /* 🖤 PURE BLACK BACKGROUND WITH WHITE TEXT */
     body {
-      background-color: #000000;
-      color: #ffffff;
-      padding: 20px;
+      background-color: #000000 !important;
+      color: #ffffff !important;
+      padding: 15px;
       overflow-x: hidden;
     }
 
     header {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       position: sticky;
       top: 10px;
       z-index: 100;
@@ -38,17 +38,15 @@
       flex-wrap: wrap;
       gap: 15px;
       background: #111111;
-      padding: 14px 24px;
-      border-radius: 16px;
+      padding: 14px 20px;
+      border-radius: 14px;
       border: 1px solid #333333;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
       color: #ffffff;
-      letter-spacing: -0.5px;
     }
 
     .logo span {
@@ -56,31 +54,27 @@
     }
 
     .search-container input {
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: 20px;
-      border: 1.5px solid #444444;
+      border: 1px solid #444444;
       background: #1a1a1a;
       color: #ffffff;
       outline: none;
-      width: 240px;
+      width: 220px;
       font-size: 14px;
     }
 
-    .search-container input:focus {
-      border-color: #ffffff;
-    }
-
-    /* Categories */
+    /* Category Buttons */
     .categories {
       display: flex;
       gap: 10px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       overflow-x: auto;
-      padding-bottom: 8px;
+      padding-bottom: 5px;
     }
 
     .category-btn {
-      padding: 9px 20px;
+      padding: 8px 18px;
       border: 1px solid #333333;
       background: #111111;
       color: #cccccc;
@@ -89,7 +83,6 @@
       font-weight: 600;
       font-size: 13px;
       white-space: nowrap;
-      transition: all 0.2s;
     }
 
     .category-btn.active, .category-btn:hover {
@@ -98,26 +91,26 @@
       border-color: #ffffff;
     }
 
-    /* Game Section */
+    /* Game Cards Grid */
     .game-category h2 {
-      font-size: 20px;
-      margin-bottom: 18px;
+      font-size: 18px;
+      margin-bottom: 15px;
       color: #ffffff;
-      font-weight: 800;
       border-bottom: 1px solid #222222;
-      padding-bottom: 8px;
+      padding-bottom: 6px;
     }
 
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 14px;
+      margin-bottom: 25px;
     }
 
     .game-card {
       background: #111111;
-      border-radius: 14px;
-      padding: 12px;
+      border-radius: 12px;
+      padding: 10px;
       text-align: center;
       cursor: pointer;
       border: 1px solid #222222;
@@ -125,21 +118,21 @@
     }
 
     .game-card:hover {
-      transform: translateY(-5px);
-      border-color: #ffffff;
+      transform: translateY(-4px);
+      border-color: #a855f7;
     }
 
     .game-card img {
       width: 100%;
-      height: 120px;
+      height: 110px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 8px;
       background-color: #222222;
     }
 
     .game-card h3 {
-      font-size: 14px;
-      margin: 10px 0 4px 0;
+      font-size: 13px;
+      margin: 8px 0 2px 0;
       color: #ffffff;
       font-weight: 700;
       white-space: nowrap;
@@ -148,13 +141,13 @@
     }
 
     .tag {
-      font-size: 11px;
-      color: #888888;
+      font-size: 10px;
+      color: #a855f7;
       text-transform: uppercase;
       font-weight: 700;
     }
 
-    /* 🔮 FLOATING PURPLE BALL (80px x 80px) */
+    /* 🔮 80px FLOATING PURPLE BALL */
     #floatingBall {
       width: 80px;
       height: 80px;
@@ -164,18 +157,13 @@
       bottom: 80px;
       right: 20px;
       z-index: 9999;
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.65), inset 0 0 12px rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.8);
       cursor: grab;
       touch-action: none;
       user-select: none;
     }
 
-    #floatingBall:active {
-      cursor: grabbing;
-      transform: scale(0.92);
-    }
-
-    /* 🎮 IN-SITE GAME PLAYER MODAL */
+    /* 🎮 IN-SITE MODAL PLAYER */
     #gameModal {
       display: none;
       position: fixed;
@@ -187,8 +175,8 @@
     }
 
     .close-btn {
-      background: #ffffff;
-      color: #000000;
+      background: #ef4444;
+      color: #ffffff;
       padding: 12px 20px;
       font-size: 15px;
       font-weight: bold;
@@ -196,8 +184,6 @@
       cursor: pointer;
       text-align: center;
     }
-
-    .close-btn:hover { background: #e2e8f0; }
 
     #gameFrame {
       width: 100%;
@@ -207,8 +193,8 @@
     }
 
     @media (max-width: 600px) {
-      body { padding: 12px; }
-      .games-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      body { padding: 10px; }
+      .games-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .search-container input { width: 100%; }
     }
   </style>
@@ -218,7 +204,7 @@
   <!-- 🔮 80px PURPLE BALL -->
   <div id="floatingBall"></div>
 
-  <!-- 🎮 IN-SITE GAME PLAYER -->
+  <!-- 🎮 FULLSCREEN MODAL GAME PLAYER -->
   <div id="gameModal">
     <button class="close-btn" onclick="closeGame()">&times; CLOSE GAME & GO BACK</button>
     <iframe id="gameFrame" src="" allowfullscreen></iframe>
@@ -228,50 +214,87 @@
     <div class="header-container">
       <div class="logo"><span>Game Outway</span></div>
       <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="🔍 Search games...">
+        <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="🔍 Search 50+ games...">
       </div>
     </div>
   </header>
 
   <div class="categories">
-    <button class="category-btn active" onclick="selectCategory('all')">All Games</button>
-    <button class="category-btn" onclick="selectCategory('action')">💣 Action & 3D</button>
+    <button class="category-btn active" onclick="selectCategory('all')">All Games (50+)</button>
     <button class="category-btn" onclick="selectCategory('racing')">🏎️ Racing</button>
-    <button class="category-btn" onclick="selectCategory('puzzle')">🧩 Casual & Fun</button>
+    <button class="category-btn" onclick="selectCategory('action')">💣 Action</button>
+    <button class="category-btn" onclick="selectCategory('arcade')">🕹️ Arcade & Fun</button>
+    <button class="category-btn" onclick="selectCategory('puzzle')">🧩 Puzzle & Board</button>
   </div>
 
   <main class="main-container">
 
-    <section class="game-category" data-category="action">
-      <h2>🔥 3D & Action Games</h2>
-      <div class="games-grid">
-        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/slither-io')"><img src="https://tse1.mm.bing.net/th?q=Slither.io+game+icon&w=300&h=300&c=7&rs=1" alt="Slither.io"><h3>Slither.io</h3><span class="tag">Action</span></div>
-        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/subway-surfers')"><img src="https://tse1.mm.bing.net/th?q=Subway+Surfers+game+icon&w=300&h=300&c=7&rs=1" alt="Subway Surfers"><h3>Subway Surfers</h3><span class="tag">Runner</span></div>
-        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/temple-run-2')"><img src="https://tse1.mm.bing.net/th?q=Temple+Run+2+game+icon&w=300&h=300&c=7&rs=1" alt="Temple Run 2"><h3>Temple Run 2</h3><span class="tag">3D Runner</span></div>
-        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/geometry-dash')"><img src="https://tse1.mm.bing.net/th?q=Geometry+Dash+game+icon&w=300&h=300&c=7&rs=1" alt="Geometry Dash"><h3>Geometry Dash</h3><span class="tag">Action</span></div>
-      </div>
-    </section>
-
+    <!-- 🏎️ RACING GAMES -->
     <section class="game-category" data-category="racing">
-      <h2>🏎️ Racing & Driving</h2>
+      <h2>🏎️ Racing & Bike Games</h2>
       <div class="games-grid">
-        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/moto-x3m')"><img src="https://tse1.mm.bing.net/th?q=Moto+X3M+game+icon&w=300&h=300&c=7&rs=1" alt="Moto X3M"><h3>Moto X3M</h3><span class="tag">Racing</span></div>
-        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/drift-boss')"><img src="https://tse1.mm.bing.net/th?q=Drift+Boss+game+icon&w=300&h=300&c=7&rs=1" alt="Drift Boss"><h3>Drift Boss</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585/')"><img src="https://tse1.mm.bing.net/th?q=Moto+X3M+game+icon&w=300&h=300&c=7&rs=1" alt="Moto X3M"><h3>Moto X3M</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e/')"><img src="https://tse1.mm.bing.net/th?q=Drift+Boss+game+icon&w=300&h=300&c=7&rs=1" alt="Drift Boss"><h3>Drift Boss</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/13bbd8e0638541a7884d6537b0d77292/')"><img src="https://tse1.mm.bing.net/th?q=Hill+Climb+Racing+game+icon&w=300&h=300&c=7&rs=1" alt="Hill Climb"><h3>Hill Climb Racing</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/5e28a506bf8741ff8e91f16d91223298/')"><img src="https://tse1.mm.bing.net/th?q=Mario+Kart+game+icon&w=300&h=300&c=7&rs=1" alt="Mario Kart"><h3>Mario Kart Web</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76/')"><img src="https://tse1.mm.bing.net/th?q=Traffic+Racer+game+icon&w=300&h=300&c=7&rs=1" alt="Traffic Racer"><h3>Traffic Racer</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/d944c6883bf84c3199c922a8bcfae550/')"><img src="https://tse1.mm.bing.net/th?q=Highway+Racer+game+icon&w=300&h=300&c=7&rs=1" alt="Highway"><h3>Highway Traffic</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/aa2bb1b4d0ed4b23b18cb487fdf80838/')"><img src="https://tse1.mm.bing.net/th?q=Extreme+Car+Stunt+icon&w=300&h=300&c=7&rs=1" alt="Car Stunt"><h3>Extreme Car Stunt</h3><span class="tag">Racing</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/e903a0889eb248e3a24ed4658145fa39/')"><img src="https://tse1.mm.bing.net/th?q=City+Car+Driving+icon&w=300&h=300&c=7&rs=1" alt="City Car"><h3>City Driver 3D</h3><span class="tag">Racing</span></div>
       </div>
     </section>
 
-    <section class="game-category" data-category="puzzle">
-      <h2>🧩 Puzzle & Board</h2>
+    <!-- 💣 ACTION & BATTLE -->
+    <section class="game-category" data-category="action">
+      <h2>💣 Action & Stickman Games</h2>
       <div class="games-grid">
-        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/2048')"><img src="https://tse1.mm.bing.net/th?q=2048+game+icon&w=300&h=300&c=7&rs=1" alt="2048"><h3>2048 Classic</h3><span class="tag">Puzzle</span></div>
-        <div class="game-card" onclick="playGame('https://www.gamepix.com/play/uno-online')"><img src="https://tse1.mm.bing.net/th?q=Uno+Online+game+icon&w=300&h=300&c=7&rs=1" alt="Uno"><h3>Uno Online</h3><span class="tag">Board</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df/')"><img src="https://tse1.mm.bing.net/th?q=Tank+Stars+game+icon&w=300&h=300&c=7&rs=1" alt="Tanks"><h3>Super Tank Wars</h3><span class="tag">Action</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd/')"><img src="https://tse1.mm.bing.net/th?q=Stickman+Parkour+game+icon&w=300&h=300&c=7&rs=1" alt="Parkour"><h3>Stickman Parkour</h3><span class="tag">Action</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/97bf68d6f937402aa1e3cf556c6a4574/')"><img src="https://tse1.mm.bing.net/th?q=Stick+War+game+icon&w=300&h=300&c=7&rs=1" alt="Stick War"><h3>Stickman War</h3><span class="tag">Action</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/bf9bbf3d671844b2a8d38a8e1b5fcd82/')"><img src="https://tse1.mm.bing.net/th?q=Stickman+Archer+game+icon&w=300&h=300&c=7&rs=1" alt="Archer"><h3>Stickman Archer</h3><span class="tag">Action</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/839446d338f94d3a863cfdfb1754402a/')"><img src="https://tse1.mm.bing.net/th?q=Stickman+Escape+game+icon&w=300&h=300&c=7&rs=1" alt="Escape"><h3>Stickman Escape</h3><span class="tag">Action</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd/')"><img src="https://tse1.mm.bing.net/th?q=Zombie+Shooter+icon&w=300&h=300&c=7&rs=1" alt="Zombie"><h3>Zombie Survival</h3><span class="tag">Action</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/1a7eb4bc87124f2b96ff2d3e9114f6b1/')"><img src="https://tse1.mm.bing.net/th?q=Ninja+Runner+icon&w=300&h=300&c=7&rs=1" alt="Ninja"><h3>Shadow Ninja</h3><span class="tag">Action</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/9bf14efecfb2424fa752fa84e7fcdcf2/')"><img src="https://tse1.mm.bing.net/th?q=Sniper+Trigger+icon&w=300&h=300&c=7&rs=1" alt="Sniper"><h3>Sniper Trigger</h3><span class="tag">Action</span></div>
+      </div>
+    </section>
+
+    <!-- 🕹️ ARCADE & SPORTS -->
+    <section class="game-category" data-category="arcade">
+      <h2>🕹️ Arcade & Sports</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f/')"><img src="https://tse1.mm.bing.net/th?q=8+Ball+Pool+game+icon&w=300&h=300&c=7&rs=1" alt="Pool"><h3>8 Ball Billiards</h3><span class="tag">Sports</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/9bf225eb5f48480db869ee38b2bb4345/')"><img src="https://tse1.mm.bing.net/th?q=Penalty+Kick+icon&w=300&h=300&c=7&rs=1" alt="Penalty"><h3>Penalty Challenge</h3><span class="tag">Sports</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/39a2fef1131c4f4281f69cb2ef32db68/')"><img src="https://tse1.mm.bing.net/th?q=Basketball+Dunk+icon&w=300&h=300&c=7&rs=1" alt="Basketball"><h3>Basketball Dunk</h3><span class="tag">Sports</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/62c95d9e5b884d50937c569f6e625ff1/')"><img src="https://tse1.mm.bing.net/th?q=Pacman+Classic+icon&w=300&h=300&c=7&rs=1" alt="Pacman"><h3>Pacman Arcade</h3><span class="tag">Arcade</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/9cb69b35198d4d7f8a70a8d79cb502c3/')"><img src="https://tse1.mm.bing.net/th?q=Subway+Runner+icon&w=300&h=300&c=7&rs=1" alt="Runner"><h3>Subway Runner</h3><span class="tag">Arcade</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/04d7d3d3a0424bda8d689ef233c7dfbf/')"><img src="https://tse1.mm.bing.net/th?q=Flappy+Bird+icon&w=300&h=300&c=7&rs=1" alt="Flappy"><h3>Flappy Dunk</h3><span class="tag">Arcade</span></div>
+      </div>
+    </section>
+
+    <!-- 🧩 PUZZLE & BOARD -->
+    <section class="game-category" data-category="puzzle">
+      <h2>🧩 Puzzle & Casual</h2>
+      <div class="games-grid">
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/f04268e376044e1d90f23023812836d5/')"><img src="https://tse1.mm.bing.net/th?q=Fireboy+and+Watergirl+game+icon&w=300&h=300&c=7&rs=1" alt="Fireboy"><h3>Fireboy & Watergirl</h3><span class="tag">Puzzle</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626/')"><img src="https://tse1.mm.bing.net/th?q=Tic+Tac+Toe+game+icon&w=300&h=300&c=7&rs=1" alt="Tic Tac Toe"><h3>Tic Tac Toe</h3><span class="tag">2 Player</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/f97b69324e75424cb91244e82df42323/')"><img src="https://tse1.mm.bing.net/th?q=Chess+game+icon&w=300&h=300&c=7&rs=1" alt="Chess"><h3>Master Chess</h3><span class="tag">Board</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/393d6d56d25d4e19864d43640b37e583/')"><img src="https://tse1.mm.bing.net/th?q=Ludo+game+icon&w=300&h=300&c=7&rs=1" alt="Ludo"><h3>Ludo Multiplayer</h3><span class="tag">Board</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/e4834283bce2457980b6cb1da52c1430/')"><img src="https://tse1.mm.bing.net/th?q=2048+game+icon&w=300&h=300&c=7&rs=1" alt="2048"><h3>2048 Classic</h3><span class="tag">Puzzle</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840/')"><img src="https://tse1.mm.bing.net/th?q=Bubble+Shooter+game+icon&w=300&h=300&c=7&rs=1" alt="Bubble"><h3>Bubble Shooter</h3><span class="tag">Puzzle</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/c1cc90a36bc64a1385458da81523ad65/')"><img src="https://tse1.mm.bing.net/th?q=Solitaire+game+icon&w=300&h=300&c=7&rs=1" alt="Solitaire"><h3>Solitaire</h3><span class="tag">Cards</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/4db8b8cbbe5f48bba4958ce74e4c2525/')"><img src="https://tse1.mm.bing.net/th?q=Mahjong+game+icon&w=300&h=300&c=7&rs=1" alt="Mahjong"><h3>Mahjong Connect</h3><span class="tag">Puzzle</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/5f6b3eec68b54dd7b9c92ccad8da9f55/')"><img src="https://tse1.mm.bing.net/th?q=Watermelon+Game+icon&w=300&h=300&c=7&rs=1" alt="Suika"><h3>Suika Watermelon</h3><span class="tag">Puzzle</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/3bfbc6b4b44547beaa34407b7dd10e19/')"><img src="https://tse1.mm.bing.net/th?q=Cut+the+Rope+icon&w=300&h=300&c=7&rs=1" alt="Cut Rope"><h3>Cut The Rope</h3><span class="tag">Puzzle</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/241fb7bf77114407b96e4fa8dd489112/')"><img src="https://tse1.mm.bing.net/th?q=Water+Sort+icon&w=300&h=300&c=7&rs=1" alt="Water Sort"><h3>Water Sort Puzzle</h3><span class="tag">Puzzle</span></div>
+        <div class="game-card" onclick="playGame('https://html5.gamedistribution.com/830e206001714902b781efce32fb0d8a/')"><img src="https://tse1.mm.bing.net/th?q=Wood+Block+Puzzle+icon&w=300&h=300&c=7&rs=1" alt="Wood Block"><h3>Wood Block Puzzle</h3><span class="tag">Puzzle</span></div>
       </div>
     </section>
 
   </main>
 
   <script>
-    // 🎮 WORKING EMBED PLAYER
+    // 🎮 IN-SITE MODAL PLAYER LOGIC
     function playGame(url) {
       const modal = document.getElementById('gameModal');
       const frame = document.getElementById('gameFrame');
@@ -338,7 +361,7 @@
 
     function moveDrag(e) {
       if (!isDragging) return;
-      e.preventDefault();
+      e.preventDefault(); 
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
       vx = clientX - lastMouseX; vy = clientY - lastMouseY;
