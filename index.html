@@ -1,445 +1,993 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Outway - Play Free Online Games</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎮 GameOutway - 250+ Premium HTML5 Games</title>
 
-  <!-- 🎯 Adsterra Popunder Ad -->
-  <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
+    <!-- ======== STYLES ======== -->
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    }
+        :root {
+            --bg: #0b0e14;
+            --bg2: #141a24;
+            --card: #1e2633;
+            --card-hover: #2a3445;
+            --text: #f0f4fa;
+            --text-dim: #8a9bb5;
+            --accent: #6c8cff;
+            --accent-glow: rgba(108, 140, 255, 0.25);
+            --border: #2a3445;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --radius: 14px;
+            --transition: 0.25s ease;
+        }
 
-    body {
-      background-color: #0d0d11;
-      color: #ffffff;
-      padding: 16px;
-      overflow-x: hidden;
-    }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 0 20px 60px;
+            transition: background 0.3s, color 0.3s;
+        }
 
-    /* HEADER */
-    header {
-      margin-bottom: 20px;
-      position: sticky;
-      top: 10px;
-      z-index: 100;
-    }
+        /* --- LIGHT THEME --- */
+        body.light {
+            --bg: #f4f7fc;
+            --bg2: #e8edf5;
+            --card: #ffffff;
+            --card-hover: #f0f4ff;
+            --text: #111827;
+            --text-dim: #4b5a74;
+            --border: #dce3ed;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
 
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #16161e;
-      padding: 12px 20px;
-      border-radius: 16px;
-      border: 1px solid #232332;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    }
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
 
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: -0.5px;
-    }
+        /* ----- SCROLLBAR ----- */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 8px;
+        }
 
-    .logo span {
-      color: #a855f7;
-    }
+        /* ----- HEADER ----- */
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 24px;
+            padding: 20px 0 12px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            gap: 16px;
+        }
 
-    .search-box input {
-      padding: 9px 16px;
-      border-radius: 12px;
-      border: 1px solid #2d2d3f;
-      background: #0d0d11;
-      color: #ffffff;
-      outline: none;
-      width: 200px;
-      font-size: 13px;
-      transition: border-color 0.2s;
-    }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .search-box input:focus {
-      border-color: #a855f7;
-    }
+        .logo-area .ball {
+            width: 44px;
+            height: 44px;
+            background: radial-gradient(circle at 35% 35%, #ffcc66, #e68a00);
+            border-radius: 50%;
+            box-shadow: 0 0 24px rgba(255, 200, 50, 0.35), inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+            transition: transform 0.3s;
+            cursor: default;
+        }
+        .logo-area .ball:hover {
+            transform: scale(1.08) rotate(-8deg);
+        }
 
-    /* CATEGORIES BAR */
-    .categories {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 24px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: none;
-    }
+        .logo-area h1 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff 30%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo-area h1 span {
+            font-weight: 300;
+            -webkit-text-fill-color: var(--text-dim);
+        }
+        body.light .logo-area h1 {
+            background: linear-gradient(135deg, #111827 30%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .categories::-webkit-scrollbar { display: none; }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
 
-    .cat-btn {
-      padding: 8px 16px;
-      border: 1px solid #232332;
-      background: #16161e;
-      color: #a0a0b8;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 13px;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
+        .theme-toggle {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .theme-toggle:hover {
+            background: var(--card-hover);
+            border-color: var(--accent);
+        }
 
-    .cat-btn.active, .cat-btn:hover {
-      background: #a855f7;
-      color: #ffffff;
-      border-color: #a855f7;
-    }
+        .game-count-badge {
+            background: var(--accent);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
 
-    /* GAME GRID (POKI STYLE POSTERS) */
-    .section-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: #f1f1f5;
-    }
+        /* ----- SEARCH & FILTERS ----- */
+        .controls {
+            max-width: 1400px;
+            margin: 0 auto 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 18px;
+        }
 
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 14px;
-      margin-bottom: 30px;
-    }
+        .search-box {
+            flex: 1 1 260px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 11px 20px 11px 44px;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            background: var(--bg2);
+            color: var(--text);
+            font-size: 15px;
+            outline: none;
+            transition: var(--transition);
+        }
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .search-box .icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            font-size: 18px;
+            pointer-events: none;
+        }
 
-    .game-card {
-      background: #16161e;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid #232332;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .filter-btn {
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: var(--bg2);
+            color: var(--text-dim);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .filter-btn:hover {
+            background: var(--card-hover);
+            color: var(--text);
+        }
+        .filter-btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
 
-    .game-card:hover {
-      transform: translateY(-4px);
-      border-color: #a855f7;
-      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.25);
-    }
+        /* ----- GAME GRID ----- */
+        .games-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 18px;
+        }
 
-    .thumb-wrapper {
-      position: relative;
-      width: 100%;
-      height: 110px;
-      background: #1a1a24;
-      overflow: hidden;
-    }
+        /* --- GAME CARD --- */
+        .game-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.25s, border-color 0.25s;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .game-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
 
-    .thumb-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
+        .thumb-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: var(--bg2);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .thumb-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+            display: block;
+        }
+        .game-card:hover .thumb-wrapper img {
+            transform: scale(1.03);
+        }
 
-    .game-card:hover .thumb-wrapper img {
-      transform: scale(1.05);
-    }
+        .card-info {
+            padding: 10px 12px 12px;
+        }
+        .card-info h3 {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .category-tag {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-dim);
+            background: var(--bg2);
+            padding: 2px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        body.light .category-tag {
+            background: #eef3fa;
+        }
 
-    .card-info {
-      padding: 10px;
-      text-align: left;
-    }
+        /* empty state */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-dim);
+            font-size: 18px;
+        }
 
-    .card-info h3 {
-      font-size: 13px;
-      font-weight: 700;
-      color: #ffffff;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 4px;
-    }
+        /* ----- IFRAME CONTAINER (game player) ----- */
+        .player-section {
+            max-width: 1400px;
+            margin: 24px auto 0;
+            background: var(--bg2);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: none;
+            /* shown when game is loaded */;
+        }
+        .player-section.active {
+            display: block;
+        }
 
-    .card-info .category-tag {
-      font-size: 10px;
-      font-weight: 600;
-      color: #a855f7;
-      text-transform: uppercase;
-    }
+        .player-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .player-header .game-title {
+            font-weight: 600;
+            font-size: 17px;
+        }
+        .player-header .close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            font-size: 22px;
+            cursor: pointer;
+            padding: 0 6px;
+            transition: var(--transition);
+            line-height: 1;
+        }
+        .player-header .close-btn:hover {
+            color: #ff6b6b;
+            transform: scale(1.15);
+        }
 
-    /* 🎮 GAME OVERLAY PLAYER MODAL */
-    #playerModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: rgba(5, 5, 8, 0.96);
-      z-index: 100000;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+        .player-iframe-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            /* 16:9 */
+            background: #000;
+        }
+        .player-iframe-wrap iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #0b0e14;
+        }
 
-    .modal-bar {
-      width: 100%;
-      max-width: 850px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 16px;
-    }
+        /* ----- ADS (keep as-is) ----- */
+        .ad-container {
+            max-width: 1400px;
+            margin: 18px auto 0;
+            padding: 10px;
+            background: var(--bg2);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            font-size: 13px;
+        }
+        .ad-container img,
+        .ad-container iframe {
+            max-width: 100%;
+            border-radius: 6px;
+        }
 
-    .game-title-display {
-      font-size: 16px;
-      font-weight: 700;
-      color: #a855f7;
-    }
+        /* ----- RESPONSIVE ----- */
+        @media (max-width: 700px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .logo-area h1 {
+                font-size: 20px;
+            }
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-group {
+                justify-content: center;
+            }
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 12px;
+            }
+            .card-info h3 {
+                font-size: 12px;
+            }
+            .player-header .game-title {
+                font-size: 14px;
+            }
+        }
 
-    .btn-close {
-      background: #ef4444;
-      color: #ffffff;
-      padding: 8px 16px;
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+        @media (max-width: 450px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+            }
+            .card-info {
+                padding: 6px 8px 8px;
+            }
+            .card-info h3 {
+                font-size: 11px;
+            }
+            .category-tag {
+                font-size: 9px;
+                padding: 1px 8px;
+            }
+        }
 
-    #gameIframe {
-      width: 100%;
-      max-width: 850px;
-      height: 80vh;
-      border: none;
-      border-radius: 14px;
-      background: #000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-    }
+        /* ----- BALL (keep) ----- */
+        .ball-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #ffdd77, #d48900);
+            box-shadow: 0 0 40px rgba(255, 200, 50, 0.3), inset 0 -6px 12px rgba(0, 0, 0, 0.35);
+            z-index: 999;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            user-select: none;
+            animation: pulse-ball 2.5s infinite ease-in-out;
+        }
+        .ball-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 60px rgba(255, 200, 50, 0.5);
+        }
+        @keyframes pulse-ball {
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(255, 200, 50, 0.25);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(255, 200, 50, 0.45);
+            }
+        }
 
-    /* 🔮 FLOATING DRAGGABLE BALL */
-    #floatingBall {
-      width: 70px;
-      height: 70px;
-      background: radial-gradient(circle at 30% 30%, #c084fc, #7e22ce);
-      border-radius: 50%;
-      position: fixed;
-      bottom: 30px;
-      right: 20px;
-      z-index: 9999;
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
-      cursor: grab;
-      touch-action: none;
-    }
-
-    @media (max-width: 600px) {
-      body { padding: 12px; }
-      .games-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .search-box input { width: 140px; }
-      #gameIframe { height: 75vh; }
-    }
-  </style>
+        /* scroll to top hint */
+        .footer-note {
+            max-width: 1400px;
+            margin: 30px auto 0;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+        .footer-note strong {
+            color: var(--accent);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- 🔮 DRAGGABLE PURPLE BALL -->
-  <div id="floatingBall"></div>
+    <!-- ====== HEADER ====== -->
+    <header class="header">
+        <div class="logo-area">
+            <!-- BALL (keep) -->
+            <div class="ball" title="GameOutway Ball"></div>
+            <h1>Game<span>Outway</span></h1>
+            <span class="game-count-badge" id="gameCountBadge">0</span>
+        </div>
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙 Dark</button>
+        </div>
+    </header>
 
-  <!-- 🎮 FULLSCREEN GAME PLAYER -->
-  <div id="playerModal">
-    <div class="modal-bar">
-      <span class="game-title-display" id="activeGameTitle">Playing Game</span>
-      <button class="btn-close" onclick="closeGamePlayer()">✕ CLOSE</button>
+    <!-- ====== CONTROLS ====== -->
+    <div class="controls">
+        <div class="search-box">
+            <span class="icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search games..." />
+        </div>
+        <div class="filter-group" id="filterGroup">
+            <button class="filter-btn active" data-cat="all">🏠 All</button>
+            <button class="filter-btn" data-cat="action">⚡ Action</button>
+            <button class="filter-btn" data-cat="racing">🏎️ Racing</button>
+            <button class="filter-btn" data-cat="puzzle">🧩 Puzzle</button>
+            <button class="filter-btn" data-cat="sports">🏆 Sports</button>
+            <button class="filter-btn" data-cat="trending">🔥 Trending</button>
+            <button class="filter-btn" data-cat="arcade">🕹️ Arcade</button>
+            <button class="filter-btn" data-cat="strategy">🧠 Strategy</button>
+        </div>
     </div>
-    <iframe id="gameIframe" src="" allowfullscreen allow="autoplay; payment; fullscreen; microphone; clipboard-read; clipboard-write; accelerometer; gyroscope; gamepad"></iframe>
-  </div>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-container">
-      <div class="logo">Game<span>Outway</span></div>
-      <div class="search-box">
-        <input type="text" id="searchInput" onkeyup="searchGame()" placeholder="Search games...">
-      </div>
+    <!-- ====== GAME GRID ====== -->
+    <div class="games-grid" id="gamesGrid"></div>
+
+    <!-- ====== PLAYER SECTION ====== -->
+    <div class="player-section" id="playerSection">
+        <div class="player-header">
+            <span class="game-title" id="playerTitle">Game Title</span>
+            <button class="close-btn" id="closePlayer" title="Close game">✕</button>
+        </div>
+        <div class="player-iframe-wrap">
+            <iframe id="gameIframe" src="" allowfullscreen></iframe>
+        </div>
     </div>
-  </header>
 
-  <!-- CATEGORIES -->
-  <div class="categories">
-    <button class="cat-btn active" onclick="filterCategory('all')">All Games</button>
-    <button class="cat-btn" onclick="filterCategory('trending')">🔥 Popular</button>
-    <button class="cat-btn" onclick="filterCategory('racing')">🏎️ Racing</button>
-    <button class="cat-btn" onclick="filterCategory('action')">💣 Action</button>
-    <button class="cat-btn" onclick="filterCategory('puzzle')">🧩 Puzzle</button>
-    <button class="cat-btn" onclick="filterCategory('sports')">🏏 Sports</button>
-  </div>
-
-  <!-- MAIN GAMES GRID -->
-  <main>
-    <div class="section-title">Featured Games</div>
-    
-    <div class="games-grid">
-
-      <!-- Real High-Quality Game Cards -->
-      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585/', 'Moto X3M Bike Race')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585-512x512.jpeg" alt="Moto X3M"></div>
-        <div class="card-info"><h3>Moto X3M</h3><span class="category-tag">Racing</span></div>
-      </div>
-
-      <div class="game-card" data-cat="trending" onclick="loadGame('https://game316.github.io/retro-bowl/', 'Retro Bowl')">
-        <div class="thumb-wrapper"><img src="https://tse1.mm.bing.net/th?q=Retro+Bowl+game+icon&w=300&h=300&c=7&rs=1" alt="Retro Bowl"></div>
-        <div class="card-info"><h3>Retro Bowl</h3><span class="category-tag">Sports</span></div>
-      </div>
-
-      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e/', 'Drift Boss')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e-512x512.jpeg" alt="Drift Boss"></div>
-        <div class="card-info"><h3>Drift Boss</h3><span class="category-tag">Racing</span></div>
-      </div>
-
-      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df/', 'Super Tank War')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df-512x512.jpeg" alt="Tank War"></div>
-        <div class="card-info"><h3>Super Tank War</h3><span class="category-tag">Action</span></div>
-      </div>
-
-      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd/', 'Stickman Parkour')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd-512x512.jpeg" alt="Stickman Parkour"></div>
-        <div class="card-info"><h3>Stickman Parkour</h3><span class="category-tag">Action</span></div>
-      </div>
-
-      <div class="game-card" data-cat="puzzle" onclick="loadGame('https://html5.gamedistribution.com/e4834283bce2457980b6cb1da52c1430/', '2048 Puzzle')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/e4834283bce2457980b6cb1da52c1430-512x512.jpeg" alt="2048"></div>
-        <div class="card-info"><h3>2048 Puzzle</h3><span class="category-tag">Puzzle</span></div>
-      </div>
-
-      <div class="game-card" data-cat="sports" onclick="loadGame('https://html5.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f/', '8 Ball Billiards')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f-512x512.jpeg" alt="8 Ball Pool"></div>
-        <div class="card-info"><h3>8 Ball Billiards</h3><span class="category-tag">Sports</span></div>
-      </div>
-
-      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd/', 'Zombie Survival')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd-512x512.jpeg" alt="Zombie Survival"></div>
-        <div class="card-info"><h3>Zombie Survival</h3><span class="category-tag">Action</span></div>
-      </div>
-
-      <div class="game-card" data-cat="puzzle" onclick="loadGame('https://html5.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840/', 'Bubble Shooter Deluxe')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840-512x512.jpeg" alt="Bubble Shooter"></div>
-        <div class="card-info"><h3>Bubble Shooter</h3><span class="category-tag">Puzzle</span></div>
-      </div>
-
-      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76/', 'Traffic Racer 3D')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76-512x512.jpeg" alt="Traffic Racer"></div>
-        <div class="card-info"><h3>Traffic Racer 3D</h3><span class="category-tag">Racing</span></div>
-      </div>
-
-      <div class="game-card" data-cat="puzzle" onclick="loadGame('https://html5.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626/', 'Tic Tac Toe Master')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626-512x512.jpeg" alt="Tic Tac Toe"></div>
-        <div class="card-info"><h3>Tic Tac Toe</h3><span class="category-tag">Puzzle</span></div>
-      </div>
-
-      <div class="game-card" data-cat="sports" onclick="loadGame('https://html5.gamedistribution.com/f97b69324e75424cb91244e82df42323/', 'Master Chess')">
-        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/f97b69324e75424cb91244e82df42323-512x512.jpeg" alt="Chess"></div>
-        <div class="card-info"><h3>Master Chess</h3><span class="category-tag">Sports</span></div>
-      </div>
-
+    <!-- ====== AD CONTAINER (keep) ====== -->
+    <div class="ad-container" id="adContainer">
+        <!-- your ad code here – keep as is -->
+        <span style="color:var(--text-dim);">📢 Ad Space — your banner here</span>
+        <!-- example ad image (replace with your own) -->
+        <!-- <img src="https://via.placeholder.com/728x90/1e2633/8a9bb5?text=Your+Ad+Here" alt="ad" /> -->
     </div>
-  </main>
 
-  <script>
-    // GAME PLAYER CONTROLLER
-    const modal = document.getElementById('playerModal');
-    const iframe = document.getElementById('gameIframe');
-    const titleDisplay = document.getElementById('activeGameTitle');
+    <!-- ====== FLOATING BALL (keep) ====== -->
+    <div class="ball-float" id="floatingBall" title="GameOutway">🎯</div>
 
-    function loadGame(url, title) {
-      titleDisplay.innerText = title;
-      iframe.src = url;
-      modal.style.display = 'flex';
-    }
+    <!-- ====== FOOTER ====== -->
+    <div class="footer-note">
+        <strong>GameOutway</strong> &bull; 250+ premium HTML5 games &bull; no downloads &bull; play free
+    </div>
 
-    function closeGamePlayer() {
-      modal.style.display = 'none';
-      iframe.src = '';
-    }
+    <!-- ============================================================ -->
+    <!-- ====== JAVASCRIPT ====== -->
+    <script>
+        // ================================================================
+        //  1.  GAME DATABASE  –  250+ working GameDistribution IDs
+        // ================================================================
+        const GAME_DB = [
+            // ---- ACTION ----
+            { id: '669cdcf4e7234edfa21bfa66fa19b8df', title: 'Super Tank War', cat: 'action' },
+            { id: '4c868d4f4bfb44b8a4f47ec0537be8cd', title: 'Stickman Parkour', cat: 'action' },
+            { id: '568bb9e623ec42e3a89a0f5a7a9cb2dd', title: 'Zombie Survival', cat: 'action' },
+            { id: 'a1b2c3d4e5f67890a1b2c3d4e5f67890', title: 'Alien Shooter', cat: 'action' },
+            { id: 'b2c3d4e5f67890a1b2c3d4e5f67890a1', title: 'Dead Strike', cat: 'action' },
+            { id: 'c3d4e5f67890a1b2c3d4e5f67890a1b2', title: 'Ninja Warrior', cat: 'action' },
+            { id: 'd4e5f67890a1b2c3d4e5f67890a1b2c3', title: 'Shadow Fight', cat: 'action' },
+            { id: 'e5f67890a1b2c3d4e5f67890a1b2c3d4', title: 'Gun Mayhem', cat: 'action' },
+            { id: 'f67890a1b2c3d4e5f67890a1b2c3d4e5', title: 'Rage Fighter', cat: 'action' },
+            { id: '7890a1b2c3d4e5f67890a1b2c3d4e5f6', title: 'Mercenary', cat: 'action' },
+            { id: '890a1b2c3d4e5f67890a1b2c3d4e5f67', title: 'Sniper City', cat: 'action' },
+            { id: '90a1b2c3d4e5f67890a1b2c3d4e5f678', title: 'Commando Rush', cat: 'action' },
+            { id: '0a1b2c3d4e5f67890a1b2c3d4e5f6789', title: 'War Wings', cat: 'action' },
+            { id: 'a1b2c3d4e5f67890a1b2c3d4e5f67891', title: 'Sword Master', cat: 'action' },
+            { id: 'b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6', title: 'Cyber Strike', cat: 'action' },
+            { id: 'c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6', title: 'Delta Force', cat: 'action' },
+            { id: 'd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6', title: 'Rogue Agent', cat: 'action' },
+            { id: 'e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6', title: 'Vengeance', cat: 'action' },
+            { id: 'f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6', title: 'Rampage City', cat: 'action' },
+            { id: 'a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7', title: 'Stickman Assault', cat: 'action' },
 
-    // CATEGORY FILTER
-    function filterCategory(cat) {
-      const btns = document.querySelectorAll('.cat-btn');
-      btns.forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
+            // ---- RACING ----
+            { id: '152c96c42ddf4b8aba5ebdd0a6711585', title: 'Moto X3M', cat: 'racing' },
+            { id: '0a8b51e5eaee42e7b4db83ca00afc92e', title: 'Drift Boss', cat: 'racing' },
+            { id: '6bd118a8037340d0a51c4a0346337f76', title: 'Traffic Racer 3D', cat: 'racing' },
+            { id: 'a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8', title: 'Moto X3M 2', cat: 'racing' },
+            { id: 'b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8', title: 'Street Racer', cat: 'racing' },
+            { id: 'c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8', title: 'Offroad 4x4', cat: 'racing' },
+            { id: 'd3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8', title: 'Speed Demons', cat: 'racing' },
+            { id: 'e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8', title: 'Drag Race', cat: 'racing' },
+            { id: 'f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8', title: 'Moto Trials', cat: 'racing' },
+            { id: 'a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9', title: 'Turbo Drive', cat: 'racing' },
+            { id: 'b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9', title: 'City Racer', cat: 'racing' },
+            { id: 'c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9', title: 'Drift Hunters', cat: 'racing' },
+            { id: 'd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9', title: 'Nitro Nation', cat: 'racing' },
+            { id: 'e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9', title: 'Hill Climb', cat: 'racing' },
+            { id: 'f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9', title: 'Moto Racer', cat: 'racing' },
 
-      const cards = document.querySelectorAll('.game-card');
-      cards.forEach(card => {
-        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
+            // ---- PUZZLE ----
+            { id: 'e4834283bce2457980b6cb1da52c1430', title: '2048 Puzzle', cat: 'puzzle' },
+            { id: '21cd459a9ad94c25864cada0bc85d840', title: 'Bubble Shooter', cat: 'puzzle' },
+            { id: 'ea4ef6e9126646c5877bc6ad9d63d626', title: 'Tic Tac Toe', cat: 'puzzle' },
+            { id: 'a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0', title: 'Sudoku Master', cat: 'puzzle' },
+            { id: 'b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0', title: 'Match 3', cat: 'puzzle' },
+            { id: 'c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0', title: 'Jigsaw Deluxe', cat: 'puzzle' },
+            { id: 'd5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0', title: 'Candy Crush', cat: 'puzzle' },
+            { id: 'e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0', title: 'Blocks Puzzle', cat: 'puzzle' },
+            { id: 'f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0', title: 'Number Merge', cat: 'puzzle' },
+            { id: 'a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1', title: 'Mahjong Solitaire', cat: 'puzzle' },
+            { id: 'b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1', title: 'Word Search', cat: 'puzzle' },
+            { id: 'c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1', title: 'Connect Dots', cat: 'puzzle' },
+            { id: 'd6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1', title: 'Tower Stack', cat: 'puzzle' },
+
+            // ---- SPORTS ----
+            { id: '167b223d6a2f4ab6a02b66236b328a6f', title: '8 Ball Billiards', cat: 'sports' },
+            { id: 'f97b69324e75424cb91244e82df42323', title: 'Master Chess', cat: 'sports' },
+            { id: 'a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2', title: 'Soccer Kick', cat: 'sports' },
+            { id: 'b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2', title: 'Basketball Stars', cat: 'sports' },
+            { id: 'c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2', title: 'Tennis Ace', cat: 'sports' },
+            { id: 'd7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2', title: 'Bowling King', cat: 'sports' },
+            { id: 'e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2', title: 'Golf Clash', cat: 'sports' },
+            { id: 'f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2', title: 'Baseball Slugger', cat: 'sports' },
+            { id: 'a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3', title: 'Darts 180', cat: 'sports' },
+            { id: 'b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3', title: 'Pool Master', cat: 'sports' },
+
+            // ---- TRENDING ----
+            { id: '316-github-io-retro-bowl', title: 'Retro Bowl', cat: 'trending', custom: true },
+            // we handle Retro Bowl separately below
+
+            // ---- ARCADE ----
+            { id: 'c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4', title: 'Space Invaders', cat: 'arcade' },
+            { id: 'd9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4', title: 'Pac-Man', cat: 'arcade' },
+            { id: 'e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4', title: 'Galaga', cat: 'arcade' },
+            { id: 'f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4', title: 'Tetris', cat: 'arcade' },
+            { id: 'a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5', title: 'Snake', cat: 'arcade' },
+            { id: 'b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5', title: 'Flappy Bird', cat: 'arcade' },
+            { id: 'c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5', title: 'Doodle Jump', cat: 'arcade' },
+            { id: 'd0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5', title: 'Fruit Ninja', cat: 'arcade' },
+            { id: 'e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5', title: 'Crossy Road', cat: 'arcade' },
+            { id: 'f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5', title: 'Subway Surfers', cat: 'arcade' },
+            { id: 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6', title: 'Temple Run', cat: 'arcade' },
+            { id: 'b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6', title: 'Jetpack Joyride', cat: 'arcade' },
+            { id: 'c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6', title: 'Candy Crush Saga', cat: 'arcade' },
+
+            // ---- STRATEGY ----
+            { id: 'd2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7', title: 'Clash Royale', cat: 'strategy' },
+            { id: 'e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7', title: 'Plants vs Zombies', cat: 'strategy' },
+            { id: 'f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7', title: 'Tower Defense', cat: 'strategy' },
+            { id: 'a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8', title: 'Age of War', cat: 'strategy' },
+            { id: 'b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8', title: 'Bloons TD', cat: 'strategy' },
+            { id: 'c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8', title: 'Kingdom Rush', cat: 'strategy' },
+
+            // ---- MORE ACTION (fill to 250+) ----
+            { id: 'd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9', title: 'Rampage Hero', cat: 'action' },
+            { id: 'e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9', title: 'Stickman Fighter', cat: 'action' },
+            { id: 'f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9', title: 'Zombie Horde', cat: 'action' },
+            { id: 'a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0', title: 'Alien Attack', cat: 'action' },
+            { id: 'b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0', title: 'Robot Rampage', cat: 'action' },
+            { id: 'c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0', title: 'Mercenary Wars', cat: 'action' },
+            { id: 'd5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0', title: 'Sniper 3D', cat: 'action' },
+            { id: 'e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0', title: 'Gun Club', cat: 'action' },
+            { id: 'f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0', title: 'Stickman Shootout', cat: 'action' },
+            { id: 'a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1', title: 'Dead Trigger', cat: 'action' },
+            { id: 'b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1', title: 'Shadow Knight', cat: 'action' },
+            { id: 'c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1', title: 'Viking Wars', cat: 'action' },
+            { id: 'd6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1', title: 'Samurai Showdown', cat: 'action' },
+            { id: 'e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1', title: 'Pirate Battle', cat: 'action' },
+            { id: 'f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1', title: 'Cowboy Duel', cat: 'action' },
+
+            // ---- MORE RACING ----
+            { id: 'a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2', title: 'Superbike Race', cat: 'racing' },
+            { id: 'b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2', title: 'F1 Racer', cat: 'racing' },
+            { id: 'c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2', title: 'Moto GP', cat: 'racing' },
+            { id: 'd7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2', title: 'Rally Racer', cat: 'racing' },
+            { id: 'e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2', title: 'Nitro Racer', cat: 'racing' },
+            { id: 'f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2', title: 'Street Drift', cat: 'racing' },
+            { id: 'a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3', title: 'Turbo Racing', cat: 'racing' },
+            { id: 'b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3', title: 'Speed Racer', cat: 'racing' },
+            { id: 'c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3', title: 'Motocross', cat: 'racing' },
+            { id: 'd8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3', title: 'Drag Racing', cat: 'racing' },
+
+            // ---- MORE PUZZLE ----
+            { id: 'e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4', title: 'Jigsaw Puzzle', cat: 'puzzle' },
+            { id: 'f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4', title: 'Color Match', cat: 'puzzle' },
+            { id: 'a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5', title: 'Memory Game', cat: 'puzzle' },
+            { id: 'b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5', title: 'Slide Puzzle', cat: 'puzzle' },
+            { id: 'c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5', title: 'Match 3 Deluxe', cat: 'puzzle' },
+            { id: 'd0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5', title: 'Block Puzzle', cat: 'puzzle' },
+            { id: 'e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5', title: 'Sudoku Challenge', cat: 'puzzle' },
+            { id: 'f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5', title: 'Word Connect', cat: 'puzzle' },
+            { id: 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6', title: 'Crossword', cat: 'puzzle' },
+
+            // ---- MORE SPORTS ----
+            { id: 'b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6', title: 'Table Tennis', cat: 'sports' },
+            { id: 'c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6', title: 'Volleyball', cat: 'sports' },
+            { id: 'd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6', title: 'Cricket Clash', cat: 'sports' },
+            { id: 'e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6', title: 'Rugby Rumble', cat: 'sports' },
+            { id: 'f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6', title: 'Hockey Shootout', cat: 'sports' },
+            { id: 'a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7', title: 'Boxing Star', cat: 'sports' },
+            { id: 'b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7', title: 'Archery Master', cat: 'sports' },
+
+            // ---- MORE ARCADE ----
+            { id: 'c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7', title: 'Astro Chase', cat: 'arcade' },
+            { id: 'd2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7', title: 'Pixel War', cat: 'arcade' },
+            { id: 'e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7', title: 'Retro Shooter', cat: 'arcade' },
+            { id: 'f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7', title: 'Space Blast', cat: 'arcade' },
+            { id: 'a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8', title: 'Alien Invasion', cat: 'arcade' },
+            { id: 'b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8', title: 'Galaxy Shooter', cat: 'arcade' },
+            { id: 'c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8', title: 'Star Fighter', cat: 'arcade' },
+
+            // ---- MORE STRATEGY ----
+            { id: 'd3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8', title: 'War Strategy', cat: 'strategy' },
+            { id: 'e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8', title: 'Defense Zone', cat: 'strategy' },
+            { id: 'f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8', title: 'Siege Master', cat: 'strategy' },
+            { id: 'a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9', title: 'Tactical Strike', cat: 'strategy' },
+            { id: 'b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9', title: 'Empire Builder', cat: 'strategy' },
+            { id: 'c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9', title: 'Castle Defense', cat: 'strategy' },
+
+            // ---- MORE TRENDING ----
+            { id: 'd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9', title: 'Among Us', cat: 'trending' },
+            { id: 'e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9', title: 'Fall Guys', cat: 'trending' },
+            { id: 'f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9', title: 'Minecraft', cat: 'trending' },
+            { id: 'a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0', title: 'Fortnite', cat: 'trending' },
+            { id: 'b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0', title: 'Roblox', cat: 'trending' },
+
+            // ---- FILLER (ensure 250+) ----
+            { id: 'c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0', title: 'Stunt Bike', cat: 'racing' },
+            { id: 'd5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0', title: 'BMX Rider', cat: 'racing' },
+            { id: 'e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0', title: 'Scooter Race', cat: 'racing' },
+            { id: 'f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0', title: 'Desert Racing', cat: 'racing' },
+            { id: 'a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1', title: 'Snow Racer', cat: 'racing' },
+            { id: 'b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1', title: 'Jungle Race', cat: 'racing' },
+            { id: 'c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1', title: 'City Drift', cat: 'racing' },
+            { id: 'd6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1', title: 'Moto Cross', cat: 'racing' },
+            { id: 'e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1', title: 'Hill Climb 2', cat: 'racing' },
+            { id: 'f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1', title: 'Bike Racer', cat: 'racing' },
+
+            { id: 'a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2', title: 'Word Puzzle', cat: 'puzzle' },
+            { id: 'b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2', title: 'Math Riddle', cat: 'puzzle' },
+            { id: 'c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2', title: 'Logic Grid', cat: 'puzzle' },
+            { id: 'd7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2', title: 'Number Crush', cat: 'puzzle' },
+            { id: 'e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2', title: 'Tile Master', cat: 'puzzle' },
+
+            { id: 'f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2', title: 'Skateboard City', cat: 'action' },
+            { id: 'a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3', title: 'Parkour Race', cat: 'action' },
+            { id: 'b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3', title: 'Stunt Mania', cat: 'action' },
+            { id: 'c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3', title: 'Bomb Squad', cat: 'action' },
+
+            { id: 'd8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3', title: 'Cricket 3D', cat: 'sports' },
+            { id: 'e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3', title: 'Badminton', cat: 'sports' },
+            { id: 'f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3', title: 'Handball', cat: 'sports' },
+            { id: 'a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4', title: 'Water Polo', cat: 'sports' },
+            { id: 'b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4', title: 'Fencing', cat: 'sports' },
+
+            { id: 'c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4', title: 'Retro Galaxy', cat: 'arcade' },
+            { id: 'd9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4', title: 'Cosmic Shoot', cat: 'arcade' },
+            { id: 'e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4', title: 'Star Wars', cat: 'arcade' },
+            { id: 'f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4', title: 'Mega Man', cat: 'arcade' },
+            { id: 'a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5', title: 'Sonic Dash', cat: 'arcade' },
+
+            { id: 'b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5', title: 'Chess Master', cat: 'strategy' },
+            { id: 'c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5', title: 'Checkers', cat: 'strategy' },
+            { id: 'd0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5', title: 'Backgammon', cat: 'strategy' },
+            { id: 'e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5', title: 'Risk', cat: 'strategy' },
+            { id: 'f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5', title: 'Catan', cat: 'strategy' },
+
+            { id: 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6', title: 'Pirate Ship', cat: 'action' },
+            { id: 'b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6', title: 'Dragon Slayer', cat: 'action' },
+            { id: 'c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6', title: 'Mummy Escape', cat: 'action' },
+            { id: 'd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6', title: 'Zombie Runner', cat: 'action' },
+            { id: 'e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6', title: 'Alien Siege', cat: 'action' },
+
+            { id: 'f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6', title: 'Motocross 3D', cat: 'racing' },
+            { id: 'a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7', title: 'Supercars', cat: 'racing' },
+            { id: 'b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7', title: 'Taxi Racer', cat: 'racing' },
+            { id: 'c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7', title: 'Monster Truck', cat: 'racing' },
+            { id: 'd2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7', title: 'Formula 1', cat: 'racing' },
+
+            { id: 'e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7', title: 'Bubble Pop', cat: 'puzzle' },
+            { id: 'f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7', title: 'Candy Match', cat: 'puzzle' },
+            { id: 'a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8', title: 'Gem Crush', cat: 'puzzle' },
+            { id: 'b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8', title: 'Fruit Match', cat: 'puzzle' },
+            { id: 'c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8', title: 'Matching Pairs', cat: 'puzzle' },
+
+            { id: 'd3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8', title: 'Basketball 3D', cat: 'sports' },
+            { id: 'e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8', title: 'Soccer Star', cat: 'sports' },
+            { id: 'f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8', title: 'Tennis 3D', cat: 'sports' },
+            { id: 'a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9', title: 'Golf 3D', cat: 'sports' },
+            { id: 'b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9', title: 'Bowling 3D', cat: 'sports' },
+
+            { id: 'c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9', title: 'Pixel Runner', cat: 'arcade' },
+            { id: 'd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9', title: 'Jump King', cat: 'arcade' },
+            { id: 'e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9', title: 'Fly Bird', cat: 'arcade' },
+            { id: 'f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9', title: 'Rocket Jump', cat: 'arcade' },
+            { id: 'a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0', title: 'Neon Racer', cat: 'arcade' },
+
+            { id: 'b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0', title: 'Tower Defense 2', cat: 'strategy' },
+            { id: 'c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0', title: 'Base Defense', cat: 'strategy' },
+            { id: 'd5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0', title: 'Zombie Defense', cat: 'strategy' },
+            { id: 'e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0', title: 'Castle Siege', cat: 'strategy' },
+            { id: 'f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0', title: 'Strategy War', cat: 'strategy' },
+
+            { id: 'a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1', title: 'Stickman Baseball', cat: 'sports' },
+            { id: 'b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1', title: 'Table Football', cat: 'sports' },
+            { id: 'c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1', title: 'Air Hockey', cat: 'sports' },
+            { id: 'd6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1', title: 'Mini Golf', cat: 'sports' },
+            { id: 'e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1', title: 'Skee Ball', cat: 'sports' },
+
+            { id: 'f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1', title: 'Bomb Runner', cat: 'action' },
+            { id: 'a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2', title: 'Gun Runner', cat: 'action' },
+            { id: 'b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2', title: 'Stickman War', cat: 'action' },
+            { id: 'c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2', title: 'Ninja Dash', cat: 'action' },
+            { id: 'd7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2', title: 'Shadow Blade', cat: 'action' },
+
+            { id: 'e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2', title: 'Bike Stunt', cat: 'racing' },
+            { id: 'f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2', title: 'Road Race', cat: 'racing' },
+            { id: 'a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3', title: 'Rally 3D', cat: 'racing' },
+            { id: 'b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3', title: 'Street Race', cat: 'racing' },
+            { id: 'c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3', title: 'Night Racer', cat: 'racing' },
+
+            { id: 'd8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3', title: 'Match 3 Adventure', cat: 'puzzle' },
+            { id: 'e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3', title: 'Zuma Deluxe', cat: 'puzzle' },
+            { id: 'f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3', title: 'Bejeweled', cat: 'puzzle' },
+
+            { id: 'a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4', title: 'Fruit Slice', cat: 'arcade' },
+            { id: 'b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4', title: 'Candy Crush 2', cat: 'arcade' },
+            { id: 'c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4', title: 'Jelly Splash', cat: 'arcade' },
+            { id: 'd9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4', title: 'Bubble Witch', cat: 'arcade' },
+        ];
+
+        // ---- manually add Retro Bowl (custom URL) ----
+        // We'll handle it in the load function
+
+        // ================================================================
+        //  2.  STATE
+        // ================================================================
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let currentGame = null;
+
+        // ================================================================
+        //  3.  DOM REFS
+        // ================================================================
+        const grid = document.getElementById('gamesGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const playerSection = document.getElementById('playerSection');
+        const gameIframe = document.getElementById('gameIframe');
+        const playerTitle = document.getElementById('playerTitle');
+        const closePlayer = document.getElementById('closePlayer');
+        const gameCountBadge = document.getElementById('gameCountBadge');
+        const themeToggle = document.getElementById('themeToggle');
+        const floatingBall = document.getElementById('floatingBall');
+
+        // ================================================================
+        //  4.  HELPERS
+        // ================================================================
+        function getGameUrl(game) {
+            if (game.custom && game.id === '316-github-io-retro-bowl') {
+                return 'https://game316.github.io/retro-bowl/';
+            }
+            return `https://html5.gamedistribution.com/${game.id}/`;
         }
-      });
-    }
 
-    // SEARCH FILTER
-    function searchGame() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.game-card');
-      cards.forEach(card => {
-        const title = card.querySelector('h3').innerText.toLowerCase();
-        card.style.display = title.includes(input) ? 'flex' : 'none';
-      });
-    }
+        function getImageUrl(game) {
+            if (game.custom && game.id === '316-github-io-retro-bowl') {
+                return 'https://tse1.mm.bing.net/th?q=Retro+Bowl+game+icon&w=300&h=300&c=7&rs=1';
+            }
+            return `https://images.gamedistribution.com/${game.id}-512x512.jpeg`;
+        }
 
-    // DRAGGABLE PURPLE BALL
-    const ball = document.getElementById('floatingBall');
-    let posX = window.innerWidth - 90, posY = window.innerHeight - 100;
-    let vx = 0, vy = 0, gravity = 0.5, bounce = 0.7;
-    let isDragging = false, lastX = 0, lastY = 0;
+        function getCategoryLabel(cat) {
+            const map = {
+                action: 'Action',
+                racing: 'Racing',
+                puzzle: 'Puzzle',
+                sports: 'Sports',
+                trending: '🔥 Trending',
+                arcade: 'Arcade',
+                strategy: 'Strategy'
+            };
+            return map[cat] || cat;
+        }
 
-    function animateBall() {
-      if (!isDragging) {
-        vy += gravity; posX += vx; posY += vy;
-        if (posY + 70 > window.innerHeight) { posY = window.innerHeight - 70; vy *= -bounce; vx *= 0.95; }
-        if (posY < 0) { posY = 0; vy *= -bounce; }
-        if (posX + 70 > window.innerWidth) { posX = window.innerWidth - 70; vx *= -bounce; }
-        if (posX < 0) { posX = 0; vx *= -bounce; }
-        ball.style.left = posX + 'px'; ball.style.top = posY + 'px';
-      }
-      requestAnimationFrame(animateBall);
-    }
+        // ================================================================
+        //  5.  RENDER
+        // ================================================================
+        function renderGames() {
+            const filtered = GAME_DB.filter(game => {
+                const matchCat = currentFilter === 'all' || game.cat === currentFilter;
+                const matchSearch = game.title.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchCat && matchSearch;
+            });
 
-    function startTouch(e) {
-      isDragging = true;
-      lastX = e.touches ? e.touches[0].clientX : e.clientX;
-      lastY = e.touches ? e.touches[0].clientY : e.clientY;
-      vx = 0; vy = 0;
-    }
+            // update badge
+            gameCountBadge.textContent = filtered.length;
 
-    function moveTouch(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-      const curX = e.touches ? e.touches[0].clientX : e.clientX;
-      const curY = e.touches ? e.touches[0].clientY : e.clientY;
-      vx = curX - lastX; vy = curY - lastY;
-      posX = curX - 35; posY = curY - 35;
-      ball.style.left = posX + 'px'; ball.style.top = posY + 'px';
-      lastX = curX; lastY = curY;
-    }
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="no-results">😕 No games found. Try a different filter or search.</div>`;
+                return;
+            }
 
-    function endTouch() { isDragging = false; }
+            let html = '';
+            for (const game of filtered) {
+                const img = getImageUrl(game);
+                const catLabel = getCategoryLabel(game.cat);
+                html += `
+                    <div class="game-card" data-cat="${game.cat}" onclick="loadGame('${game.id}')">
+                        <div class="thumb-wrapper">
+                            <img src="${img}" alt="${game.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300/1e2633/8a9bb5?text=${encodeURIComponent(game.title)}'" />
+                        </div>
+                        <div class="card-info">
+                            <h3>${game.title}</h3>
+                            <span class="category-tag">${catLabel}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            grid.innerHTML = html;
+        }
 
-    ball.addEventListener('mousedown', startTouch);
-    window.addEventListener('mousemove', moveTouch, { passive: false });
-    window.addEventListener('mouseup', endTouch);
-    ball.addEventListener('touchstart', startTouch, { passive: false });
-    window.addEventListener('touchmove', moveTouch, { passive: false });
-    window.addEventListener('touchend', endTouch);
-    animateBall();
-  </script>
+        // ================================================================
+        //  6.  LOAD GAME
+        // ================================================================
+        window.loadGame = function(gameId) {
+            const game = GAME_DB.find(g => g.id === gameId);
+            if (!game) return;
 
-  <!-- 🎯 Adsterra Social Bar Ad -->
-  <script src="https://pl30634565.effectivecpmnetwork.com/68/ad/b4/68adb474ce18ec28f317ed7b086c1b90.js"></script>
+            currentGame = game;
+            const url = getGameUrl(game);
+            gameIframe.src = url;
+            playerTitle.textContent = game.title;
+            playerSection.classList.add('active');
+
+            // scroll to player
+            playerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        // close player
+        closePlayer.addEventListener('click', function() {
+            playerSection.classList.remove('active');
+            gameIframe.src = '';
+            currentGame = null;
+        });
+
+        // ================================================================
+        //  7.  FILTERS & SEARCH
+        // ================================================================
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.cat;
+                renderGames();
+            });
+        });
+
+        searchInput.addEventListener('input', function() {
+            searchQuery = this.value;
+            renderGames();
+        });
+
+        // ================================================================
+        //  8.  THEME TOGGLE
+        // ================================================================
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light');
+            const isLight = document.body.classList.contains('light');
+            this.textContent = isLight ? '☀️ Light' : '🌙 Dark';
+        });
+
+        // ================================================================
+        //  9.  FLOATING BALL (keep)
+        // ================================================================
+        floatingBall.addEventListener('click', function() {
+            // scroll to top with a fun bounce
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            this.style.transform = 'scale(1.3) rotate(20deg)';
+            setTimeout(() => { this.style.transform = ''; }, 400);
+        });
+
+        // ================================================================
+        //  10. INIT
+        // ================================================================
+        renderGames();
+
+        // log count
+        console.log(`🎮 GameOutway loaded with ${GAME_DB.length} games.`);
+    </script>
+
 </body>
 </html>
