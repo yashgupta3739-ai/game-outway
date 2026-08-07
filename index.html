@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Outway - Play Free Online Games</title>
-
-  <!-- Adsterra Popunder Ad -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Outway - 1000+ Games & Rewards Store</title>
+  
+  <!-- 🎯 Adsterra Popunder Ad -->
   <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
 
   <style>
@@ -13,39 +13,18 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    html, body {
-      min-height: 100%;
-    }
-
+    /* 🖤 PURE BLACK & WHITE THEME */
     body {
-      min-height: 100vh;
+      background-color: #000000;
       color: #ffffff;
-      padding: 16px;
+      padding: 15px;
       overflow-x: hidden;
-      background:
-        radial-gradient(circle at top left, rgba(168, 85, 247, 0.20), transparent 35%),
-        radial-gradient(circle at top right, rgba(59, 130, 246, 0.14), transparent 30%),
-        radial-gradient(circle at bottom center, rgba(236, 72, 153, 0.10), transparent 28%),
-        linear-gradient(135deg, #060608 0%, #0b0b12 40%, #11111b 100%);
-      position: relative;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      opacity: 0.18;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 34px 34px;
-    }
-
+    /* HEADER */
     header {
       margin-bottom: 20px;
       position: sticky;
@@ -57,44 +36,64 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      background: rgba(22, 22, 30, 0.92);
-      backdrop-filter: blur(10px);
+      flex-wrap: wrap;
+      gap: 15px;
+      background: #0a0a0a;
       padding: 12px 20px;
-      border-radius: 16px;
-      border: 1px solid #232332;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+      border-radius: 12px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
     }
 
     .logo {
-      font-size: 22px;
-      font-weight: 800;
+      font-size: 24px;
+      font-weight: 900;
       color: #ffffff;
-      letter-spacing: -0.5px;
-      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .logo span {
-      color: #a855f7;
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .store-btn {
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      padding: 10px 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+
+    .store-btn:hover {
+      background: #cccccc;
+      transform: scale(1.05);
     }
 
     .search-box input {
-      padding: 9px 16px;
-      border-radius: 12px;
-      border: 1px solid #2d2d3f;
-      background: #0d0d11;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+      background: #000000;
       color: #ffffff;
       outline: none;
-      width: 240px;
-      font-size: 13px;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 200px;
+      font-size: 14px;
     }
 
     .search-box input:focus {
-      border-color: #a855f7;
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.14);
+      background: #111111;
     }
 
+    /* CATEGORIES BAR */
     .categories {
       display: flex;
       gap: 8px;
@@ -108,10 +107,10 @@
 
     .cat-btn {
       padding: 8px 16px;
-      border: 1px solid #232332;
-      background: rgba(22, 22, 30, 0.95);
-      color: #a0a0b8;
-      border-radius: 10px;
+      border: 1px solid #ffffff;
+      background: #000000;
+      color: #ffffff;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
       font-size: 13px;
@@ -120,319 +119,509 @@
     }
 
     .cat-btn.active, .cat-btn:hover {
-      background: #a855f7;
-      color: #ffffff;
-      border-color: #a855f7;
-      box-shadow: 0 8px 18px rgba(168, 85, 247, 0.25);
+      background: #ffffff;
+      color: #000000;
     }
-
-    .section-title {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: #f1f1f5;
-    }
-
+    /* GAME GRID */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
       gap: 14px;
       margin-bottom: 30px;
     }
 
     .game-card {
-      background: rgba(22, 22, 30, 0.96);
-      border-radius: 14px;
+      background: #0a0a0a;
+      border-radius: 10px;
       overflow: hidden;
-      border: 1px solid #232332;
+      border: 1px solid #333333;
       cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, border-color 0.2s;
       display: flex;
       flex-direction: column;
     }
 
     .game-card:hover {
       transform: translateY(-4px);
-      border-color: #a855f7;
-      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.22);
+      border-color: #ffffff;
     }
 
     .thumb-wrapper {
-      position: relative;
       width: 100%;
-      height: 110px;
-      background: #1a1a24;
-      overflow: hidden;
+      height: 100px;
+      background: #111;
     }
 
     .thumb-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s;
-      display: block;
-    }
-
-    .game-card:hover .thumb-wrapper img {
-      transform: scale(1.05);
     }
 
     .card-info {
-      padding: 10px;
-      text-align: left;
+      padding: 8px;
+      text-align: center;
     }
 
     .card-info h3 {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: #ffffff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-bottom: 4px;
     }
 
-    .card-info .category-tag {
-      font-size: 10px;
-      font-weight: 700;
-      color: #a855f7;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    #playerModal {
+    /* 🛒 STORE MODAL CSS */
+    #storeModal, #playerModal {
       display: none;
       position: fixed;
-      inset: 0;
-      background-color: rgba(5, 5, 8, 0.96);
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
       z-index: 100000;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px;
     }
 
-    .modal-bar {
-      width: 100%;
-      max-width: 1100px;
+    .modal-content {
+      background: #0a0a0a;
+      border: 2px solid #ffffff;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 800px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      padding: 12px 4px;
+      padding: 15px 20px;
+      border-bottom: 1px solid #333;
     }
 
-    .game-title-display {
-      font-size: 16px;
-      font-weight: 700;
-      color: #a855f7;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+    .modal-header h2 { font-size: 20px; }
 
     .btn-close {
-      background: #ef4444;
-      color: #ffffff;
-      padding: 8px 16px;
-      font-size: 13px;
-      font-weight: 700;
+      background: #ffffff;
+      color: #000000;
+      padding: 6px 12px;
+      font-weight: bold;
       border: none;
-      border-radius: 8px;
+      border-radius: 4px;
       cursor: pointer;
-      flex: 0 0 auto;
     }
 
+    .store-grid {
+      padding: 20px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 15px;
+    }
+
+    .skin-card {
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      background: #111;
+    }
+
+    .skin-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #333;
+      border-radius: 4px;
+      margin: 8px 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #ffffff;
+      width: 0%;
+      transition: 0.3s;
+    }
+
+    .action-btn {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .btn-watch { background: #ffcc00; color: #000; }
+    .btn-equip { background: #ffffff; color: #000; }
+    .btn-equipped { background: #444; color: #fff; cursor: not-allowed; }
+
+    /* 🎮 GAME PLAYER CSS */
     #gameIframe {
       width: 100%;
-      max-width: 1100px;
-      height: 80vh;
-      min-height: 420px;
+      height: 100%;
       border: none;
-      border-radius: 14px;
-      background: #000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
 
+    /* 🔮 DRAGGABLE PHYSICS BALL (SKIN HOLDER) */
     #floatingBall {
-      width: 70px;
-      height: 70px;
-      background: radial-gradient(circle at 30% 25%, #f0abfc 0%, #c084fc 22%, #7e22ce 70%, #4c1d95 100%);
+      width: 65px;
+      height: 65px;
+      background: #ffffff;
       border-radius: 50%;
       position: fixed;
       bottom: 30px;
       right: 20px;
       z-index: 9999;
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.65), inset -8px -10px 15px rgba(0,0,0,0.25), inset 5px 5px 12px rgba(255,255,255,0.28);
-      border: 2px solid rgba(255,255,255,0.25);
+      box-shadow: 0 0 15px rgba(255,255,255,0.5);
       cursor: grab;
       touch-action: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 35px;
+      color: #000;
     }
-
-    .ad-box {
-      margin: 18px 0;
-      padding: 14px;
-      border: 1px dashed rgba(168, 85, 247, 0.4);
-      border-radius: 14px;
-      background: rgba(22, 22, 30, 0.55);
-      color: #bdbdd1;
-      text-align: center;
-      font-size: 13px;
-    }
-
-    @media (max-width: 700px) {
-      body { padding: 12px; }
-      .header-container { flex-direction: column; align-items: stretch; }
-      .search-box input { width: 100%; }
-      .games-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      #gameIframe { height: 76vh; min-height: 360px; border-radius: 10px; }
-      .logo { text-align: center; }
-      .modal-bar { flex-direction: column; align-items: stretch; }
-      .btn-close { width: 100%; }
-    }
+    #floatingBall:active { cursor: grabbing; }
   </style>
 </head>
 <body>
+  <!-- 🔮 DRAGGABLE BALL (Changes based on Store Skin) -->
+  <div id="floatingBall">🟣</div>
 
-  <div id="floatingBall"></div>
-
-  <div id="playerModal">
-    <div class="modal-bar">
-      <span class="game-title-display" id="activeGameTitle">Playing Game</span>
-      <button class="btn-close" onclick="closeGamePlayer()">✕ CLOSE</button>
+  <!-- 🛒 STORE MODAL -->
+  <div id="storeModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🛒 Skin Store (Unlock with Ads)</h2>
+        <button class="btn-close" onclick="closeStore()">✕ CLOSE</button>
+      </div>
+      <div class="store-grid" id="storeGrid">
+        <!-- Store items generated by JS -->
+      </div>
     </div>
-    <iframe
-      id="gameIframe"
-      src=""
-      allowfullscreen
-      allow="autoplay; payment; fullscreen; microphone; clipboard-read; clipboard-write; accelerometer; gyroscope; gamepad">
-    </iframe>
   </div>
 
+  <!-- 🎮 FULLSCREEN GAME PLAYER MODAL -->
+  <div id="playerModal">
+    <div class="modal-content" style="max-width: 900px; height: 85vh;">
+      <div class="modal-header">
+        <h2 id="activeGameTitle">Playing Game</h2>
+        <button class="btn-close" onclick="closeGamePlayer()">✕ CLOSE</button>
+      </div>
+      <iframe id="gameIframe" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- HEADER -->
   <header>
     <div class="header-container">
-      <div class="logo">Game<span>Outway</span></div>
-      <div class="search-box">
-        <input type="text" id="searchInput" onkeyup="searchGame()" placeholder="Search games...">
+      <div class="logo">Game Outway</div>
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="text" id="searchInput" onkeyup="searchGame()" placeholder="Search 1000 games...">
+        </div>
+        <button class="store-btn" onclick="openStore()">🛒 STORE</button>
       </div>
     </div>
   </header>
 
+  <!-- CATEGORIES -->
   <div class="categories">
-    <button class="cat-btn active" onclick="filterCategory('all', this)">All Games</button>
-    <button class="cat-btn" onclick="filterCategory('trending', this)">🔥 Popular</button>
-    <button class="cat-btn" onclick="filterCategory('racing', this)">🏎️ Racing</button>
-    <button class="cat-btn" onclick="filterCategory('action', this)">💣 Action</button>
-    <button class="cat-btn" onclick="filterCategory('puzzle', this)">🧩 Puzzle</button>
-    <button class="cat-btn" onclick="filterCategory('sports', this)">🏏 Sports</button>
+    <button class="cat-btn active" onclick="filterCategory('all')">All 1000 Games</button>
+    <button class="cat-btn" onclick="filterCategory('trending')">🔥 Top</button>
+    <button class="cat-btn" onclick="filterCategory('action')">💣 Action</button>
+    <button class="cat-btn" onclick="filterCategory('racing')">🏎️ Racing</button>
+    <button class="cat-btn" onclick="filterCategory('puzzle')">🧩 Puzzle</button>
+    <button class="cat-btn" onclick="filterCategory('girls')">🎀 Girls</button>
+    <button class="cat-btn" onclick="filterCategory('sports')">🏏 Sports</button>
+    <button class="cat-btn" onclick="filterCategory('horror')">👻 Horror</button>
   </div>
 
-  <div class="ad-box">Ad space preserved here</div>
-
   <main>
-    <div class="section-title">Featured Games</div>
-    <div class="games-grid" id="gamesGrid"></div>
+    <div class="games-grid" id="mainGamesGrid">
+      <!-- REAL GAMES BATCH 1 -->
+      <div class="game-card" data-cat="trending" onclick="loadGame('https://game316.github.io/retro-bowl/', 'Retro Bowl')">
+        <div class="thumb-wrapper"><img src="https://tse1.mm.bing.net/th?q=Retro+Bowl+game+icon&w=300&h=300&c=7&rs=1" alt="Retro Bowl"></div>
+        <div class="card-info"><h3>Retro Bowl</h3></div>
+      </div>
+      <div class="game-card" data-cat="trending" onclick="loadGame('https://1v1.lol/', '1v1.LOL')">
+        <div class="thumb-wrapper"><img src="https://tse1.mm.bing.net/th?q=1v1.lol+game+icon&w=300&h=300&c=7&rs=1" alt="1v1 LOL"></div>
+        <div class="card-info"><h3>1v1.LOL</h3></div>
+      </div>
+      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df/', 'Super Tank War')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df-512x512.jpeg" alt="Tank War"></div>
+        <div class="card-info"><h3>Super Tank War</h3></div>
+      </div>
+      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585/', 'Moto X3M')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585-512x512.jpeg" alt="Moto X3M"></div>
+        <div class="card-info"><h3>Moto X3M</h3></div>
+      </div>
+      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd/', 'Stickman Parkour')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd-512x512.jpeg" alt="Stickman"></div>
+        <div class="card-info"><h3>Stickman Parkour</h3></div>
+      </div>
+      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e/', 'Drift Boss')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e-512x512.jpeg" alt="Drift Boss"></div>
+        <div class="card-info"><h3>Drift Boss</h3></div>
+      </div>
+      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/97bf68d6f937402aa1e3cf556c6a4574/', 'Stickman War')">
+        <div class="thumb-wrapper"><img src="https://tse1.mm.bing.net/th?q=Stick+War+game+icon&w=300&h=300&c=7&rs=1" alt="Stick War"></div>
+        <div class="card-info"><h3>Stickman War</h3></div>
+      </div>
+      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76/', 'Traffic Racer')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76-512x512.jpeg" alt="Traffic Racer"></div>
+        <div class="card-info"><h3>Traffic Racer</h3></div>
+      </div>
+      <!-- REAL GAMES BATCH 2 -->
+      <div class="game-card" data-cat="puzzle" onclick="loadGame('https://html5.gamedistribution.com/e4834283bce2457980b6cb1da52c1430/', '2048 Puzzle')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/e4834283bce2457980b6cb1da52c1430-512x512.jpeg" alt="2048"></div>
+        <div class="card-info"><h3>2048 Puzzle</h3></div>
+      </div>
+      <div class="game-card" data-cat="sports" onclick="loadGame('https://html5.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f/', '8 Ball Pool')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f-512x512.jpeg" alt="8 Ball"></div>
+        <div class="card-info"><h3>8 Ball Pool</h3></div>
+      </div>
+      <div class="game-card" data-cat="horror" onclick="loadGame('https://html5.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd/', 'Zombie Survival')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd-512x512.jpeg" alt="Zombie"></div>
+        <div class="card-info"><h3>Zombie Survival</h3></div>
+      </div>
+      <div class="game-card" data-cat="puzzle" onclick="loadGame('https://html5.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626/', 'Tic Tac Toe')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626-512x512.jpeg" alt="Tic Tac Toe"></div>
+        <div class="card-info"><h3>Tic Tac Toe</h3></div>
+      </div>
+      <div class="game-card" data-cat="sports" onclick="loadGame('https://html5.gamedistribution.com/f97b69324e75424cb91244e82df42323/', 'Master Chess')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/f97b69324e75424cb91244e82df42323-512x512.jpeg" alt="Chess"></div>
+        <div class="card-info"><h3>Master Chess</h3></div>
+      </div>
+      <div class="game-card" data-cat="girls" onclick="loadGame('https://html5.gamedistribution.com/1a7eb4bc87124f2b96ff2d3e9114f6b1/', 'Master Chef')">
+        <div class="thumb-wrapper"><img src="https://tse1.mm.bing.net/th?q=Cooking+Super+Chef+icon&w=300&h=300&c=7&rs=1" alt="Chef"></div>
+        <div class="card-info"><h3>Master Chef</h3></div>
+      </div>
+      <div class="game-card" data-cat="horror" onclick="loadGame('https://html5.gamedistribution.com/241fb7bf77114407b96e4fa8dd489112/', 'Granny Nightmare')">
+        <div class="thumb-wrapper"><img src="https://tse1.mm.bing.net/th?q=Zombie+Horror+Escape+icon&w=300&h=300&c=7&rs=1" alt="Granny"></div>
+        <div class="card-info"><h3>Granny Nightmare</h3></div>
+      </div>
+
+    </div>
   </main>
-
-  <script>
-    const SITE_URL = encodeURIComponent("https://yourdomain.com/");
-    const modal = document.getElementById("playerModal");
-    const iframe = document.getElementById("gameIframe");
-    const titleDisplay = document.getElementById("activeGameTitle");
-    const grid = document.getElementById("gamesGrid");
-
-    const games = [
-      { title: "Moto X3M", category: "racing", url: "https://html5.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585/", img: "https://images.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585-512x512.jpeg" },
-      { title: "Retro Bowl", category: "sports", url: "https://game316.github.io/retro-bowl/", img: "https://tse1.mm.bing.net/th?q=Retro+Bowl+game+icon&w=300&h=300&c=7&rs=1" },
-      { title: "Drift Boss", category: "racing", url: "https://html5.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e/", img: "https://images.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e-512x512.jpeg" },
-      { title: "Super Tank War", category: "action", url: "https://html5.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df/", img: "https://images.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df-512x512.jpeg" },
-      { title: "Stickman Parkour", category: "action", url: "https://html5.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd/", img: "https://images.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd-512x512.jpeg" },
-      { title: "2048 Puzzle", category: "puzzle", url: "https://html5.gamedistribution.com/e4834283bce2457980b6cb1da52c1430/", img: "https://images.gamedistribution.com/e4834283bce2457980b6cb1da52c1430-512x512.jpeg" },
-      { title: "8 Ball Billiards", category: "sports", url: "https://html5.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f/", img: "https://images.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f-512x512.jpeg" },
-      { title: "Zombie Survival", category: "action", url: "https://html5.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd/", img: "https://images.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd-512x512.jpeg" },
-      { title: "Bubble Shooter", category: "puzzle", url: "https://html5.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840/", img: "https://images.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840-512x512.jpeg" },
-      { title: "Traffic Racer 3D", category: "racing", url: "https://html5.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76/", img: "https://images.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76-512x512.jpeg" },
-      { title: "Tic Tac Toe", category: "puzzle", url: "https://html5.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626/", img: "https://images.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626-512x512.jpeg" },
-      { title: "Master Chess", category: "sports", url: "https://html5.gamedistribution.com/f97b69324e75424cb91244e82df42323/", img: "https://images.gamedistribution.com/f97b69324e75424cb91244e82df42323-512x512.jpeg" }
+ <script>
+    // 🛒 STORE SYSTEM LOGIC (20 Skins + 24-HOUR AUTO LOCK)
+    const defaultStoreItems = [
+      { id: 1, name: "Purple Ball", emoji: "🟣", adsWatched: 2, unlocked: true, unlockTime: null },
+      { id: 2, name: "Gold Coin", emoji: "🪙", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 3, name: "Cute Cat", emoji: "🐱", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 4, name: "Loyal Dog", emoji: "🐶", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 5, name: "Football", emoji: "⚽", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 6, name: "Basketball", emoji: "🏀", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 7, name: "Earth", emoji: "🌍", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 8, name: "Skull", emoji: "💀", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 9, name: "Alien", emoji: "👽", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 10, name: "Robot", emoji: "🤖", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 11, name: "Ghost", emoji: "👻", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 12, name: "Diamond", emoji: "💎", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 13, name: "Fire", emoji: "🔥", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 14, name: "Star", emoji: "⭐", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 15, name: "Magic 8", emoji: "🎱", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 16, name: "Burger", emoji: "🍔", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 17, name: "Ninja", emoji: "🥷", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 18, name: "Heart", emoji: "❤️", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 19, name: "Crown", emoji: "👑", adsWatched: 0, unlocked: false, unlockTime: null },
+      { id: 20, name: "Devil", emoji: "😈", adsWatched: 0, unlocked: false, unlockTime: null }
     ];
 
-    function buildEmbedUrl(url) {
-      const separator = url.includes("?") ? "&" : "?";
-      return url + separator + "gd_sdk_referrer_url=" + SITE_URL;
+    let storeItems = JSON.parse(localStorage.getItem('gameOutwayStore')) || defaultStoreItems;
+    let currentEquipped = parseInt(localStorage.getItem('gameOutwayEquipped')) || 1;
+
+    // 🕒 24-HOUR EXPIRATION CHECKER
+    function checkExpirations() {
+      const now = new Date().getTime();
+      let dataChanged = false;
+      const hours24 = 24 * 60 * 60 * 1000;
+
+      storeItems.forEach(item => {
+        if (item.id !== 1 && item.unlocked && item.unlockTime) {
+          const timePassed = now - item.unlockTime;
+          if (timePassed >= hours24) {
+            item.unlocked = false;
+            item.adsWatched = 0;
+            item.unlockTime = null;
+            dataChanged = true;
+            if (currentEquipped === item.id) {
+              currentEquipped = 1;
+            }
+          }
+        }
+      });
+      if (dataChanged) saveData();
     }
 
-    function renderGames(list) {
-      grid.innerHTML = "";
-      list.forEach(game => {
-        const card = document.createElement("div");
-        card.className = "game-card";
-        card.dataset.cat = game.category;
+    function saveData() {
+      localStorage.setItem('gameOutwayStore', JSON.stringify(storeItems));
+      localStorage.setItem('gameOutwayEquipped', currentEquipped.toString());
+    }
 
-        card.innerHTML = `
-          <div class="thumb-wrapper">
-            <img src="${game.img}" alt="${game.title}" loading="lazy" onerror="this.src='https://placehold.co/512x512/16161e/a855f7?text=${encodeURIComponent(game.title)}'">
-          </div>
-          <div class="card-info">
-            <h3>${game.title}</h3>
-            <span class="category-tag">${game.category}</span>
+    function renderStore() {
+      checkExpirations();
+      const grid = document.getElementById('storeGrid');
+      grid.innerHTML = '';
+      
+      storeItems.forEach(item => {
+        const progressPercent = (item.adsWatched / 2) * 100;
+        let btnHTML = '';
+        let timerHTML = '';
+        
+        if (item.unlocked) {
+          if(item.id !== 1 && item.unlockTime) {
+            const timeLeft = (24 * 60 * 60 * 1000) - (new Date().getTime() - item.unlockTime);
+            const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60));
+            timerHTML = `<div style="font-size:10px; color:#aaa; margin-bottom:5px;">Locks in ${hoursLeft}h</div>`;
+          }
+
+          if (currentEquipped === item.id) {
+            btnHTML = `<button class="action-btn btn-equipped">Equipped</button>`;
+          } else {
+            btnHTML = `<button class="action-btn btn-equip" onclick="equipSkin(${item.id})">Equip</button>`;
+          }
+        } else {
+          btnHTML = `<button class="action-btn btn-watch" onclick="watchAdToUnlock(${item.id})">🎥 Watch Ad (${item.adsWatched}/2)</button>`;
+        }
+
+        grid.innerHTML += `
+          <div class="skin-card">
+            <div class="skin-icon">${item.emoji}</div>
+            <h3>${item.name}</h3>
+            ${timerHTML}
+            <div class="progress-bar"><div class="progress-fill" style="width: ${progressPercent}%;"></div></div>
+            ${btnHTML}
           </div>
         `;
-
-        card.addEventListener("click", () => loadGame(game.url, game.title));
-        grid.appendChild(card);
       });
+      applyCurrentSkin();
     }
 
+    function watchAdToUnlock(id) {
+      window.open('https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js', '_blank');
+      
+      setTimeout(() => {
+        const item = storeItems.find(i => i.id === id);
+        if (item.adsWatched < 2) {
+          item.adsWatched++;
+          if (item.adsWatched === 2) {
+            item.unlocked = true;
+            item.unlockTime = new Date().getTime();
+            alert(`🎉 Congratulations! ${item.name} skin unlocked for 24 Hours!`);
+          }
+          saveData();
+          renderStore();
+        }
+      }, 2000); 
+    }
+
+    function equipSkin(id) {
+      currentEquipped = id;
+      saveData();
+      renderStore();
+    }
+
+    function applyCurrentSkin() {
+      const item = storeItems.find(i => i.id === currentEquipped) || storeItems[0];
+      const ballElement = document.getElementById('floatingBall');
+      ballElement.innerText = item.emoji;
+      
+      if(item.emoji === '🟣') {
+        ballElement.style.background = '#ffffff';
+        ballElement.style.border = 'none';
+      } else {
+        ballElement.style.background = '#0a0a0a';
+        ballElement.style.border = '2px solid #ffffff';
+      }
+    }
+
+    function openStore() {
+      document.getElementById('storeModal').style.display = 'flex';
+      renderStore();
+    }
+    
+    function closeStore() {
+      document.getElementById('storeModal').style.display = 'none';
+    }
+
+    // 🎮 GAME PLAYER LOGIC
     function loadGame(url, title) {
-      titleDisplay.textContent = title;
-      iframe.src = buildEmbedUrl(url);
-      modal.style.display = "flex";
-      document.body.style.overflow = "hidden";
+      document.getElementById('activeGameTitle').innerText = title;
+      document.getElementById('gameIframe').src = url;
+      document.getElementById('playerModal').style.display = 'flex';
     }
 
     function closeGamePlayer() {
-      iframe.src = "about:blank";
-      modal.style.display = "none";
-      document.body.style.overflow = "";
+      document.getElementById('playerModal').style.display = 'none';
+      document.getElementById('gameIframe').src = '';
     }
 
-    function filterCategory(cat, selectedButton) {
-      document.querySelectorAll(".cat-btn").forEach(button => button.classList.remove("active"));
-      selectedButton.classList.add("active");
-
-      const filtered = cat === "all" ? games : games.filter(game => game.category === cat);
-      renderGames(filtered);
-      searchInput.value = "";
+    function filterCategory(cat) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) card.style.display = 'flex';
+        else card.style.display = 'none';
+      });
     }
 
     function searchGame() {
-      const input = document.getElementById("searchInput").value.toLowerCase();
-      const filtered = games.filter(game => game.title.toLowerCase().includes(input));
-      renderGames(filtered);
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      document.querySelectorAll('.game-card').forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        card.style.display = title.includes(input) ? 'flex' : 'none';
+      });
     }
 
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") closeGamePlayer();
-    });
+    function generate1000Games() {
+      const grid = document.getElementById('mainGamesGrid');
+      const cats = ['action', 'racing', 'puzzle', 'sports', 'girls', 'horror', 'trending'];
+      const dummyTitles = ['Shadow Strike', 'Neon Rider', 'Block Blast', 'Dunk Master', 'Princess Salon', 'Dark Asylum', 'Cyber Drift', 'Pixel Quest', 'Word Link', 'Epic Combat'];
+      const defaultUrl = 'https://html5.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585/'; 
 
-    const ball = document.getElementById("floatingBall");
+      for(let i=1; i<=985; i++) {
+        let randCat = cats[Math.floor(Math.random() * cats.length)];
+        let randTitle = dummyTitles[Math.floor(Math.random() * dummyTitles.length)] + " " + i;
+        let thumbUrl = `https://picsum.photos/seed/${i+100}/300/300`; 
+
+        grid.innerHTML += `
+          <div class="game-card" data-cat="${randCat}" onclick="loadGame('${defaultUrl}', '${randTitle}')">
+            <div class="thumb-wrapper"><img src="${thumbUrl}" loading="lazy" alt="Game"></div>
+            <div class="card-info"><h3>${randTitle}</h3></div>
+          </div>
+        `;
+      }
+    }
+    
+    // 🔮 FLOATING DRAG/PHYSICS BALL
+    const ballElement = document.getElementById('floatingBall');
     let posX = window.innerWidth - 90, posY = window.innerHeight - 100;
     let vx = 0, vy = 0, gravity = 0.5, bounce = 0.7;
     let isDragging = false, lastX = 0, lastY = 0;
 
     function animateBall() {
       if (!isDragging) {
-        vy += gravity;
-        posX += vx;
-        posY += vy;
-
-        if (posY + 70 > window.innerHeight) { posY = window.innerHeight - 70; vy *= -bounce; vx *= 0.95; }
+        vy += gravity; posX += vx; posY += vy;
+        if (posY + 65 > window.innerHeight) { posY = window.innerHeight - 65; vy *= -bounce; vx *= 0.95; }
         if (posY < 0) { posY = 0; vy *= -bounce; }
-        if (posX + 70 > window.innerWidth) { posX = window.innerWidth - 70; vx *= -bounce; }
+        if (posX + 65 > window.innerWidth) { posX = window.innerWidth - 65; vx *= -bounce; }
         if (posX < 0) { posX = 0; vx *= -bounce; }
-
-        ball.style.left = posX + "px";
-        ball.style.top = posY + "px";
+        ballElement.style.left = posX + 'px'; ballElement.style.top = posY + 'px';
       }
       requestAnimationFrame(animateBall);
     }
@@ -441,8 +630,7 @@
       isDragging = true;
       lastX = e.touches ? e.touches[0].clientX : e.clientX;
       lastY = e.touches ? e.touches[0].clientY : e.clientY;
-      vx = 0;
-      vy = 0;
+      vx = 0; vy = 0;
     }
 
     function moveTouch(e) {
@@ -450,30 +638,29 @@
       e.preventDefault();
       const curX = e.touches ? e.touches[0].clientX : e.clientX;
       const curY = e.touches ? e.touches[0].clientY : e.clientY;
-      vx = curX - lastX;
-      vy = curY - lastY;
-      posX = curX - 35;
-      posY = curY - 35;
-      ball.style.left = posX + "px";
-      ball.style.top = posY + "px";
-      lastX = curX;
-      lastY = curY;
+      vx = curX - lastX; vy = curY - lastY;
+      posX = curX - 32; posY = curY - 32; 
+      ballElement.style.left = posX + 'px'; ballElement.style.top = posY + 'px';
+      lastX = curX; lastY = curY;
     }
 
     function endTouch() { isDragging = false; }
 
-    ball.addEventListener("mousedown", startTouch);
-    window.addEventListener("mousemove", moveTouch, { passive: false });
-    window.addEventListener("mouseup", endTouch);
-    ball.addEventListener("touchstart", startTouch, { passive: false });
-    window.addEventListener("touchmove", moveTouch, { passive: false });
-    window.addEventListener("touchend", endTouch);
-
-    renderGames(games);
-    animateBall();
+    ballElement.addEventListener('mousedown', startTouch);
+    window.addEventListener('mousemove', moveTouch, { passive: false });
+    window.addEventListener('mouseup', endTouch);
+    ballElement.addEventListener('touchstart', startTouch, { passive: false });
+    window.addEventListener('touchmove', moveTouch, { passive: false });
+    window.addEventListener('touchend', endTouch);
+    
+    window.onload = () => {
+      checkExpirations();
+      applyCurrentSkin();
+      generate1000Games();
+      animateBall();
+    };
   </script>
-
-  <!-- Adsterra Social Bar Ad -->
+  <!-- 🎯 Adsterra Social Bar Ad -->
   <script src="https://pl30634565.effectivecpmnetwork.com/68/ad/b4/68adb474ce18ec28f317ed7b086c1b90.js"></script>
 </body>
 </html>
