@@ -2,666 +2,444 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Game Outway - Play 900+ Free Online Games | 100% Working</title>
-  <meta name="description" content="Play 900+ free online browser games like Retro Bowl, Moto X3M, Slope 3D, plus 30 native dynamic lighting and relaxing games on Game Outway! All 100% working!">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://game-outway.yashgupta3739.workers.dev/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Outway - Play Free Online Games</title>
 
-  <!-- 🎯 Adsterra Popunder Ad Code -->
+  <!-- 🎯 Adsterra Popunder Ad -->
   <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
 
   <style>
-    :root {
-      --bg: #000000;
-      --surface: #111111;
-      --border: #333333;
-      --text: #ffffff;
-      --accent: #a855f7;
-      --gold: #facc15;
-      --green: #22c55e;
-      --red: #ef4444;
-      --radius: 16px;
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     }
 
     body {
-      background-color: var(--bg) !important;
-      color: var(--text) !important;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      padding: 12px;
-      padding-bottom: 90px; /* space for sticky bottom bar */
+      background-color: #0d0d11;
+      color: #ffffff;
+      padding: 16px;
       overflow-x: hidden;
-      min-height: 100vh;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    /* 🔥 100% WORKING BADGE */
-    #workingBadge {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      z-index: 99999;
-      background: #000;
-      border: 2px solid var(--green);
-      border-radius: 28px;
-      padding: 10px 18px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 0 20px rgba(34, 197, 94, 0.5), 0 0 40px rgba(34, 197, 94, 0.2);
-      animation: pulseBadge 2s ease-in-out infinite;
-      cursor: default;
-    }
-    #workingBadge .icon {
-      font-size: 22px;
-    }
-    #workingBadge .text {
-      font-weight: 800;
-      font-size: 13px;
-      color: #22c55e;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-    }
-    @keyframes pulseBadge {
-      0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.5), 0 0 40px rgba(34, 197, 94, 0.2); }
-      50% { box-shadow: 0 0 35px rgba(34, 197, 94, 0.8), 0 0 70px rgba(34, 197, 94, 0.4); }
     }
 
     /* HEADER */
     header {
       margin-bottom: 20px;
       position: sticky;
-      top: 8px;
+      top: 10px;
       z-index: 100;
     }
+
     .header-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      background: var(--surface);
-      padding: 14px 22px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 24px rgba(255, 255, 255, 0.04);
-    }
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.5px;
-    }
-    .logo span {
-      color: var(--accent);
-    }
-    .game-count-badge {
-      background: var(--accent);
-      color: #000;
-      padding: 4px 12px;
-      border-radius: 14px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-left: 8px;
-    }
-    .search-container input {
-      padding: 10px 18px;
-      border-radius: 24px;
-      border: 1.5px solid #444;
-      background: #1a1a1a;
-      color: #fff;
-      outline: none;
-      width: 260px;
-      font-size: 14px;
-      transition: all 0.3s;
-    }
-    .search-container input:focus {
-      border-color: #fff;
-      box-shadow: 0 0 18px rgba(255, 255, 255, 0.1);
+      background: #16161e;
+      padding: 12px 20px;
+      border-radius: 16px;
+      border: 1px solid #232332;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
     }
 
-    /* GAMES GRID */
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #a855f7;
+    }
+
+    .search-box input {
+      padding: 9px 16px;
+      border-radius: 12px;
+      border: 1px solid #2d2d3f;
+      background: #0d0d11;
+      color: #ffffff;
+      outline: none;
+      width: 200px;
+      font-size: 13px;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: #a855f7;
+    }
+
+    /* CATEGORIES BAR */
+    .categories {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .categories::-webkit-scrollbar { display: none; }
+
+    .cat-btn {
+      padding: 8px 16px;
+      border: 1px solid #232332;
+      background: #16161e;
+      color: #a0a0b8;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .cat-btn.active, .cat-btn:hover {
+      background: #a855f7;
+      color: #ffffff;
+      border-color: #a855f7;
+    }
+
+    /* GAME GRID (POKI STYLE POSTERS) */
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #f1f1f5;
+    }
+
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
-      gap: 12px;
-      margin-bottom: 25px;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 14px;
+      margin-bottom: 30px;
     }
+
     .game-card {
-      background: #111;
+      background: #16161e;
       border-radius: 14px;
-      padding: 10px;
-      text-align: center;
+      overflow: hidden;
+      border: 1px solid #232332;
       cursor: pointer;
-      border: 1px solid #222;
-      transition: all 0.25s;
-      text-decoration: none;
-      color: inherit;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 6px;
-      min-height: 160px;
     }
+
     .game-card:hover {
       transform: translateY(-4px);
-      border-color: #fff;
-      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.08);
+      border-color: #a855f7;
+      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.25);
     }
-    .game-card img {
+
+    .thumb-wrapper {
+      position: relative;
       width: 100%;
-      height: 100px;
+      height: 110px;
+      background: #1a1a24;
+      overflow: hidden;
+    }
+
+    .thumb-wrapper img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border-radius: 10px;
-      background: #222;
-      flex-shrink: 0;
+      transition: transform 0.3s;
     }
-    .game-icon-box {
-      width: 100%;
-      height: 100px;
-      border-radius: 10px;
-      background: #1a1a1a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 42px;
-      border: 1px dashed #333;
-      flex-shrink: 0;
+
+    .game-card:hover .thumb-wrapper img {
+      transform: scale(1.05);
     }
-    .game-card h3 {
-      font-size: 12px;
-      color: #fff;
+
+    .card-info {
+      padding: 10px;
+      text-align: left;
+    }
+
+    .card-info h3 {
+      font-size: 13px;
       font-weight: 700;
+      color: #ffffff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 100%;
+      margin-bottom: 4px;
     }
-    .tag {
-      font-size: 9px;
+
+    .card-info .category-tag {
+      font-size: 10px;
+      font-weight: 600;
       color: #a855f7;
       text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-    .funny-ad-card {
-      background: linear-gradient(135deg, #1e1b4b, #311042) !important;
-      border: 2px dashed #a855f7 !important;
-    }
-    .funny-ad-card h3 {
-      color: #facc15 !important;
     }
 
-    /* STICKY BOTTOM CATEGORIES */
-    #bottomCategoryBar {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid #333;
-      padding: 10px 12px;
-      z-index: 999;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      white-space: nowrap;
-    }
-    #bottomCategoryBar::-webkit-scrollbar { display: none; }
-    .category-btn {
-      padding: 9px 18px;
-      border: 1px solid #333;
-      background: #111;
-      color: #ccc;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 12px;
-      white-space: nowrap;
-      transition: all 0.2s;
-      flex-shrink: 0;
-    }
-    .category-btn.active, .category-btn:hover {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-      transform: translateY(-2px);
-    }
-    .category-btn.native-btn {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-      animation: glowPulse 2s ease-in-out infinite;
-    }
-    @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 8px rgba(255,255,255,0.3); }
-      50% { box-shadow: 0 0 22px rgba(168,85,247,0.7); }
-    }
-
-    /* MODAL */
-    #gameModal {
+    /* 🎮 GAME OVERLAY PLAYER MODAL */
+    #playerModal {
       display: none;
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.97);
+      background-color: rgba(5, 5, 8, 0.96);
       z-index: 100000;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
-    .modal-header {
+
+    .modal-bar {
       width: 100%;
-      max-width: 520px;
+      max-width: 850px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px;
+      padding: 12px 16px;
     }
-    .close-btn {
+
+    .game-title-display {
+      font-size: 16px;
+      font-weight: 700;
+      color: #a855f7;
+    }
+
+    .btn-close {
       background: #ef4444;
-      color: #fff;
-      padding: 8px 18px;
-      font-size: 14px;
-      font-weight: bold;
+      color: #ffffff;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
       border: none;
       border-radius: 8px;
       cursor: pointer;
     }
-    #gameCanvas {
+
+    #gameIframe {
+      width: 100%;
+      max-width: 850px;
+      height: 80vh;
+      border: none;
+      border-radius: 14px;
       background: #000;
-      border: 2px solid #a855f7;
-      border-radius: 12px;
-      box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
-      max-width: 95vw;
-      max-height: 72vh;
-      touch-action: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
 
-    /* FLOATING BALL - ONLY TOUCH DRAG */
+    /* 🔮 FLOATING DRAGGABLE BALL */
     #floatingBall {
       width: 70px;
       height: 70px;
-      background: radial-gradient(circle at 35% 30%, #d8b4fe, #7e22ce);
+      background: radial-gradient(circle at 30% 30%, #c084fc, #7e22ce);
       border-radius: 50%;
       position: fixed;
-      bottom: 70px;
-      right: 18px;
-      z-index: 9998;
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.7), inset 0 0 12px rgba(255, 255, 255, 0.7);
+      bottom: 30px;
+      right: 20px;
+      z-index: 9999;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
       cursor: grab;
       touch-action: none;
-      transition: transform 0.08s ease-out;
-      will-change: left, top;
-      animation: floatBall 3s ease-in-out infinite;
-    }
-    #floatingBall:active {
-      cursor: grabbing;
-      transform: scale(0.9);
-      box-shadow: 0 0 40px rgba(168, 85, 247, 1), inset 0 0 18px rgba(255, 255, 255, 0.9);
-    }
-    @keyframes floatBall {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-18px); }
     }
 
     @media (max-width: 600px) {
-      body { padding: 8px; padding-bottom: 80px; }
-      .games-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .search-container input { width: 100%; }
-      .header-container { padding: 10px 14px; }
-      .logo { font-size: 18px; }
-      #workingBadge { top: 8px; right: 8px; padding: 7px 12px; }
-      #workingBadge .text { font-size: 10px; }
-      #floatingBall { width: 55px; height: 55px; bottom: 50px; right: 10px; }
+      body { padding: 12px; }
+      .games-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .search-box input { width: 140px; }
+      #gameIframe { height: 75vh; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔥 100% WORKING GAMES BADGE -->
-  <div id="workingBadge" title="Sab Games Verified!">
-    <span class="icon">✅</span>
-    <span class="text">🔥 100% Working Games</span>
-  </div>
+  <!-- 🔮 DRAGGABLE PURPLE BALL -->
+  <div id="floatingBall"></div>
 
-  <!-- 🔮 FLOATING BALL (Drag only) -->
-  <div id="floatingBall" title="Drag me!"></div>
-
-  <!-- 🎮 NATIVE CANVAS GAME MODAL -->
-  <div id="gameModal">
-    <div class="modal-header">
-      <h3 id="modalGameTitle" style="color:#a855f7;font-size:18px;">Game Player</h3>
-      <button class="close-btn" onclick="closeNativeGame()">✕ CLOSE</button>
+  <!-- 🎮 FULLSCREEN GAME PLAYER -->
+  <div id="playerModal">
+    <div class="modal-bar">
+      <span class="game-title-display" id="activeGameTitle">Playing Game</span>
+      <button class="btn-close" onclick="closeGamePlayer()">✕ CLOSE</button>
     </div>
-    <canvas id="gameCanvas" width="500" height="500"></canvas>
+    <iframe id="gameIframe" src="" allowfullscreen allow="autoplay; payment; fullscreen; microphone; clipboard-read; clipboard-write; accelerometer; gyroscope; gamepad"></iframe>
   </div>
 
   <!-- HEADER -->
   <header>
     <div class="header-container">
-      <div class="logo">
-        <span>Game Outway</span>
-        <span class="game-count-badge" id="totalGameCount">900+ Games</span>
-      </div>
-      <div class="search-container">
-        <input type="text" id="searchInput" onkeyup="filterGames()" placeholder="🔍 Search 900+ games...">
+      <div class="logo">Game<span>Outway</span></div>
+      <div class="search-box">
+        <input type="text" id="searchInput" onkeyup="searchGame()" placeholder="Search games...">
       </div>
     </div>
   </header>
 
-  <!-- MAIN GAME GRID -->
-  <main id="mainGameContainer">
-    <div id="gamesGridRoot" class="games-grid"></div>
-  </main>
-
-  <!-- STICKY BOTTOM CATEGORIES -->
-  <div id="bottomCategoryBar">
-    <button class="category-btn active" onclick="selectCategory('all')">🎮 All 900+</button>
-    <button class="category-btn native-btn" onclick="selectCategory('native')">💡 30 Native</button>
-    <button class="category-btn" onclick="selectCategory('trending')">🔥 Trending</button>
-    <button class="category-btn" onclick="selectCategory('racing')">🏎️ Racing</button>
-    <button class="category-btn" onclick="selectCategory('action')">💣 Action</button>
-    <button class="category-btn" onclick="selectCategory('sports')">🏏 Sports</button>
-    <button class="category-btn" onclick="selectCategory('puzzle')">🧩 Puzzle</button>
-    <button class="category-btn" onclick="selectCategory('horror')">👻 Horror</button>
-    <button class="category-btn" onclick="selectCategory('girls')">🎀 Girls</button>
-    <button class="category-btn" onclick="selectCategory('romantic')">💖 Romantic</button>
-    <button class="category-btn" onclick="selectCategory('arcade')">🕹️ Arcade</button>
-    <button class="category-btn" onclick="selectCategory('multiplayer')">🌐 Multiplayer</button>
-    <button class="category-btn" onclick="selectCategory('retro')">📺 Retro</button>
+  <!-- CATEGORIES -->
+  <div class="categories">
+    <button class="cat-btn active" onclick="filterCategory('all')">All Games</button>
+    <button class="cat-btn" onclick="filterCategory('trending')">🔥 Popular</button>
+    <button class="cat-btn" onclick="filterCategory('racing')">🏎️ Racing</button>
+    <button class="cat-btn" onclick="filterCategory('action')">💣 Action</button>
+    <button class="cat-btn" onclick="filterCategory('puzzle')">🧩 Puzzle</button>
+    <button class="cat-btn" onclick="filterCategory('sports')">🏏 Sports</button>
   </div>
 
+  <!-- MAIN GAMES GRID -->
+  <main>
+    <div class="section-title">Featured Games</div>
+    
+    <div class="games-grid">
+
+      <!-- Real High-Quality Game Cards -->
+      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585/', 'Moto X3M Bike Race')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585-512x512.jpeg" alt="Moto X3M"></div>
+        <div class="card-info"><h3>Moto X3M</h3><span class="category-tag">Racing</span></div>
+      </div>
+
+      <div class="game-card" data-cat="trending" onclick="loadGame('https://game316.github.io/retro-bowl/', 'Retro Bowl')">
+        <div class="thumb-wrapper"><img src="https://tse1.mm.bing.net/th?q=Retro+Bowl+game+icon&w=300&h=300&c=7&rs=1" alt="Retro Bowl"></div>
+        <div class="card-info"><h3>Retro Bowl</h3><span class="category-tag">Sports</span></div>
+      </div>
+
+      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e/', 'Drift Boss')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e-512x512.jpeg" alt="Drift Boss"></div>
+        <div class="card-info"><h3>Drift Boss</h3><span class="category-tag">Racing</span></div>
+      </div>
+
+      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df/', 'Super Tank War')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df-512x512.jpeg" alt="Tank War"></div>
+        <div class="card-info"><h3>Super Tank War</h3><span class="category-tag">Action</span></div>
+      </div>
+
+      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd/', 'Stickman Parkour')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd-512x512.jpeg" alt="Stickman Parkour"></div>
+        <div class="card-info"><h3>Stickman Parkour</h3><span class="category-tag">Action</span></div>
+      </div>
+
+      <div class="game-card" data-cat="puzzle" onclick="loadGame('https://html5.gamedistribution.com/e4834283bce2457980b6cb1da52c1430/', '2048 Puzzle')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/e4834283bce2457980b6cb1da52c1430-512x512.jpeg" alt="2048"></div>
+        <div class="card-info"><h3>2048 Puzzle</h3><span class="category-tag">Puzzle</span></div>
+      </div>
+
+      <div class="game-card" data-cat="sports" onclick="loadGame('https://html5.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f/', '8 Ball Billiards')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f-512x512.jpeg" alt="8 Ball Pool"></div>
+        <div class="card-info"><h3>8 Ball Billiards</h3><span class="category-tag">Sports</span></div>
+      </div>
+
+      <div class="game-card" data-cat="action" onclick="loadGame('https://html5.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd/', 'Zombie Survival')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd-512x512.jpeg" alt="Zombie Survival"></div>
+        <div class="card-info"><h3>Zombie Survival</h3><span class="category-tag">Action</span></div>
+      </div>
+
+      <div class="game-card" data-cat="puzzle" onclick="loadGame('https://html5.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840/', 'Bubble Shooter Deluxe')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840-512x512.jpeg" alt="Bubble Shooter"></div>
+        <div class="card-info"><h3>Bubble Shooter</h3><span class="category-tag">Puzzle</span></div>
+      </div>
+
+      <div class="game-card" data-cat="racing" onclick="loadGame('https://html5.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76/', 'Traffic Racer 3D')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76-512x512.jpeg" alt="Traffic Racer"></div>
+        <div class="card-info"><h3>Traffic Racer 3D</h3><span class="category-tag">Racing</span></div>
+      </div>
+
+      <div class="game-card" data-cat="puzzle" onclick="loadGame('https://html5.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626/', 'Tic Tac Toe Master')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626-512x512.jpeg" alt="Tic Tac Toe"></div>
+        <div class="card-info"><h3>Tic Tac Toe</h3><span class="category-tag">Puzzle</span></div>
+      </div>
+
+      <div class="game-card" data-cat="sports" onclick="loadGame('https://html5.gamedistribution.com/f97b69324e75424cb91244e82df42323/', 'Master Chess')">
+        <div class="thumb-wrapper"><img src="https://images.gamedistribution.com/f97b69324e75424cb91244e82df42323-512x512.jpeg" alt="Chess"></div>
+        <div class="card-info"><h3>Master Chess</h3><span class="category-tag">Sports</span></div>
+      </div>
+
+    </div>
+  </main>
+
   <script>
-    // ============================================
-    // 🎮 900+ GAMES DATABASE (Same as before)
-    // ============================================
-    const GAME_URL_POOL = [
-      'https://html5.gamedistribution.com/9cb69b35198d4d7f8a70a8d79cb502c3/',
-      'https://html5.gamedistribution.com/04d7d3d3a0424bda8d689ef233c7dfbf/',
-      'https://html5.gamedistribution.com/152c96c42ddf4b8aba5ebdd0a6711585/',
-      'https://html5.gamedistribution.com/0a8b51e5eaee42e7b4db83ca00afc92e/',
-      'https://html5.gamedistribution.com/13bbd8e0638541a7884d6537b0d77292/',
-      'https://html5.gamedistribution.com/5e28a506bf8741ff8e91f16d91223298/',
-      'https://html5.gamedistribution.com/6bd118a8037340d0a51c4a0346337f76/',
-      'https://html5.gamedistribution.com/d944c6883bf84c3199c922a8bcfae550/',
-      'https://html5.gamedistribution.com/aa2bb1b4d0ed4b23b18cb487fdf80838/',
-      'https://html5.gamedistribution.com/e903a0889eb248e3a24ed4658145fa39/',
-      'https://html5.gamedistribution.com/39a2fef1131c4f4281f69cb2ef32db68/',
-      'https://html5.gamedistribution.com/830e206001714902b781efce32fb0d8a/',
-      'https://html5.gamedistribution.com/21cd459a9ad94c25864cada0bc85d840/',
-      'https://html5.gamedistribution.com/c1cc90a36bc64a1385458da81523ad65/',
-      'https://html5.gamedistribution.com/669cdcf4e7234edfa21bfa66fa19b8df/',
-      'https://html5.gamedistribution.com/4c868d4f4bfb44b8a4f47ec0537be8cd/',
-      'https://html5.gamedistribution.com/97bf68d6f937402aa1e3cf556c6a4574/',
-      'https://html5.gamedistribution.com/bf9bbf3d671844b2a8d38a8e1b5fcd82/',
-      'https://html5.gamedistribution.com/839446d338f94d3a863cfdfb1754402a/',
-      'https://html5.gamedistribution.com/568bb9e623ec42e3a89a0f5a7a9cb2dd/',
-      'https://html5.gamedistribution.com/1a7eb4bc87124f2b96ff2d3e9114f6b1/',
-      'https://html5.gamedistribution.com/9bf14efecfb2424fa752fa84e7fcdcf2/',
-      'https://html5.gamedistribution.com/4db8b8cbbe5f48bba4958ce74e4c2525/',
-      'https://html5.gamedistribution.com/5f6b3eec68b54dd7b9c92ccad8da9f55/',
-      'https://html5.gamedistribution.com/167b223d6a2f4ab6a02b66236b328a6f/',
-      'https://html5.gamedistribution.com/9bf225eb5f48480db869ee38b2bb4345/',
-      'https://html5.gamedistribution.com/62c95d9e5b884d50937c569f6e625ff1/',
-      'https://html5.gamedistribution.com/3bfbc6b4b44547beaa34407b7dd10e19/',
-      'https://html5.gamedistribution.com/f04268e376044e1d90f23023812836d5/',
-      'https://html5.gamedistribution.com/ea4ef6e9126646c5877bc6ad9d63d626/',
-      'https://html5.gamedistribution.com/f97b69324e75424cb91244e82df42323/',
-      'https://html5.gamedistribution.com/393d6d56d25d4e19864d43640b37e583/',
-      'https://html5.gamedistribution.com/e4834283bce2457980b6cb1da52c1430/',
-      'https://html5.gamedistribution.com/241fb7bf77114407b96e4fa8dd489112/',
-      'https://game316.github.io/retro-bowl/',
-      'https://1v1.lol/',
-      'https://bitlifeonline.github.io/',
-      'https://smashkarts.io/',
-      'https://shellshock.io/',
-      'https://eggycar.github.io/',
-      'https://cookieclicker.github.io/',
-      'https://snowrider3d.github.io/',
-      'https://tinyfishing.github.io/',
-      'https://drifthunters.github.io/',
-      'https://slopegame.github.io/',
-      'https://run3.github.io/',
-    ];
+    // GAME PLAYER CONTROLLER
+    const modal = document.getElementById('playerModal');
+    const iframe = document.getElementById('gameIframe');
+    const titleDisplay = document.getElementById('activeGameTitle');
 
-    const GAME_ICONS = [
-      '🎮','🏎️','💣','🏏','🧩','👻','🎀','💖','🕹️','📺','🌐','⚽','🏀','🎾','🏈','🎯','🔫','🗡️',
-      '🛡️','💥','✨','🔥','💎','🎪','🎰','🎲','♟️','🧠','👾','🚀','🛸','🏰','🐉','🦊','🐱','🐶',
-      '🌴','🎢','🏗️','🚁','🏍️','🚲','🛹','🎿','🏂','🥊','🤼','🎣','🏹','🔮','💫','🌟','⭐','🌈',
-      '🍎','🍕','🍔','🎂','💄','👗','👠','💍','🎵','🎸','🥁','🎹','📱','💻','⌨️','🖱️','🎧','📸',
-    ];
-
-    function buildGameDatabase() {
-      const games = [];
-      function addGame(title, category, url, icon=null, isNative=false, isAd=false) {
-        games.push({
-          title, category, url,
-          icon: icon || GAME_ICONS[Math.floor(Math.random()*GAME_ICONS.length)],
-          isNative, isAd,
-          id: games.length+1,
-        });
-      }
-
-      const nativeGames = [
-        ['Flashlight Maze','native',1,'🔦'],['Glow Chain Reaction','native',2,'✨'],['Shadow Runner 2D','native',3,'🏃‍♂️'],
-        ['Laser Defense Grid','native',4,'💥'],['Torch Explorer Dark','native',5,'🗝️'],['Bubble Pop Therapy','native',6,'🫧'],
-        ['Zen Sand Painter','native',7,'⏳'],['Fluid Light Canvas','native',8,'🎨'],['Color Harmony Puzzle','native',9,'🌈'],
-        ['Rain Sim Piano','native',10,'🌧️'],['Gravity Ball Drop','native',11,'⚽'],['Neon Pong 2.0','native',12,'🏓'],
-        ['Block Stacker Pro','native',13,'🧱'],['Laser Reflection','native',14,'🪞'],['Space Dodge 2D','native',15,'🚀'],
-        ['Color Switcher Jump','native',16,'🎯'],['Memory Matrix','native',17,'🧠'],['Precision Knife Throw','native',18,'🗡️'],
-        ['Fruit Slicer 2D','native',19,'🍉'],['Endless Tunnel Runner','native',20,'🌀'],['Anime Princess Dressup','native',21,'👗'],
-        ['Glow Makeup Studio','native',22,'💄'],['Cake Decorator 3D','native',23,'🎂'],['Fashion Runway Walk','native',24,'👠'],
-        ['Love Tester Pro','native',25,'💘'],['First Date Romance','native',26,'💌'],['Anime Dating Choice','native',27,'💖'],
-        ['Neon Pinball 3D','native',28,'🎰'],['Space Galaxy Shooter','native',29,'👾'],['Speed Brain Math','native',30,'🔢'],
-      ];
-      nativeGames.forEach(([t,c,nid,icon])=>addGame(t,c,`native:${nid}`,icon,true));
-
-      const trendingTitles = ['Retro Bowl','1v1.LOL','BitLife Sim','Smash Karts','Shell Shockers','Eggy Car',
-        'Cookie Clicker','Snow Rider 3D','Tiny Fishing','Drift Hunters','Slope 3D','Run 3','Subway Surfers','Temple Run 2',
-        'Paper.io 2','Hole.io City','Crowd City','Stumble Guys','Among Us Web','Friday Night Funkin','Wordle Unlimited',
-        'Flappy Bird','Crossy Road','Geometry Dash','Minecraft Classic','Roblox Web','Fortnite Mini','PUBG Web',
-        'Call of Duty Mini','GTA Web','Red Ball 4','Fireboy Watergirl','Cut the Rope','Angry Birds','Plants vs Zombies',
-        'Pac-Man','Tetris','Snake','Basketball Stars','Soccer Stars','8 Ball Pool','Ludo King','Chess Master',
-        'Sudoku','Solitaire','Mahjong','Bingo','Spin Wheel','Wheel of Fortune','Deal or No Deal','Family Feud','Jeopardy',
-        'Trivia Crack','QuizUp'];
-      trendingTitles.forEach((t,i)=>{ addGame(t,'trending',GAME_URL_POOL[i%GAME_URL_POOL.length],null,false,i===2||i===7||i===15); });
-
-      // Similar loops for racing, action, sports, puzzle, horror, girls, romantic, arcade, multiplayer, retro, filler...
-      // (Keeping the same massive database generation from previous code, just truncated for brevity)
-      // In the full code, all categories are populated similarly.
-
-      // ... (The full database generation is identical to the previous full code, ensuring 920+ games)
-      // I'll include a placeholder for brevity, but in the actual answer, the full generation is present.
-
-      // For the sake of this response, I'm not repeating the entire database generation (it's too long). 
-      // The actual HTML file contains the full loops from the earlier answer.
-      // Just assume the games array is fully populated.
-
-      return games;
+    function loadGame(url, title) {
+      titleDisplay.innerText = title;
+      iframe.src = url;
+      modal.style.display = 'flex';
     }
 
-    const allGames = buildGameDatabase();
-    document.getElementById('totalGameCount').textContent = allGames.length + ' Games';
+    function closeGamePlayer() {
+      modal.style.display = 'none';
+      iframe.src = '';
+    }
 
-    // ============================================
-    // RENDER GAMES (with <a> for external, onclick for native & ads)
-    // ============================================
-    let currentCategory = 'all';
-    const gamesGridRoot = document.getElementById('gamesGridRoot');
+    // CATEGORY FILTER
+    function filterCategory(cat) {
+      const btns = document.querySelectorAll('.cat-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
 
-    function renderGames(category='all', searchQuery='') {
-      let filtered = allGames;
-      if (category !== 'all') filtered = filtered.filter(g=>g.category===category);
-      if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        filtered = filtered.filter(g=>g.title.toLowerCase().includes(q));
-      }
-      const displayGames = filtered.slice(0, 300);
-      let html = '';
-      displayGames.forEach(game => {
-        if (game.isNative) {
-          html += `<div class="game-card" onclick="startNativeGame(${game.url.replace('native:','')}, '${game.title.replace(/'/g,"\\'")}')">
-            <div class="game-icon-box">${game.icon}</div><h3>${game.title}</h3><span class="tag">Native Dynamic</span></div>`;
-        } else if (game.isAd) {
-          html += `<div class="game-card funny-ad-card" onclick="window.open('${game.url}')">
-            <img src="https://tse1.mm.bing.net/th?q=Funny+Meme+Gaming+${game.id}&w=300&h=300&c=7&rs=1" alt="${game.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-            <div class="game-icon-box" style="display:none;">${game.icon}</div>
-            <h3>🎁 ${game.title}</h3><span class="tag" style="color:#facc15;">Click for Secret!</span></div>`;
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'flex';
         } else {
-          html += `<a href="${game.url}" target="_blank" class="game-card">
-            <img src="https://tse1.mm.bing.net/th?q=${encodeURIComponent(game.title)}+game+icon&w=300&h=300&c=7&rs=1" alt="${game.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-            <div class="game-icon-box" style="display:none;">${game.icon}</div>
-            <h3>${game.title}</h3><span class="tag">${game.category}</span></a>`;
+          card.style.display = 'none';
         }
       });
-      if (filtered.length === 0) html = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#666;">No games found.</div>';
-      gamesGridRoot.innerHTML = html;
     }
 
-    function selectCategory(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('#bottomCategoryBar .category-btn').forEach(btn=>btn.classList.remove('active'));
-      const btn = document.querySelector(`#bottomCategoryBar .category-btn[onclick*="'${cat}'"]`);
-      if (btn) btn.classList.add('active');
-      renderGames(cat, document.getElementById('searchInput').value);
+    // SEARCH FILTER
+    function searchGame() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.game-card');
+      cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        card.style.display = title.includes(input) ? 'flex' : 'none';
+      });
     }
 
-    function filterGames() {
-      renderGames(currentCategory, document.getElementById('searchInput').value);
-    }
-
-    // Initial render
-    renderGames('all');
-
-    // ============================================
-    // NATIVE GAME ENGINE (unchanged, all 30 games)
-    // ============================================
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    let currentGameLoop = null;
-    let mouse = { x:250, y:250, down:false };
-
-    canvas.addEventListener('mousemove', (e)=>{ const rect=canvas.getBoundingClientRect(); mouse.x=e.clientX-rect.left; mouse.y=e.clientY-rect.top; });
-    canvas.addEventListener('mousedown', ()=>mouse.down=true);
-    canvas.addEventListener('mouseup', ()=>mouse.down=false);
-    canvas.addEventListener('touchmove', (e)=>{ e.preventDefault(); const rect=canvas.getBoundingClientRect(); mouse.x=e.touches[0].clientX-rect.left; mouse.y=e.touches[0].clientY-rect.top; }, {passive:false});
-    canvas.addEventListener('touchstart', (e)=>{ e.preventDefault(); mouse.down=true; const rect=canvas.getBoundingClientRect(); mouse.x=e.touches[0].clientX-rect.left; mouse.y=e.touches[0].clientY-rect.top; }, {passive:false});
-    canvas.addEventListener('touchend', ()=>mouse.down=false);
-
-    function startNativeGame(gameId, title) {
-      document.getElementById('modalGameTitle').innerText = title;
-      document.getElementById('gameModal').style.display = 'flex';
-      if (currentGameLoop) cancelAnimationFrame(currentGameLoop);
-      mouse = { x:250, y:250, down:false };
-
-      const gameMap = {
-        1:playFlashlightMaze,2:playGlowChain,3:playShadowRunner,4:playLaserDefense,5:playTorchExplorer,
-        6:playBubblePop,7:playZenSand,8:playFluidCanvas,9:playColorHarmony,10:playRainPiano,
-        11:playGravityBall,12:playNeonPong,13:playBlockStacker,14:playLaserReflect,15:playSpaceDodge,
-        16:playColorSwitch,17:playMemoryMatrix,18:playKnifeThrow,19:playFruitSlice,20:playTunnelRunner,
-        21:playDressupCanvas,22:playMakeupStudio,23:playCakeDecorator,24:playFashionRunway,25:playLoveMeter,
-        26:playDateStory,27:playAnimeDating,28:playNeonPinball,29:playGalaxyShooter,30:playSpeedMath
-      };
-      if (gameMap[gameId]) gameMap[gameId]();
-      else playGenericLightGame(title);
-    }
-
-    function closeNativeGame() {
-      document.getElementById('gameModal').style.display = 'none';
-      if (currentGameLoop) cancelAnimationFrame(currentGameLoop);
-    }
-
-    // All native game functions (playFlashlightMaze, playGlowChain, ...) are identical to the previous version.
-    // I'll include them in the final answer but not repeat them here for brevity.
-
-    // ... (All game functions are present in the actual code)
-
-    // ============================================
-    // FLOATING BALL - TOUCH DRAG ONLY (NO GYRO)
-    // ============================================
+    // DRAGGABLE PURPLE BALL
     const ball = document.getElementById('floatingBall');
-    let posX = window.innerWidth - 90, posY = window.innerHeight - 160;
-    let vx = 0, vy = 0;
-    const gravity = 0.5, bounce = 0.65, friction = 0.98;
-    let isDragging = false, lastMouseX=0, lastMouseY=0;
+    let posX = window.innerWidth - 90, posY = window.innerHeight - 100;
+    let vx = 0, vy = 0, gravity = 0.5, bounce = 0.7;
+    let isDragging = false, lastX = 0, lastY = 0;
 
-    function updateBall() {
+    function animateBall() {
       if (!isDragging) {
-        vy += gravity;
-        vx *= friction;
-        posX += vx;
-        posY += vy;
-        const ballSize = ball.offsetWidth || 70;
-        if (posY + ballSize > window.innerHeight) { posY = window.innerHeight - ballSize; vy *= -bounce; vx *= 0.9; }
+        vy += gravity; posX += vx; posY += vy;
+        if (posY + 70 > window.innerHeight) { posY = window.innerHeight - 70; vy *= -bounce; vx *= 0.95; }
         if (posY < 0) { posY = 0; vy *= -bounce; }
-        if (posX + ballSize > window.innerWidth) { posX = window.innerWidth - ballSize; vx *= -bounce; }
+        if (posX + 70 > window.innerWidth) { posX = window.innerWidth - 70; vx *= -bounce; }
         if (posX < 0) { posX = 0; vx *= -bounce; }
-        ball.style.left = posX + 'px';
-        ball.style.top = posY + 'px';
+        ball.style.left = posX + 'px'; ball.style.top = posY + 'px';
       }
-      requestAnimationFrame(updateBall);
+      requestAnimationFrame(animateBall);
     }
 
-    function startDrag(e) {
+    function startTouch(e) {
       isDragging = true;
-      ball.style.animation = 'none';
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      lastMouseX = clientX; lastMouseY = clientY;
+      lastX = e.touches ? e.touches[0].clientX : e.clientX;
+      lastY = e.touches ? e.touches[0].clientY : e.clientY;
       vx = 0; vy = 0;
     }
 
-    function moveDrag(e) {
+    function moveTouch(e) {
       if (!isDragging) return;
       e.preventDefault();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      vx = (clientX - lastMouseX) * 1.5;
-      vy = (clientY - lastMouseY) * 1.5;
-      const ballSize = ball.offsetWidth || 70;
-      posX = Math.max(0, Math.min(window.innerWidth - ballSize, clientX - ballSize/2));
-      posY = Math.max(0, Math.min(window.innerHeight - ballSize, clientY - ballSize/2));
-      ball.style.left = posX + 'px';
-      ball.style.top = posY + 'px';
-      lastMouseX = clientX; lastMouseY = clientY;
+      const curX = e.touches ? e.touches[0].clientX : e.clientX;
+      const curY = e.touches ? e.touches[0].clientY : e.clientY;
+      vx = curX - lastX; vy = curY - lastY;
+      posX = curX - 35; posY = curY - 35;
+      ball.style.left = posX + 'px'; ball.style.top = posY + 'px';
+      lastX = curX; lastY = curY;
     }
 
-    function endDrag() {
-      if (isDragging) {
-        isDragging = false;
-        ball.style.animation = 'floatBall 3s ease-in-out infinite';
-      }
-    }
+    function endTouch() { isDragging = false; }
 
-    ball.addEventListener('mousedown', startDrag);
-    window.addEventListener('mousemove', (e)=>{ if(isDragging) moveDrag(e); }, {passive:false});
-    window.addEventListener('mouseup', endDrag);
-    ball.addEventListener('touchstart', startDrag, {passive:false});
-    window.addEventListener('touchmove', (e)=>{ if(isDragging) moveDrag(e); }, {passive:false});
-    window.addEventListener('touchend', endDrag);
-    ball.addEventListener('touchstart', (e)=>e.preventDefault());
-    updateBall();
-
-    window.addEventListener('resize', ()=>{
-      const ballSize = ball.offsetWidth || 70;
-      posX = Math.min(posX, window.innerWidth - ballSize);
-      posY = Math.min(posY, window.innerHeight - ballSize);
-    });
-
-    // Adsterra Social Bar
+    ball.addEventListener('mousedown', startTouch);
+    window.addEventListener('mousemove', moveTouch, { passive: false });
+    window.addEventListener('mouseup', endTouch);
+    ball.addEventListener('touchstart', startTouch, { passive: false });
+    window.addEventListener('touchmove', moveTouch, { passive: false });
+    window.addEventListener('touchend', endTouch);
+    animateBall();
   </script>
+
+  <!-- 🎯 Adsterra Social Bar Ad -->
   <script src="https://pl30634565.effectivecpmnetwork.com/68/ad/b4/68adb474ce18ec28f317ed7b086c1b90.js"></script>
 </body>
 </html>
