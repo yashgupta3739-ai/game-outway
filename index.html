@@ -1,774 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIP Calculator - Smart Investment Planner</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
-    </script>
-    <style>
-        :root {
-            --bg: #f0f4f8;
-            --card-bg: #ffffff;
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
-            --primary-light: #eef2ff;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --text-muted: #94a3b8;
-            --border: #e2e8f0;
-            --input-bg: #f8fafc;
-            --focus-ring: rgba(79, 70, 229, 0.25);
-            --invested-color: #4f46e5;
-            --returns-color: #10b981;
-            --returns-light: #ecfdf5;
-            --invested-light: #eef2ff;
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
-            --radius-sm: 8px;
-            --radius: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 20px;
-            --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickTools Hub - Free Image, PDF & Calculator Tools</title>
+  
+  <meta name="description" content="Free online tools for image compression, conversion, QR code generation, password creation, age calculator, BMI, and EMI calculations.">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <!-- 🎯 Adsterra Popunder Ad Script -->
+  <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
 
-        body {
-            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+  <!-- jsPDF CDN for Client-Side PDF Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-        /* Subtle animated background gradient */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 15% 20%, rgba(79, 70, 229, 0.04) 0%, transparent 55%),
-                radial-gradient(ellipse at 85% 75%, rgba(16, 185, 129, 0.04) 0%, transparent 55%),
-                radial-gradient(ellipse at 50% 50%, rgba(148, 163, 184, 0.03) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
 
-        .calculator-wrapper {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 900px;
-        }
+    /* 🤍 CLEAN WHITE THEME */
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-        .header .icon-circle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: var(--primary-light);
-            margin-bottom: 10px;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.18);
-        }
-        .header .icon-circle svg {
-            width: 26px;
-            height: 26px;
-            color: var(--primary);
-        }
-        .header h1 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            margin: 0;
-        }
-        .header p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin: 4px 0 0;
-            font-weight: 400;
-        }
+    .container {
+      width: 100%;
+      max-width: 800px;
+    }
 
-        /* Main Card */
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--radius-xl);
-            padding: 32px 28px 28px;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--border);
-            transition: box-shadow var(--transition);
-        }
-        .card:hover {
-            box-shadow: var(--shadow-xl), 0 0 0 1px rgba(79, 70, 229, 0.06);
-        }
+    /* HEADER */
+    header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-        /* Layout */
-        .calculator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: start;
-        }
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
 
-        @media (max-width: 768px) {
-            .calculator-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            .card {
-                padding: 22px 16px 20px;
-                border-radius: var(--radius-lg);
-            }
-            .header h1 {
-                font-size: 1.45rem;
-            }
-            .header .icon-circle {
-                width: 42px;
-                height: 42px;
-            }
-            .header .icon-circle svg {
-                width: 22px;
-                height: 22px;
-            }
-            .results-section {
-                padding-top: 0;
-                border-top: 1px solid var(--border);
-                padding-top: 20px;
-            }
-        }
-        @media (max-width: 400px) {
-            body {
-                padding: 10px;
-            }
-            .card {
-                padding: 18px 12px 16px;
-                border-radius: var(--radius);
-            }
-            .input-group label {
-                font-size: 0.8rem;
-            }
-        }
+    .logo span { color: #6d28d9; }
 
-        /* Input Section */
-        .input-section h2 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-bottom: 18px;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .input-section h2::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
+    .subtitle {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 4px;
+    }
 
-        .input-group {
-            margin-bottom: 18px;
-        }
-        .input-group label {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-light);
-            margin-bottom: 6px;
-            letter-spacing: -0.01em;
-        }
-        .input-group label .unit {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
+    /* TABS NAVIGATION */
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+      scrollbar-width: none;
+    }
 
-        .input-row {
-            display: flex;
-            align-items: center;
-            background: var(--input-bg);
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius);
-            padding: 0 14px;
-            transition: all var(--transition);
-            overflow: hidden;
-        }
-        .input-row:focus-within {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--focus-ring);
-            background: #fff;
-        }
-        .input-row .prefix {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-right: 2px;
-            user-select: none;
-            flex-shrink: 0;
-        }
-        .input-row .suffix {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-left: 4px;
-            user-select: none;
-            flex-shrink: 0;
-        }
-        .input-row input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            padding: 13px 4px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text);
-            outline: none;
-            font-family: inherit;
-            letter-spacing: -0.01em;
-            min-width: 0;
-            -moz-appearance: textfield;
-        }
-        .input-row input::-webkit-outer-spin-button,
-        .input-row input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        .input-row input::placeholder {
-            color: #cbd5e1;
-        }
+    .tabs::-webkit-scrollbar { display: none; }
 
-        /* Quick select pills */
-        .quick-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 7px;
-        }
-        .quick-pill {
-            font-size: 0.72rem;
-            font-weight: 500;
-            padding: 5px 11px;
-            border-radius: 20px;
-            border: 1.2px solid var(--border);
-            background: #fff;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: all var(--transition);
-            user-select: none;
-            white-space: nowrap;
-        }
-        .quick-pill:hover {
-            background: var(--primary-light);
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        .quick-pill.active {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-            font-weight: 600;
-        }
+    .tab-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      color: #64748b;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: all 0.2s;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
 
-        /* Results Section */
-        .results-section {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .results-section h2 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-bottom: 0;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .results-section h2::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 20px;
-            background: var(--returns-color);
-            border-radius: 2px;
-        }
+    .tab-btn.active, .tab-btn:hover {
+      background: #7c3aed;
+      color: #ffffff;
+      border-color: #7c3aed;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+    }
 
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 260px;
-            margin: 0 auto;
-            aspect-ratio: 1 / 1;
-        }
-        @media (max-width: 768px) {
-            .chart-container {
-                max-width: 200px;
-            }
-        }
+    /* SECTION PANELS */
+    .section-panel {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-        /* Stat cards */
-        .stat-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        .stat-card {
-            background: var(--input-bg);
-            border-radius: var(--radius);
-            padding: 14px 12px;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all var(--transition);
-        }
-        .stat-card.invested {
-            border-left: 3px solid var(--invested-color);
-            background: var(--invested-light);
-        }
-        .stat-card.returns {
-            border-left: 3px solid var(--returns-color);
-            background: var(--returns-light);
-        }
-        .stat-card.total {
-            grid-column: 1 / -1;
-            border-left: 3px solid #f59e0b;
-            background: #fffbeb;
-        }
-        .stat-card .stat-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-        .stat-card .stat-value {
-            font-size: 1.15rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--text);
-            word-break: break-word;
-        }
-        .stat-card.invested .stat-value {
-            color: var(--invested-color);
-        }
-        .stat-card.returns .stat-value {
-            color: var(--returns-color);
-        }
-        .stat-card.total .stat-value {
-            color: #b45309;
-        }
+    .section-panel.active { display: flex; }
 
-        /* Legend */
-        .chart-legend {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 4px;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.78rem;
-            font-weight: 500;
-            color: var(--text-light);
-        }
-        .legend-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-        .legend-dot.invested-dot {
-            background: var(--invested-color);
-        }
-        .legend-dot.returns-dot {
-            background: var(--returns-color);
-        }
+    /* TOOL CARDS (WHITE CARDS WITH SOFT SHADOW) */
+    .tool-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
 
-        /* Disclaimer */
-        .disclaimer {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 18px;
-            letter-spacing: 0.01em;
-        }
+    .tool-card h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #6d28d9;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        /* Focus visible */
-        .input-row input:focus-visible {
-            outline: none;
-        }
-    </style>
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      color: #0f172a;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: #7c3aed;
+      background: #ffffff;
+    }
+
+    .action-btn {
+      padding: 11px 18px;
+      background: #7c3aed;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    .action-btn:hover { background: #6d28d9; }
+
+    .result-box {
+      margin-top: 15px;
+      padding: 14px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    /* GRID LAYOUT FOR CALCULATORS */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 12px; }
+      .tool-card { padding: 16px; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="calculator-wrapper">
-        <!-- Header -->
-        <div class="header">
-            <div class="icon-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                </svg>
-            </div>
-            <h1>SIP Calculator</h1>
-            <p>Plan your systematic investment & visualize growth</p>
-        </div>
+  <div class="container">
+    <header>
+      <div class="logo">Quick<span>Tools</span> Hub</div>
+      <p class="subtitle">Free & Unlimited Utility Tools Portal</p>
+    </header>
 
-        <!-- Main Card -->
-        <div class="card">
-            <div class="calculator-grid">
-                <!-- Left: Inputs -->
-                <div class="input-section">
-                    <h2>Investment Details</h2>
-
-                    <!-- Monthly SIP Amount -->
-                    <div class="input-group">
-                        <label>Monthly SIP Amount <span class="unit">₹</span></label>
-                        <div class="input-row">
-                            <span class="prefix">₹</span>
-                            <input type="number" id="sipAmount" value="10000" min="500" max="10000000" step="500" placeholder="e.g. 10,000">
-                        </div>
-                        <div class="quick-pills" id="amountPills">
-                            <span class="quick-pill" data-value="2000">₹2K</span>
-                            <span class="quick-pill" data-value="5000">₹5K</span>
-                            <span class="quick-pill active" data-value="10000">₹10K</span>
-                            <span class="quick-pill" data-value="25000">₹25K</span>
-                            <span class="quick-pill" data-value="50000">₹50K</span>
-                        </div>
-                    </div>
-
-                    <!-- Expected Return Rate -->
-                    <div class="input-group">
-                        <label>Expected Annual Return <span class="unit">%</span></label>
-                        <div class="input-row">
-                            <input type="number" id="returnRate" value="12" min="1" max="30" step="0.5" placeholder="e.g. 12">
-                            <span class="suffix">%</span>
-                        </div>
-                        <div class="quick-pills" id="ratePills">
-                            <span class="quick-pill" data-value="8">8%</span>
-                            <span class="quick-pill" data-value="10">10%</span>
-                            <span class="quick-pill active" data-value="12">12%</span>
-                            <span class="quick-pill" data-value="15">15%</span>
-                            <span class="quick-pill" data-value="18">18%</span>
-                        </div>
-                    </div>
-
-                    <!-- Time Period -->
-                    <div class="input-group">
-                        <label>Investment Duration <span class="unit">Years</span></label>
-                        <div class="input-row">
-                            <input type="number" id="timePeriod" value="10" min="1" max="40" step="1" placeholder="e.g. 10">
-                            <span class="suffix">Yrs</span>
-                        </div>
-                        <div class="quick-pills" id="yearPills">
-                            <span class="quick-pill" data-value="3">3 Yrs</span>
-                            <span class="quick-pill" data-value="5">5 Yrs</span>
-                            <span class="quick-pill" data-value="10" class="active">10 Yrs</span>
-                            <span class="quick-pill" data-value="15">15 Yrs</span>
-                            <span class="quick-pill" data-value="20">20 Yrs</span>
-                            <span class="quick-pill" data-value="25">25 Yrs</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Results & Chart -->
-                <div class="results-section">
-                    <h2>Projected Wealth</h2>
-                    <div class="chart-container">
-                        <canvas id="pieChart" aria-label="Pie chart showing invested amount vs estimated returns" role="img"></canvas>
-                    </div>
-                    <div class="chart-legend">
-                        <div class="legend-item">
-                            <span class="legend-dot invested-dot"></span> Invested
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot returns-dot"></span> Est. Returns
-                        </div>
-                    </div>
-                    <div class="stat-cards">
-                        <div class="stat-card invested">
-                            <div class="stat-label">Total Invested</div>
-                            <div class="stat-value" id="totalInvested">₹12,00,000</div>
-                        </div>
-                        <div class="stat-card returns">
-                            <div class="stat-label">Est. Returns</div>
-                            <div class="stat-value" id="totalReturns">₹11,23,391</div>
-                        </div>
-                        <div class="stat-card total">
-                            <div class="stat-label">Maturity Value</div>
-                            <div class="stat-value" id="maturityValue">₹23,23,391</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p class="disclaimer">
-                * This is an estimate for illustration purposes only. Actual returns may vary based on market conditions.
-            </p>
-        </div>
+    <!-- NAVIGATION TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchSection('image-tools')">🖼️ Image Tools</button>
+      <button class="tab-btn" onclick="switchSection('pdf-tools')">📄 PDF & Text Tools</button>
+      <button class="tab-btn" onclick="switchSection('calc-tools')">🧮 Calculators</button>
     </div>
 
-    <script>
-        (function() {
-            // DOM elements
-            const sipAmountInput = document.getElementById('sipAmount');
-            const returnRateInput = document.getElementById('returnRate');
-            const timePeriodInput = document.getElementById('timePeriod');
-            const totalInvestedEl = document.getElementById('totalInvested');
-            const totalReturnsEl = document.getElementById('totalReturns');
-            const maturityValueEl = document.getElementById('maturityValue');
-            const amountPills = document.getElementById('amountPills');
-            const ratePills = document.getElementById('ratePills');
-            const yearPills = document.getElementById('yearPills');
+    <!-- ================= 1. IMAGE TOOLS SECTION ================= -->
+    <div id="image-tools" class="section-panel active">
+      
+      <!-- Image Compressor -->
+      <div class="tool-card">
+        <h3>⚡ Image Compressor</h3>
+        <div class="form-group">
+          <label>Select Image (JPG/PNG)</label>
+          <input type="file" id="compInput" accept="image/*" class="input-field">
+        </div>
+        <div class="form-group">
+          <label>Compression Quality: <span id="compQualityVal">70%</span></label>
+          <input type="range" id="compQuality" min="10" max="90" value="70" oninput="document.getElementById('compQualityVal').innerText=this.value+'%'">
+        </div>
+        <button class="action-btn" onclick="compressImage()">Compress & Download</button>
+      </div>
 
-            let pieChart = null;
-            const chartCtx = document.getElementById('pieChart').getContext('2d');
+      <!-- JPG to PNG / WebP Converter -->
+      <div class="tool-card">
+        <h3>🔄 JPG / PNG to WebP & PNG Converter</h3>
+        <div class="form-group">
+          <label>Select Image File</label>
+          <input type="file" id="convertInput" accept="image/*" class="input-field">
+        </div>
+        <div class="form-group">
+          <label>Select Target Format</label>
+          <select id="targetFormat" class="input-field">
+            <option value="image/png">PNG</option>
+            <option value="image/webp">WebP</option>
+            <option value="image/jpeg">JPG</option>
+          </select>
+        </div>
+        <button class="action-btn" onclick="convertFormat()">Convert & Download</button>
+      </div>
 
-            // Format Indian currency
-            function formatIndianCurrency(num) {
-                if (num === undefined || num === null || isNaN(num)) return '₹0';
-                num = Math.round(num);
-                const numStr = num.toString();
-                if (numStr.length <= 3) return '₹' + numStr;
-                const lastThree = numStr.substring(numStr.length - 3);
-                const otherNumbers = numStr.substring(0, numStr.length - 3);
-                const formatted = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + lastThree;
-                return '₹' + formatted;
-            }
+      <!-- QR Code Generator -->
+      <div class="tool-card">
+        <h3>📲 QR Code Generator</h3>
+        <div class="form-group">
+          <label>Enter Website URL or Text</label>
+          <input type="text" id="qrText" placeholder="https://example.com" class="input-field">
+        </div>
+        <button class="action-btn" onclick="generateQR()">Generate QR Code</button>
+        <div id="qrResult" class="result-box" style="display:none; text-align:center;">
+          <img id="qrImg" src="" alt="QR Code" style="margin-bottom:10px; border-radius:8px; border:1px solid #cbd5e1;">
+          <br>
+          <a id="qrDownload" href="" download="qrcode.png" class="action-btn" style="display:inline-block; text-decoration:none; width:auto; padding:8px 18px;">Download QR Code</a>
+        </div>
+      </div>
 
-            // Calculate SIP future value
-            function calculateSIP(monthlyAmount, annualRate, years) {
-                const months = years * 12;
-                const monthlyRate = annualRate / 100 / 12;
+    </div>
 
-                if (monthlyRate === 0) {
-                    const totalInvested = monthlyAmount * months;
-                    return {
-                        totalInvested: totalInvested,
-                        totalReturns: 0,
-                        maturityValue: totalInvested,
-                    };
-                }
+    <!-- ================= 2. PDF & TEXT TOOLS SECTION ================= -->
+    <div id="pdf-tools" class="section-panel">
+      
+      <!-- Text / Document to PDF Generator -->
+      <div class="tool-card">
+        <h3>📄 Text & Notes to PDF Converter</h3>
+        <div class="form-group">
+          <label>Document Title</label>
+          <input type="text" id="pdfTitle" placeholder="My Document Title" class="input-field">
+        </div>
+        <div class="form-group">
+          <label>Document Content</label>
+          <textarea id="pdfContent" placeholder="Type your notes or text here..." class="input-field" style="height:100px; resize:vertical;"></textarea>
+        </div>
+        <button class="action-btn" onclick="createPDF()">Generate & Download PDF</button>
+      </div>
 
-                // FV = P * [(1 + i)^n - 1] / i * (1 + i)
-                const compoundFactor = Math.pow(1 + monthlyRate, months);
-                const futureValue = monthlyAmount * ((compoundFactor - 1) / monthlyRate) * (1 + monthlyRate);
-                const totalInvested = monthlyAmount * months;
-                const totalReturns = futureValue - totalInvested;
+      <!-- Secure Password Generator -->
+      <div class="tool-card">
+        <h3>🔑 Secure Password Generator</h3>
+        <div class="form-group">
+          <label>Password Length: <span id="passLenVal">14</span></label>
+          <input type="range" id="passLen" min="8" max="32" value="14" oninput="document.getElementById('passLenVal').innerText=this.value">
+        </div>
+        <button class="action-btn" onclick="generatePassword()">Generate Password</button>
+        <div id="passResult" class="result-box" style="display:none; font-family:monospace; font-size:16px; font-weight:bold; color:#6d28d9;"></div>
+      </div>
 
-                return {
-                    totalInvested: Math.round(totalInvested),
-                    totalReturns: Math.round(totalReturns),
-                    maturityValue: Math.round(futureValue),
-                };
-            }
+    </div>
 
-            // Update UI
-            function updateResults() {
-                const amount = parseFloat(sipAmountInput.value) || 0;
-                const rate = parseFloat(returnRateInput.value) || 0;
-                const years = parseFloat(timePeriodInput.value) || 0;
+    <!-- ================= 3. CALCULATORS SECTION ================= -->
+    <div id="calc-tools" class="section-panel">
+      
+      <!-- Age Calculator -->
+      <div class="tool-card">
+        <h3>🎂 Age Calculator</h3>
+        <div class="form-group">
+          <label>Select Date of Birth</label>
+          <input type="date" id="dobInput" class="input-field">
+        </div>
+        <button class="action-btn" onclick="calculateAge()">Calculate Age</button>
+        <div id="ageResult" class="result-box" style="display:none;"></div>
+      </div>
 
-                const result = calculateSIP(amount, rate, years);
+      <!-- BMI Calculator -->
+      <div class="tool-card">
+        <h3>⚖️ BMI Calculator</h3>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Height (cm)</label>
+            <input type="number" id="bmiHeight" placeholder="170" class="input-field">
+          </div>
+          <div class="form-group">
+            <label>Weight (kg)</label>
+            <input type="number" id="bmiWeight" placeholder="65" class="input-field">
+          </div>
+        </div>
+        <button class="action-btn" onclick="calculateBMI()">Calculate BMI</button>
+        <div id="bmiResult" class="result-box" style="display:none;"></div>
+      </div>
 
-                totalInvestedEl.textContent = formatIndianCurrency(result.totalInvested);
-                totalReturnsEl.textContent = formatIndianCurrency(result.totalReturns);
-                maturityValueEl.textContent = formatIndianCurrency(result.maturityValue);
+      <!-- EMI Calculator -->
+      <div class="tool-card">
+        <h3>💳 Loan EMI Calculator</h3>
+        <div class="form-group">
+          <label>Loan Amount (₹)</label>
+          <input type="number" id="emiAmount" placeholder="100000" class="input-field">
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Interest Rate (% per year)</label>
+            <input type="number" step="0.1" id="emiRate" placeholder="10.5" class="input-field">
+          </div>
+          <div class="form-group">
+            <label>Tenure (Months)</label>
+            <input type="number" id="emiTenure" placeholder="12" class="input-field">
+          </div>
+        </div>
+        <button class="action-btn" onclick="calculateEMI()">Calculate Monthly EMI</button>
+        <div id="emiResult" class="result-box" style="display:none;"></div>
+      </div>
 
-                // Update pie chart
-                const invested = result.totalInvested;
-                const returns = Math.max(0, result.totalReturns);
+    </div>
 
-                if (pieChart) {
-                    pieChart.data.datasets[0].data = [invested, returns];
-                    pieChart.update('none');
-                }
-            }
+  </div>
 
-            // Initialize pie chart
-            function initPieChart() {
-                if (pieChart) {
-                    pieChart.destroy();
-                }
-                pieChart = new Chart(chartCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Invested Amount', 'Est. Returns'],
-                        datasets: [{
-                            data: [1200000, 1123391],
-                            backgroundColor: ['#4f46e5', '#10b981'],
-                            borderColor: ['#ffffff', '#ffffff'],
-                            borderWidth: 3,
-                            hoverBorderColor: ['#ffffff', '#ffffff'],
-                            hoverBorderWidth: 4,
-                            borderRadius: 6,
-                            spacing: 3,
-                        }],
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        cutout: '62%',
-                        plugins: {
-                            legend: {
-                                display: false,
-                            },
-                            tooltip: {
-                                backgroundColor: '#1e293b',
-                                titleFont: { family: 'Inter, system-ui, sans-serif', size: 13, weight: '600' },
-                                bodyFont: { family: 'Inter, system-ui, sans-serif', size: 12 },
-                                padding: 12,
-                                cornerRadius: 8,
-                                displayColors: true,
-                                boxPadding: 4,
-                                callbacks: {
-                                    label: function(context) {
-                                        let value = context.parsed;
-                                        return ' ' + context.label + ': ' + formatIndianCurrency(value);
-                                    },
-                                },
-                            },
-                        },
-                        animation: {
-                            animateScale: true,
-                            animateRotate: true,
-                            duration: 600,
-                            easing: 'easeInOutQuart',
-                        },
-                    },
-                });
-            }
+  <script>
+    // 🔀 TAB SWITCHER
+    function switchSection(sectionId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById(sectionId).classList.add('active');
+    }
 
-            // Handle quick pill clicks
-            function setupQuickPills(container, inputElement, isYearPill = false) {
-                container.addEventListener('click', function(e) {
-                    const pill = e.target.closest('.quick-pill');
-                    if (!pill) return;
-                    const value = pill.getAttribute('data-value');
-                    if (value === null) return;
-                    inputElement.value = value;
-                    // Update active state
-                    container.querySelectorAll('.quick-pill').forEach(p => p.classList.remove(
-                        'active'));
-                    pill.classList.add('active');
-                    updateResults();
-                    // Add subtle pulse animation trigger
-                    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
-                });
-            }
+    // 🖼️ 1. IMAGE COMPRESSOR
+    function compressImage() {
+      const file = document.getElementById('compInput').files[0];
+      if (!file) { alert("Please select an image file first!"); return; }
 
-            // Sync pills with manual input
-            function syncPills(container, inputElement) {
-                const currentValue = inputElement.value.trim();
-                const pills = container.querySelectorAll('.quick-pill');
-                let found = false;
-                pills.forEach(pill => {
-                    if (pill.getAttribute('data-value') === currentValue) {
-                        pill.classList.add('active');
-                        found = true;
-                    } else {
-                        pill.classList.remove('active');
-                    }
-                });
-                // If exact match not found, remove all active
-                if (!found && currentValue !== '') {
-                    pills.forEach(p => p.classList.remove('active'));
-                }
-            }
+      const quality = parseFloat(document.getElementById('compQuality').value) / 100;
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
 
-            // Set up all event listeners
-            function setupEventListeners() {
-                // Input events
-                [sipAmountInput, returnRateInput, timePeriodInput].forEach(input => {
-                    input.addEventListener('input', function() {
-                        updateResults();
-                        // Sync corresponding pills
-                        if (input === sipAmountInput) syncPills(amountPills, sipAmountInput);
-                        if (input === returnRateInput) syncPills(ratePills, returnRateInput);
-                        if (input === timePeriodInput) syncPills(yearPills, timePeriodInput);
-                    });
-                    input.addEventListener('change', function() {
-                        updateResults();
-                        if (input === sipAmountInput) syncPills(amountPills, sipAmountInput);
-                        if (input === returnRateInput) syncPills(ratePills, returnRateInput);
-                        if (input === timePeriodInput) syncPills(yearPills, timePeriodInput);
-                    });
-                    // Also handle blur for safety
-                    input.addEventListener('blur', function() {
-                        if (input.value === '' || parseFloat(input.value) < 0) {
-                            input.value = input.getAttribute('min') || 0;
-                        }
-                        updateResults();
-                        if (input === sipAmountInput) syncPills(amountPills, sipAmountInput);
-                        if (input === returnRateInput) syncPills(ratePills, returnRateInput);
-                        if (input === timePeriodInput) syncPills(yearPills, timePeriodInput);
-                    });
-                });
+          canvas.toBlob((blob) => {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = "compressed_" + file.name;
+            link.click();
+          }, 'image/jpeg', quality);
+        };
+      };
+    }
 
-                // Quick pills
-                setupQuickPills(amountPills, sipAmountInput);
-                setupQuickPills(ratePills, returnRateInput);
-                setupQuickPills(yearPills, timePeriodInput, true);
+    // 🔄 2. CONVERT FORMAT
+    function convertFormat() {
+      const file = document.getElementById('convertInput').files[0];
+      const targetMime = document.getElementById('targetFormat').value;
+      if (!file) { alert("Please select an image file first!"); return; }
 
-                // Keyboard accessibility for pills
-                document.querySelectorAll('.quick-pill').forEach(pill => {
-                    pill.setAttribute('tabindex', '0');
-                    pill.setAttribute('role', 'button');
-                    pill.addEventListener('keydown', function(e) {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            pill.click();
-                        }
-                    });
-                });
-            }
+      const ext = targetMime.split('/')[1];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
 
-            // Initial setup
-            function init() {
-                initPieChart();
-                setupEventListeners();
-                updateResults();
-                // Initial sync of pills
-                syncPills(amountPills, sipAmountInput);
-                syncPills(ratePills, returnRateInput);
-                syncPills(yearPills, timePeriodInput);
-            }
+          const convertedUrl = canvas.toDataURL(targetMime);
+          const link = document.createElement('a');
+          link.href = convertedUrl;
+          link.download = `converted_image.${ext}`;
+          link.click();
+        };
+      };
+    }
 
-            // Run on DOM ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', init);
-            } else {
-                init();
-            }
-        })();
-    </script>
+    // 📲 3. QR CODE GENERATOR
+    function generateQR() {
+      const text = document.getElementById('qrText').value.trim();
+      if (!text) { alert("Please enter a URL or text!"); return; }
+
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(text)}`;
+      document.getElementById('qrImg').src = qrUrl;
+      document.getElementById('qrDownload').href = qrUrl;
+      document.getElementById('qrResult').style.display = 'block';
+    }
+
+    // 📄 4. PDF GENERATOR
+    function createPDF() {
+      const title = document.getElementById('pdfTitle').value.trim() || "Document";
+      const content = document.getElementById('pdfContent').value.trim();
+      if (!content) { alert("Please enter text content for your PDF!"); return; }
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text(title, 20, 20);
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(12);
+      const splitText = doc.splitTextToSize(content, 170);
+      doc.text(splitText, 20, 35);
+
+      doc.save(`${title.replace(/\s+/g, '_')}.pdf`);
+    }
+
+    // 🔑 5. PASSWORD GENERATOR
+    function generatePassword() {
+      const len = parseInt(document.getElementById('passLen').value);
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*!";
+      let pass = "";
+      for (let i = 0; i < len; i++) {
+        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      const res = document.getElementById('passResult');
+      res.innerText = pass;
+      res.style.display = 'block';
+    }
+
+    // 🎂 6. AGE CALCULATOR
+    function calculateAge() {
+      const dobVal = document.getElementById('dobInput').value;
+      if (!dobVal) { alert("Please select your date of birth!"); return; }
+
+      const dob = new Date(dobVal);
+      const today = new Date();
+
+      let years = today.getFullYear() - dob.getFullYear();
+      let months = today.getMonth() - dob.getMonth();
+      let days = today.getDate() - dob.getDate();
+
+      if (days < 0) {
+        months--;
+        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      const res = document.getElementById('ageResult');
+      res.innerHTML = `You are <b>${years} Years, ${months} Months, and ${days} Days</b> old.`;
+      res.style.display = 'block';
+    }
+
+    // ⚖️ 7. BMI CALCULATOR
+    function calculateBMI() {
+      const h = parseFloat(document.getElementById('bmiHeight').value);
+      const w = parseFloat(document.getElementById('bmiWeight').value);
+
+      if (!h || !w || h <= 0 || w <= 0) { alert("Please enter valid height and weight!"); return; }
+
+      const bmi = (w / ((h / 100) * (h / 100))).toFixed(1);
+      let status = "";
+      if (bmi < 18.5) status = "Underweight 🔵";
+      else if (bmi < 24.9) status = "Normal Weight 🟢";
+      else if (bmi < 29.9) status = "Overweight 🟡";
+      else status = "Obese 🔴";
+
+      const res = document.getElementById('bmiResult');
+      res.innerHTML = `Your BMI is <b>${bmi}</b> (${status})`;
+      res.style.display = 'block';
+    }
+
+    // 💳 8. EMI CALCULATOR
+    function calculateEMI() {
+      const P = parseFloat(document.getElementById('emiAmount').value);
+      const annualRate = parseFloat(document.getElementById('emiRate').value);
+      const n = parseInt(document.getElementById('emiTenure').value);
+
+      if (!P || !annualRate || !n) { alert("Please enter all EMI details!"); return; }
+
+      const r = (annualRate / 12) / 100;
+      const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      const totalPayment = emi * n;
+      const totalInterest = totalPayment - P;
+
+      const res = document.getElementById('emiResult');
+      res.innerHTML = `Monthly EMI: <b>₹${Math.round(emi).toLocaleString()}</b><br><small style="color:#64748b">Total Interest: ₹${Math.round(totalInterest).toLocaleString()}</small>`;
+      res.style.display = 'block';
+    }
+  </script>
+
+  <!-- 🎯 Adsterra Social Bar Ad Script -->
+  <script src="https://pl30634565.effectivecpmnetwork.com/68/ad/b4/68adb474ce18ec28f317ed7b086c1b90.js"></script>
 </body>
 </html>
