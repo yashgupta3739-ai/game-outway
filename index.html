@@ -1,446 +1,774 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToolBox Pro - Free Online Productivity & Dev Tools</title>
-  
-  <meta name="description" content="Use free online productivity tools including Typing Speed Test, Text Formatter, Password Generator, and Stopwatch.">
-  <meta name="robots" content="index, follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIP Calculator - Smart Investment Planner</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js">
+    </script>
+    <style>
+        :root {
+            --bg: #f0f4f8;
+            --card-bg: #ffffff;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --primary-light: #eef2ff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --input-bg: #f8fafc;
+            --focus-ring: rgba(79, 70, 229, 0.25);
+            --invested-color: #4f46e5;
+            --returns-color: #10b981;
+            --returns-light: #ecfdf5;
+            --invested-light: #eef2ff;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.12), 0 8px 20px rgba(0, 0, 0, 0.06);
+            --radius-sm: 8px;
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-  <!-- 🎯 Adsterra Popunder Ad Code -->
-  <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    body {
-      background-color: #09090b;
-      color: #f4f4f5;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+        /* Subtle animated background gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(79, 70, 229, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 75%, rgba(16, 185, 129, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 50%, rgba(148, 163, 184, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    .container {
-      width: 100%;
-      max-width: 650px;
-    }
+        .calculator-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 900px;
+        }
 
-    /* HEADER */
-    header {
-      text-align: center;
-      margin-bottom: 25px;
-    }
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .header .icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.18);
+        }
+        .header .icon-circle svg {
+            width: 26px;
+            height: 26px;
+            color: var(--primary);
+        }
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin: 0;
+        }
+        .header p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 4px 0 0;
+            font-weight: 400;
+        }
 
-    .logo {
-      font-size: 26px;
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: -0.5px;
-    }
+        /* Main Card */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-xl);
+            padding: 32px 28px 28px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border);
+            transition: box-shadow var(--transition);
+        }
+        .card:hover {
+            box-shadow: var(--shadow-xl), 0 0 0 1px rgba(79, 70, 229, 0.06);
+        }
 
-    .logo span {
-      color: #a855f7;
-    }
+        /* Layout */
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
 
-    .subtitle {
-      font-size: 13px;
-      color: #a1a1aa;
-      margin-top: 4px;
-    }
+        @media (max-width: 768px) {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .card {
+                padding: 22px 16px 20px;
+                border-radius: var(--radius-lg);
+            }
+            .header h1 {
+                font-size: 1.45rem;
+            }
+            .header .icon-circle {
+                width: 42px;
+                height: 42px;
+            }
+            .header .icon-circle svg {
+                width: 22px;
+                height: 22px;
+            }
+            .results-section {
+                padding-top: 0;
+                border-top: 1px solid var(--border);
+                padding-top: 20px;
+            }
+        }
+        @media (max-width: 400px) {
+            body {
+                padding: 10px;
+            }
+            .card {
+                padding: 18px 12px 16px;
+                border-radius: var(--radius);
+            }
+            .input-group label {
+                font-size: 0.8rem;
+            }
+        }
 
-    /* NAVIGATION TABS */
-    .tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-      overflow-x: auto;
-      padding-bottom: 5px;
-      scrollbar-width: none;
-    }
+        /* Input Section */
+        .input-section h2 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 18px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .input-section h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
 
-    .tabs::-webkit-scrollbar { display: none; }
+        .input-group {
+            margin-bottom: 18px;
+        }
+        .input-group label {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-light);
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+        .input-group label .unit {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
 
-    .tab-btn {
-      flex: 1;
-      padding: 10px 14px;
-      border: 1px solid #27272a;
-      background: #121216;
-      color: #a1a1aa;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 13px;
-      white-space: nowrap;
-      transition: all 0.2s;
-      text-align: center;
-    }
+        .input-row {
+            display: flex;
+            align-items: center;
+            background: var(--input-bg);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 0 14px;
+            transition: all var(--transition);
+            overflow: hidden;
+        }
+        .input-row:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--focus-ring);
+            background: #fff;
+        }
+        .input-row .prefix {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-right: 2px;
+            user-select: none;
+            flex-shrink: 0;
+        }
+        .input-row .suffix {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-left: 4px;
+            user-select: none;
+            flex-shrink: 0;
+        }
+        .input-row input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 13px 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            outline: none;
+            font-family: inherit;
+            letter-spacing: -0.01em;
+            min-width: 0;
+            -moz-appearance: textfield;
+        }
+        .input-row input::-webkit-outer-spin-button,
+        .input-row input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .input-row input::placeholder {
+            color: #cbd5e1;
+        }
 
-    .tab-btn.active, .tab-btn:hover {
-      background: #a855f7;
-      color: #ffffff;
-      border-color: #a855f7;
-    }
+        /* Quick select pills */
+        .quick-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 7px;
+        }
+        .quick-pill {
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 5px 11px;
+            border-radius: 20px;
+            border: 1.2px solid var(--border);
+            background: #fff;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all var(--transition);
+            user-select: none;
+            white-space: nowrap;
+        }
+        .quick-pill:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .quick-pill.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            font-weight: 600;
+        }
 
-    /* TOOL PANELS */
-    .tool-panel {
-      background: #121216;
-      border: 1px solid #27272a;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      display: none;
-    }
+        /* Results Section */
+        .results-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .results-section h2 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 0;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .results-section h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--returns-color);
+            border-radius: 2px;
+        }
 
-    .tool-panel.active {
-      display: block;
-    }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 260px;
+            margin: 0 auto;
+            aspect-ratio: 1 / 1;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                max-width: 200px;
+            }
+        }
 
-    .tool-panel h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #ffffff;
-      font-weight: 700;
-    }
+        /* Stat cards */
+        .stat-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .stat-card {
+            background: var(--input-bg);
+            border-radius: var(--radius);
+            padding: 14px 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all var(--transition);
+        }
+        .stat-card.invested {
+            border-left: 3px solid var(--invested-color);
+            background: var(--invested-light);
+        }
+        .stat-card.returns {
+            border-left: 3px solid var(--returns-color);
+            background: var(--returns-light);
+        }
+        .stat-card.total {
+            grid-column: 1 / -1;
+            border-left: 3px solid #f59e0b;
+            background: #fffbeb;
+        }
+        .stat-card .stat-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .stat-card .stat-value {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            word-break: break-word;
+        }
+        .stat-card.invested .stat-value {
+            color: var(--invested-color);
+        }
+        .stat-card.returns .stat-value {
+            color: var(--returns-color);
+        }
+        .stat-card.total .stat-value {
+            color: #b45309;
+        }
 
-    /* TYPING TEST STYLES */
-    .stats-row {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
+        /* Legend */
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        .legend-dot.invested-dot {
+            background: var(--invested-color);
+        }
+        .legend-dot.returns-dot {
+            background: var(--returns-color);
+        }
 
-    .stat-card {
-      flex: 1;
-      background: #18181b;
-      border: 1px solid #27272a;
-      padding: 12px;
-      border-radius: 10px;
-      text-align: center;
-    }
+        /* Disclaimer */
+        .disclaimer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 18px;
+            letter-spacing: 0.01em;
+        }
 
-    .stat-card h3 { font-size: 20px; color: #a855f7; }
-    .stat-card p { font-size: 11px; color: #71717a; text-transform: uppercase; margin-top: 2px; }
-
-    .passage-box {
-      background: #18181b;
-      border: 1px solid #27272a;
-      border-radius: 10px;
-      padding: 14px;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #d4d4d8;
-      margin-bottom: 15px;
-      user-select: none;
-    }
-
-    .text-input {
-      width: 100%;
-      height: 90px;
-      background: #09090b;
-      border: 1px solid #27272a;
-      border-radius: 10px;
-      color: #ffffff;
-      padding: 12px;
-      font-size: 14px;
-      outline: none;
-      resize: none;
-      margin-bottom: 15px;
-    }
-
-    .text-input:focus { border-color: #a855f7; }
-
-    /* TEXT FORMATTER STYLES */
-    .textarea-large {
-      width: 100%;
-      height: 130px;
-      background: #09090b;
-      border: 1px solid #27272a;
-      border-radius: 10px;
-      color: #ffffff;
-      padding: 12px;
-      font-size: 14px;
-      outline: none;
-      resize: vertical;
-      margin-bottom: 15px;
-    }
-
-    .btn-grid {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .action-btn {
-      padding: 9px 16px;
-      background: #27272a;
-      color: #ffffff;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .action-btn:hover { background: #3f3f46; }
-    .action-btn.primary { background: #a855f7; }
-    .action-btn.primary:hover { background: #9333ea; }
-
-    .text-stats {
-      display: flex;
-      gap: 20px;
-      margin-top: 15px;
-      font-size: 13px;
-      color: #a1a1aa;
-    }
-
-    /* PASSWORD GENERATOR */
-    .pass-display {
-      display: flex;
-      background: #09090b;
-      border: 1px solid #27272a;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .pass-display input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      padding: 12px;
-      color: #a855f7;
-      font-size: 16px;
-      font-family: monospace;
-      outline: none;
-    }
-
-    .copy-btn {
-      background: #27272a;
-      color: #fff;
-      border: none;
-      padding: 0 16px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .copy-btn:hover { background: #3f3f46; }
-
-    /* STOPWATCH */
-    .timer-display {
-      font-size: 48px;
-      font-weight: 800;
-      text-align: center;
-      font-family: monospace;
-      color: #ffffff;
-      margin: 20px 0;
-    }
-
-    .timer-controls {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    @media (max-width: 600px) {
-      body { padding: 12px; }
-      .tool-panel { padding: 16px; }
-    }
-  </style>
+        /* Focus visible */
+        .input-row input:focus-visible {
+            outline: none;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <div class="logo">Tool<span>Box</span> Pro</div>
-      <p class="subtitle">Fast, clean & lightweight web utilities</p>
-    </header>
+    <div class="calculator-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <div class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+            </div>
+            <h1>SIP Calculator</h1>
+            <p>Plan your systematic investment & visualize growth</p>
+        </div>
 
-    <!-- TABS NAVIGATION -->
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchTab('typing')">⌨️ Typing</button>
-      <button class="tab-btn" onclick="switchTab('text')">🔤 Text</button>
-      <button class="tab-btn" onclick="switchTab('password')">🔑 Password</button>
-      <button class="tab-btn" onclick="switchTab('stopwatch')">⏱️ Timer</button>
+        <!-- Main Card -->
+        <div class="card">
+            <div class="calculator-grid">
+                <!-- Left: Inputs -->
+                <div class="input-section">
+                    <h2>Investment Details</h2>
+
+                    <!-- Monthly SIP Amount -->
+                    <div class="input-group">
+                        <label>Monthly SIP Amount <span class="unit">₹</span></label>
+                        <div class="input-row">
+                            <span class="prefix">₹</span>
+                            <input type="number" id="sipAmount" value="10000" min="500" max="10000000" step="500" placeholder="e.g. 10,000">
+                        </div>
+                        <div class="quick-pills" id="amountPills">
+                            <span class="quick-pill" data-value="2000">₹2K</span>
+                            <span class="quick-pill" data-value="5000">₹5K</span>
+                            <span class="quick-pill active" data-value="10000">₹10K</span>
+                            <span class="quick-pill" data-value="25000">₹25K</span>
+                            <span class="quick-pill" data-value="50000">₹50K</span>
+                        </div>
+                    </div>
+
+                    <!-- Expected Return Rate -->
+                    <div class="input-group">
+                        <label>Expected Annual Return <span class="unit">%</span></label>
+                        <div class="input-row">
+                            <input type="number" id="returnRate" value="12" min="1" max="30" step="0.5" placeholder="e.g. 12">
+                            <span class="suffix">%</span>
+                        </div>
+                        <div class="quick-pills" id="ratePills">
+                            <span class="quick-pill" data-value="8">8%</span>
+                            <span class="quick-pill" data-value="10">10%</span>
+                            <span class="quick-pill active" data-value="12">12%</span>
+                            <span class="quick-pill" data-value="15">15%</span>
+                            <span class="quick-pill" data-value="18">18%</span>
+                        </div>
+                    </div>
+
+                    <!-- Time Period -->
+                    <div class="input-group">
+                        <label>Investment Duration <span class="unit">Years</span></label>
+                        <div class="input-row">
+                            <input type="number" id="timePeriod" value="10" min="1" max="40" step="1" placeholder="e.g. 10">
+                            <span class="suffix">Yrs</span>
+                        </div>
+                        <div class="quick-pills" id="yearPills">
+                            <span class="quick-pill" data-value="3">3 Yrs</span>
+                            <span class="quick-pill" data-value="5">5 Yrs</span>
+                            <span class="quick-pill" data-value="10" class="active">10 Yrs</span>
+                            <span class="quick-pill" data-value="15">15 Yrs</span>
+                            <span class="quick-pill" data-value="20">20 Yrs</span>
+                            <span class="quick-pill" data-value="25">25 Yrs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Results & Chart -->
+                <div class="results-section">
+                    <h2>Projected Wealth</h2>
+                    <div class="chart-container">
+                        <canvas id="pieChart" aria-label="Pie chart showing invested amount vs estimated returns" role="img"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot invested-dot"></span> Invested
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot returns-dot"></span> Est. Returns
+                        </div>
+                    </div>
+                    <div class="stat-cards">
+                        <div class="stat-card invested">
+                            <div class="stat-label">Total Invested</div>
+                            <div class="stat-value" id="totalInvested">₹12,00,000</div>
+                        </div>
+                        <div class="stat-card returns">
+                            <div class="stat-label">Est. Returns</div>
+                            <div class="stat-value" id="totalReturns">₹11,23,391</div>
+                        </div>
+                        <div class="stat-card total">
+                            <div class="stat-label">Maturity Value</div>
+                            <div class="stat-value" id="maturityValue">₹23,23,391</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="disclaimer">
+                * This is an estimate for illustration purposes only. Actual returns may vary based on market conditions.
+            </p>
+        </div>
     </div>
 
-    <!-- 1️⃣ TYPING SPEED TEST -->
-    <div id="typing" class="tool-panel active">
-      <h2>Typing Speed Test</h2>
-      <div class="stats-row">
-        <div class="stat-card"><h3 id="wpm">0</h3><p>WPM</p></div>
-        <div class="stat-card"><h3 id="acc">100%</h3><p>Accuracy</p></div>
-        <div class="stat-card"><h3 id="timer">60s</h3><p>Time</p></div>
-      </div>
-      <div class="passage-box" id="passageText">The quick brown fox jumps over the lazy dog. Web development and clean coding require focus, practice, and continuous learning every single day.</div>
-      <textarea class="text-input" id="typingInput" placeholder="Start typing here..." oninput="handleTyping()"></textarea>
-      <button class="action-btn primary" onclick="resetTyping()">Reset Test</button>
-    </div>
+    <script>
+        (function() {
+            // DOM elements
+            const sipAmountInput = document.getElementById('sipAmount');
+            const returnRateInput = document.getElementById('returnRate');
+            const timePeriodInput = document.getElementById('timePeriod');
+            const totalInvestedEl = document.getElementById('totalInvested');
+            const totalReturnsEl = document.getElementById('totalReturns');
+            const maturityValueEl = document.getElementById('maturityValue');
+            const amountPills = document.getElementById('amountPills');
+            const ratePills = document.getElementById('ratePills');
+            const yearPills = document.getElementById('yearPills');
 
-    <!-- 2️⃣ TEXT UTILITY -->
-    <div id="text" class="tool-panel">
-      <h2>Text Formatter & Counter</h2>
-      <textarea class="textarea-large" id="textInput" placeholder="Type or paste your text here..." oninput="updateTextStats()"></textarea>
-      <div class="btn-grid">
-        <button class="action-btn" onclick="transformText('upper')">UPPERCASE</button>
-        <button class="action-btn" onclick="transformText('lower')">lowercase</button>
-        <button class="action-btn" onclick="transformText('capitalize')">Capitalize</button>
-        <button class="action-btn" onclick="clearText()">Clear</button>
-      </div>
-      <div class="text-stats">
-        <span id="wordCount">Words: 0</span>
-        <span id="charCount">Characters: 0</span>
-      </div>
-    </div>
+            let pieChart = null;
+            const chartCtx = document.getElementById('pieChart').getContext('2d');
 
-    <!-- 3️⃣ PASSWORD GENERATOR -->
-    <div id="password" class="tool-panel">
-      <h2>Secure Password Generator</h2>
-      <div class="pass-display">
-        <input type="text" id="passwordOutput" readonly value="Click Generate">
-        <button class="copy-btn" onclick="copyPassword()">Copy</button>
-      </div>
-      <button class="action-btn primary" style="width: 100%; padding: 12px;" onclick="generatePassword()">Generate Strong Password</button>
-    </div>
+            // Format Indian currency
+            function formatIndianCurrency(num) {
+                if (num === undefined || num === null || isNaN(num)) return '₹0';
+                num = Math.round(num);
+                const numStr = num.toString();
+                if (numStr.length <= 3) return '₹' + numStr;
+                const lastThree = numStr.substring(numStr.length - 3);
+                const otherNumbers = numStr.substring(0, numStr.length - 3);
+                const formatted = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + lastThree;
+                return '₹' + formatted;
+            }
 
-    <!-- 4️⃣ STOPWATCH -->
-    <div id="stopwatch" class="tool-panel">
-      <h2>Stopwatch & Timer</h2>
-      <div class="timer-display" id="stopwatchDisplay">00:00:00</div>
-      <div class="timer-controls">
-        <button class="action-btn primary" onclick="startTimer()">Start</button>
-        <button class="action-btn" onclick="pauseTimer()">Pause</button>
-        <button class="action-btn" onclick="resetTimer()">Reset</button>
-      </div>
-    </div>
-  </div>
+            // Calculate SIP future value
+            function calculateSIP(monthlyAmount, annualRate, years) {
+                const months = years * 12;
+                const monthlyRate = annualRate / 100 / 12;
 
-  <script>
-    // 🔀 TAB SWITCHER
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-    }
+                if (monthlyRate === 0) {
+                    const totalInvested = monthlyAmount * months;
+                    return {
+                        totalInvested: totalInvested,
+                        totalReturns: 0,
+                        maturityValue: totalInvested,
+                    };
+                }
 
-    // ⌨️ TYPING TEST LOGIC
-    const passage = document.getElementById('passageText').innerText;
-    let tTimer = 60, tInterval = null, tStarted = false;
+                // FV = P * [(1 + i)^n - 1] / i * (1 + i)
+                const compoundFactor = Math.pow(1 + monthlyRate, months);
+                const futureValue = monthlyAmount * ((compoundFactor - 1) / monthlyRate) * (1 + monthlyRate);
+                const totalInvested = monthlyAmount * months;
+                const totalReturns = futureValue - totalInvested;
 
-    function handleTyping() {
-      const val = document.getElementById('typingInput').value;
-      if (!tStarted && val.length > 0) {
-        tStarted = true;
-        tInterval = setInterval(() => {
-          tTimer--;
-          document.getElementById('timer').innerText = tTimer + 's';
-          if (tTimer <= 0) {
-            clearInterval(tInterval);
-            document.getElementById('typingInput').disabled = true;
-          }
-        }, 1000);
-      }
-      const words = val.trim().split(/\s+/).filter(w => w.length > 0).length;
-      const mins = (60 - tTimer) / 60 || 0.01;
-      document.getElementById('wpm').innerText = Math.round(words / mins);
+                return {
+                    totalInvested: Math.round(totalInvested),
+                    totalReturns: Math.round(totalReturns),
+                    maturityValue: Math.round(futureValue),
+                };
+            }
 
-      let correct = 0;
-      for (let i = 0; i < val.length; i++) {
-        if (val[i] === passage[i]) correct++;
-      }
-      document.getElementById('acc').innerText = val.length > 0 ? Math.round((correct / val.length) * 100) + '%' : '100%';
-    }
+            // Update UI
+            function updateResults() {
+                const amount = parseFloat(sipAmountInput.value) || 0;
+                const rate = parseFloat(returnRateInput.value) || 0;
+                const years = parseFloat(timePeriodInput.value) || 0;
 
-    function resetTyping() {
-      clearInterval(tInterval);
-      tTimer = 60; tStarted = false;
-      document.getElementById('typingInput').disabled = false;
-      document.getElementById('typingInput').value = '';
-      document.getElementById('wpm').innerText = '0';
-      document.getElementById('acc').innerText = '100%';
-      document.getElementById('timer').innerText = '60s';
-    }
+                const result = calculateSIP(amount, rate, years);
 
-    // 🔤 TEXT UTILITY LOGIC
-    function updateTextStats() {
-      const text = document.getElementById('textInput').value;
-      const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
-      document.getElementById('wordCount').innerText = 'Words: ' + words;
-      document.getElementById('charCount').innerText = 'Characters: ' + text.length;
-    }
+                totalInvestedEl.textContent = formatIndianCurrency(result.totalInvested);
+                totalReturnsEl.textContent = formatIndianCurrency(result.totalReturns);
+                maturityValueEl.textContent = formatIndianCurrency(result.maturityValue);
 
-    function transformText(type) {
-      const el = document.getElementById('textInput');
-      if (type === 'upper') el.value = el.value.toUpperCase();
-      if (type === 'lower') el.value = el.value.toLowerCase();
-      if (type === 'capitalize') {
-        el.value = el.value.toLowerCase().replace(/(^\w{1}|\.\s*\w{1})/g, match => match.toUpperCase());
-      }
-      updateTextStats();
-    }
+                // Update pie chart
+                const invested = result.totalInvested;
+                const returns = Math.max(0, result.totalReturns);
 
-    function clearText() {
-      document.getElementById('textInput').value = '';
-      updateTextStats();
-    }
+                if (pieChart) {
+                    pieChart.data.datasets[0].data = [invested, returns];
+                    pieChart.update('none');
+                }
+            }
 
-    // 🔑 PASSWORD GENERATOR LOGIC
-    function generatePassword() {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*!";
-      let pass = "";
-      for (let i = 0; i < 14; i++) {
-        pass += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      document.getElementById('passwordOutput').value = pass;
-    }
+            // Initialize pie chart
+            function initPieChart() {
+                if (pieChart) {
+                    pieChart.destroy();
+                }
+                pieChart = new Chart(chartCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Invested Amount', 'Est. Returns'],
+                        datasets: [{
+                            data: [1200000, 1123391],
+                            backgroundColor: ['#4f46e5', '#10b981'],
+                            borderColor: ['#ffffff', '#ffffff'],
+                            borderWidth: 3,
+                            hoverBorderColor: ['#ffffff', '#ffffff'],
+                            hoverBorderWidth: 4,
+                            borderRadius: 6,
+                            spacing: 3,
+                        }],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        cutout: '62%',
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            tooltip: {
+                                backgroundColor: '#1e293b',
+                                titleFont: { family: 'Inter, system-ui, sans-serif', size: 13, weight: '600' },
+                                bodyFont: { family: 'Inter, system-ui, sans-serif', size: 12 },
+                                padding: 12,
+                                cornerRadius: 8,
+                                displayColors: true,
+                                boxPadding: 4,
+                                callbacks: {
+                                    label: function(context) {
+                                        let value = context.parsed;
+                                        return ' ' + context.label + ': ' + formatIndianCurrency(value);
+                                    },
+                                },
+                            },
+                        },
+                        animation: {
+                            animateScale: true,
+                            animateRotate: true,
+                            duration: 600,
+                            easing: 'easeInOutQuart',
+                        },
+                    },
+                });
+            }
 
-    function copyPassword() {
-      const out = document.getElementById('passwordOutput');
-      navigator.clipboard.writeText(out.value);
-      alert("Password copied to clipboard!");
-    }
+            // Handle quick pill clicks
+            function setupQuickPills(container, inputElement, isYearPill = false) {
+                container.addEventListener('click', function(e) {
+                    const pill = e.target.closest('.quick-pill');
+                    if (!pill) return;
+                    const value = pill.getAttribute('data-value');
+                    if (value === null) return;
+                    inputElement.value = value;
+                    // Update active state
+                    container.querySelectorAll('.quick-pill').forEach(p => p.classList.remove(
+                        'active'));
+                    pill.classList.add('active');
+                    updateResults();
+                    // Add subtle pulse animation trigger
+                    inputElement.dispatchEvent(new Event('input', { bubbles: true }));
+                });
+            }
 
-    // ⏱️ STOPWATCH LOGIC
-    let seconds = 0, stopwatchInterval = null;
-    function updateDisplay() {
-      let hrs = Math.floor(seconds / 3600).toString().padStart(2, '0');
-      let mins = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
-      let secs = (seconds % 60).toString().padStart(2, '0');
-      document.getElementById('stopwatchDisplay').innerText = `${hrs}:${mins}:${secs}`;
-    }
+            // Sync pills with manual input
+            function syncPills(container, inputElement) {
+                const currentValue = inputElement.value.trim();
+                const pills = container.querySelectorAll('.quick-pill');
+                let found = false;
+                pills.forEach(pill => {
+                    if (pill.getAttribute('data-value') === currentValue) {
+                        pill.classList.add('active');
+                        found = true;
+                    } else {
+                        pill.classList.remove('active');
+                    }
+                });
+                // If exact match not found, remove all active
+                if (!found && currentValue !== '') {
+                    pills.forEach(p => p.classList.remove('active'));
+                }
+            }
 
-    function startTimer() {
-      if (!stopwatchInterval) {
-        stopwatchInterval = setInterval(() => {
-          seconds++;
-          updateDisplay();
-        }, 1000);
-      }
-    }
+            // Set up all event listeners
+            function setupEventListeners() {
+                // Input events
+                [sipAmountInput, returnRateInput, timePeriodInput].forEach(input => {
+                    input.addEventListener('input', function() {
+                        updateResults();
+                        // Sync corresponding pills
+                        if (input === sipAmountInput) syncPills(amountPills, sipAmountInput);
+                        if (input === returnRateInput) syncPills(ratePills, returnRateInput);
+                        if (input === timePeriodInput) syncPills(yearPills, timePeriodInput);
+                    });
+                    input.addEventListener('change', function() {
+                        updateResults();
+                        if (input === sipAmountInput) syncPills(amountPills, sipAmountInput);
+                        if (input === returnRateInput) syncPills(ratePills, returnRateInput);
+                        if (input === timePeriodInput) syncPills(yearPills, timePeriodInput);
+                    });
+                    // Also handle blur for safety
+                    input.addEventListener('blur', function() {
+                        if (input.value === '' || parseFloat(input.value) < 0) {
+                            input.value = input.getAttribute('min') || 0;
+                        }
+                        updateResults();
+                        if (input === sipAmountInput) syncPills(amountPills, sipAmountInput);
+                        if (input === returnRateInput) syncPills(ratePills, returnRateInput);
+                        if (input === timePeriodInput) syncPills(yearPills, timePeriodInput);
+                    });
+                });
 
-    function pauseTimer() {
-      clearInterval(stopwatchInterval);
-      stopwatchInterval = null;
-    }
+                // Quick pills
+                setupQuickPills(amountPills, sipAmountInput);
+                setupQuickPills(ratePills, returnRateInput);
+                setupQuickPills(yearPills, timePeriodInput, true);
 
-    function resetTimer() {
-      pauseTimer();
-      seconds = 0;
-      updateDisplay();
-    }
-  </script>
+                // Keyboard accessibility for pills
+                document.querySelectorAll('.quick-pill').forEach(pill => {
+                    pill.setAttribute('tabindex', '0');
+                    pill.setAttribute('role', 'button');
+                    pill.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            pill.click();
+                        }
+                    });
+                });
+            }
 
-  <!-- 🎯 Adsterra Social Bar Ad Code -->
-  <script src="https://pl30634565.effectivecpmnetwork.com/68/ad/b4/68adb474ce18ec28f317ed7b086c1b90.js"></script>
+            // Initial setup
+            function init() {
+                initPieChart();
+                setupEventListeners();
+                updateResults();
+                // Initial sync of pills
+                syncPills(amountPills, sipAmountInput);
+                syncPills(ratePills, returnRateInput);
+                syncPills(yearPills, timePeriodInput);
+            }
+
+            // Run on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
 </body>
 </html>
