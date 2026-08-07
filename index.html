@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Outway - Viral Fun Tools & Typing Test</title>
+  <title>ToolBox Pro - Free Online Productivity & Dev Tools</title>
   
-  <meta name="description" content="Play with Meme Soundboard, Typing Speed Test, Click Speed Test, Love Calculator, Spin Wheel and unlock cool skins on Game Outway!">
+  <meta name="description" content="Use free online productivity tools including Typing Speed Test, Text Formatter, Password Generator, and Stopwatch.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://game-outway.yashgupta3739.workers.dev/">
 
   <!-- 🎯 Adsterra Popunder Ad Code -->
   <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
@@ -17,65 +16,52 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    /* 🖤 PURE BLACK & WHITE THEME */
     body {
-      background-color: #000000;
-      color: #ffffff;
-      padding: 15px;
-      overflow-x: hidden;
-    }
-
-    header {
-      margin-bottom: 20px;
-      position: sticky;
-      top: 10px;
-      z-index: 100;
-    }
-
-    .header-container {
+      background-color: #09090b;
+      color: #f4f4f5;
+      padding: 20px;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      background: #0a0a0a;
-      padding: 14px 20px;
-      border-radius: 12px;
-      border: 2px solid #ffffff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      margin-bottom: 25px;
     }
 
     .logo {
-      font-size: 22px;
-      font-weight: 900;
+      font-size: 26px;
+      font-weight: 800;
       color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: -0.5px;
     }
 
-    .store-btn {
-      background: #ffffff;
-      color: #000000;
-      border: none;
-      padding: 10px 18px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.2s;
+    .logo span {
+      color: #a855f7;
     }
 
-    .store-btn:hover {
-      background: #cccccc;
-      transform: scale(1.05);
+    .subtitle {
+      font-size: 13px;
+      color: #a1a1aa;
+      margin-top: 4px;
     }
 
-    /* NAV TABS */
+    /* NAVIGATION TABS */
     .tabs {
       display: flex;
-      gap: 10px;
-      margin-bottom: 25px;
+      gap: 8px;
+      margin-bottom: 20px;
       overflow-x: auto;
       padding-bottom: 5px;
       scrollbar-width: none;
@@ -84,813 +70,374 @@
     .tabs::-webkit-scrollbar { display: none; }
 
     .tab-btn {
-      padding: 10px 18px;
-      border: 1px solid #ffffff;
-      background: #000000;
-      color: #ffffff;
-      border-radius: 8px;
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid #27272a;
+      background: #121216;
+      color: #a1a1aa;
+      border-radius: 10px;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 600;
       font-size: 13px;
       white-space: nowrap;
       transition: all 0.2s;
-    }
-
-    .tab-btn.active, .tab-btn:hover {
-      background: #ffffff;
-      color: #000000;
-    }
-
-    /* TOOL SECTIONS */
-    .tool-card {
-      background: #0a0a0a;
-      border: 1px solid #333333;
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 25px;
       text-align: center;
     }
 
-    .tool-card h2 {
-      font-size: 20px;
-      margin-bottom: 12px;
+    .tab-btn.active, .tab-btn:hover {
+      background: #a855f7;
       color: #ffffff;
-      border-bottom: 1px solid #222222;
-      padding-bottom: 10px;
+      border-color: #a855f7;
     }
 
-    /* 🔊 MEME SOUNDBOARD GRID */
-    .sound-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 12px;
+    /* TOOL PANELS */
+    .tool-panel {
+      background: #121216;
+      border: 1px solid #27272a;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: none;
     }
 
-    .sound-btn {
-      background: #111111;
-      border: 1px solid #ffffff;
-      border-radius: 10px;
-      padding: 15px 10px;
-      color: #ffffff;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 13px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.1s, background 0.2s;
+    .tool-panel.active {
+      display: block;
     }
 
-    .sound-btn:active {
-      transform: scale(0.92);
-      background: #ffffff;
-      color: #000000;
-    }
-
-    .sound-btn span { font-size: 28px; }
-
-    /* ⌨️ TYPING SPEED TEST */
-    .typing-box {
-      background: #111;
-      border: 1px solid #ffffff;
-      border-radius: 10px;
-      padding: 15px;
-      font-size: 16px;
-      line-height: 1.6;
+    .tool-panel h2 {
+      font-size: 18px;
       margin-bottom: 15px;
-      color: #aaa;
-      text-align: left;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* TYPING TEST STYLES */
+    .stats-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: #18181b;
+      border: 1px solid #27272a;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat-card h3 { font-size: 20px; color: #a855f7; }
+    .stat-card p { font-size: 11px; color: #71717a; text-transform: uppercase; margin-top: 2px; }
+
+    .passage-box {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #d4d4d8;
+      margin-bottom: 15px;
       user-select: none;
     }
 
-    .typing-input {
+    .text-input {
       width: 100%;
       height: 90px;
-      background: #000;
-      border: 1px solid #444;
-      border-radius: 8px;
-      color: #fff;
-      padding: 10px;
-      font-size: 15px;
+      background: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      color: #ffffff;
+      padding: 12px;
+      font-size: 14px;
       outline: none;
       resize: none;
+      margin-bottom: 15px;
     }
 
-    .typing-input:focus { border-color: #fff; }
+    .text-input:focus { border-color: #a855f7; }
 
-    .stats-container {
-      display: flex;
-      justify-content: space-around;
-      margin: 15px 0;
-    }
-
-    .stat-box {
-      background: #111;
-      border: 1px solid #333;
-      padding: 10px 18px;
-      border-radius: 8px;
-    }
-
-    .stat-box h3 { font-size: 22px; color: #fff; }
-    .stat-box p { font-size: 11px; color: #888; text-transform: uppercase; }
-
-    /* ⏱️ CPS CLICK SPEED TEST */
-    .clicker-box {
+    /* TEXT FORMATTER STYLES */
+    .textarea-large {
       width: 100%;
-      max-width: 400px;
-      height: 160px;
-      background: #111;
-      border: 2px dashed #fff;
-      border-radius: 12px;
-      margin: 15px auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      user-select: none;
+      height: 130px;
+      background: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      color: #ffffff;
+      padding: 12px;
+      font-size: 14px;
+      outline: none;
+      resize: vertical;
+      margin-bottom: 15px;
     }
 
-    .clicker-box:active { background: #222; }
-
-    /* 💖 LOVE CALCULATOR */
-    .input-group {
+    .btn-grid {
       display: flex;
       gap: 10px;
-      justify-content: center;
-      margin-bottom: 15px;
       flex-wrap: wrap;
     }
 
-    .input-group input {
-      padding: 10px 15px;
-      border-radius: 8px;
-      border: 1px solid #fff;
-      background: #111;
-      color: #fff;
-      font-size: 14px;
-      outline: none;
-      width: 180px;
-    }
-
-    .calc-btn {
-      padding: 10px 24px;
-      background: #fff;
-      color: #000;
+    .action-btn {
+      padding: 9px 16px;
+      background: #27272a;
+      color: #ffffff;
       border: none;
       border-radius: 8px;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 13px;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    .calc-btn:hover { background: #ccc; }
+    .action-btn:hover { background: #3f3f46; }
+    .action-btn.primary { background: #a855f7; }
+    .action-btn.primary:hover { background: #9333ea; }
 
-    /* 🎡 SPIN WHEEL */
-    #wheelCanvas {
-      background: #111;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      margin: 15px auto;
-      display: block;
-    }
-
-    /* 🛒 STORE MODAL & AD TIMER OVERLAY */
-    #storeModal, #adModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background-color: rgba(0, 0, 0, 0.95);
-      z-index: 100000;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      background: #0a0a0a;
-      border: 2px solid #ffffff;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 800px;
-      height: 80vh;
+    .text-stats {
       display: flex;
-      flex-direction: column;
+      gap: 20px;
+      margin-top: 15px;
+      font-size: 13px;
+      color: #a1a1aa;
     }
 
-    .modal-header {
+    /* PASSWORD GENERATOR */
+    .pass-display {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      border-bottom: 1px solid #333;
-    }
-
-    .btn-close {
-      background: #ffffff;
-      color: #000000;
-      padding: 6px 12px;
-      font-weight: bold;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .store-grid {
-      padding: 20px;
-      overflow-y: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 15px;
-    }
-
-    .skin-card {
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 12px;
-      text-align: center;
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* FIXED BALL SKIN DISPLAY ENHANCEMENT */
-    .skin-icon-display {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: #000;
-      border: 1px solid #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 6px;
-      background: #333;
-      border-radius: 3px;
-      margin: 6px 0;
+      background: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 10px;
       overflow: hidden;
+      margin-bottom: 20px;
     }
 
-    .progress-fill { height: 100%; background: #ffffff; width: 0%; transition: 0.3s; }
-
-    .action-btn {
-      width: 100%;
-      padding: 6px;
+    .pass-display input {
+      flex: 1;
+      background: transparent;
       border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 5px;
-      font-size: 11px;
+      padding: 12px;
+      color: #a855f7;
+      font-size: 16px;
+      font-family: monospace;
+      outline: none;
     }
 
-    .btn-watch { background: #ffcc00; color: #000; }
-    .btn-equip { background: #ffffff; color: #000; }
-    .btn-equipped { background: #333; color: #888; cursor: not-allowed; }
+    .copy-btn {
+      background: #27272a;
+      color: #fff;
+      border: none;
+      padding: 0 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
-    /* 🔮 FIXED DRAGGABLE FLOATING BALL */
-    #floatingBall {
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
-      position: fixed;
-      bottom: 30px;
-      right: 20px;
-      z-index: 9999;
-      box-shadow: 0 0 15px rgba(255,255,255,0.4);
-      cursor: grab;
-      touch-action: none;
+    .copy-btn:hover { background: #3f3f46; }
+
+    /* STOPWATCH */
+    .timer-display {
+      font-size: 48px;
+      font-weight: 800;
+      text-align: center;
+      font-family: monospace;
+      color: #ffffff;
+      margin: 20px 0;
+    }
+
+    .timer-controls {
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 32px;
-      line-height: 1;
-      user-select: none;
-      background: #000000;
-      border: 2px solid #ffffff;
+      gap: 10px;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 12px; }
+      .tool-panel { padding: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔮 FIXED DRAGGABLE STORE BALL -->
-  <div id="floatingBall" onclick="playPopSound()">🟣</div>
+  <div class="container">
+    <header>
+      <div class="logo">Tool<span>Box</span> Pro</div>
+      <p class="subtitle">Fast, clean & lightweight web utilities</p>
+    </header>
 
-  <!-- 🎬 REWARD AD TIMER OVERLAY MODAL -->
-  <div id="adModal">
-    <div style="background: #111; border: 2px solid #fff; padding: 25px; border-radius: 12px; text-align: center; max-width: 380px;">
-      <h3 style="margin-bottom: 10px;">🎬 Ad Opened In New Tab</h3>
-      <p style="color: #aaa; font-size: 13px; margin-bottom: 15px;">Please wait <b id="adTimerText" style="color: #ffcc00;">15</b> seconds while we process your reward credit...</p>
-      <div class="progress-bar" style="height: 10px;"><div id="adModalProgress" class="progress-fill" style="width: 0%;"></div></div>
+    <!-- TABS NAVIGATION -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('typing')">⌨️ Typing</button>
+      <button class="tab-btn" onclick="switchTab('text')">🔤 Text</button>
+      <button class="tab-btn" onclick="switchTab('password')">🔑 Password</button>
+      <button class="tab-btn" onclick="switchTab('stopwatch')">⏱️ Timer</button>
+    </div>
+
+    <!-- 1️⃣ TYPING SPEED TEST -->
+    <div id="typing" class="tool-panel active">
+      <h2>Typing Speed Test</h2>
+      <div class="stats-row">
+        <div class="stat-card"><h3 id="wpm">0</h3><p>WPM</p></div>
+        <div class="stat-card"><h3 id="acc">100%</h3><p>Accuracy</p></div>
+        <div class="stat-card"><h3 id="timer">60s</h3><p>Time</p></div>
+      </div>
+      <div class="passage-box" id="passageText">The quick brown fox jumps over the lazy dog. Web development and clean coding require focus, practice, and continuous learning every single day.</div>
+      <textarea class="text-input" id="typingInput" placeholder="Start typing here..." oninput="handleTyping()"></textarea>
+      <button class="action-btn primary" onclick="resetTyping()">Reset Test</button>
+    </div>
+
+    <!-- 2️⃣ TEXT UTILITY -->
+    <div id="text" class="tool-panel">
+      <h2>Text Formatter & Counter</h2>
+      <textarea class="textarea-large" id="textInput" placeholder="Type or paste your text here..." oninput="updateTextStats()"></textarea>
+      <div class="btn-grid">
+        <button class="action-btn" onclick="transformText('upper')">UPPERCASE</button>
+        <button class="action-btn" onclick="transformText('lower')">lowercase</button>
+        <button class="action-btn" onclick="transformText('capitalize')">Capitalize</button>
+        <button class="action-btn" onclick="clearText()">Clear</button>
+      </div>
+      <div class="text-stats">
+        <span id="wordCount">Words: 0</span>
+        <span id="charCount">Characters: 0</span>
+      </div>
+    </div>
+
+    <!-- 3️⃣ PASSWORD GENERATOR -->
+    <div id="password" class="tool-panel">
+      <h2>Secure Password Generator</h2>
+      <div class="pass-display">
+        <input type="text" id="passwordOutput" readonly value="Click Generate">
+        <button class="copy-btn" onclick="copyPassword()">Copy</button>
+      </div>
+      <button class="action-btn primary" style="width: 100%; padding: 12px;" onclick="generatePassword()">Generate Strong Password</button>
+    </div>
+
+    <!-- 4️⃣ STOPWATCH -->
+    <div id="stopwatch" class="tool-panel">
+      <h2>Stopwatch & Timer</h2>
+      <div class="timer-display" id="stopwatchDisplay">00:00:00</div>
+      <div class="timer-controls">
+        <button class="action-btn primary" onclick="startTimer()">Start</button>
+        <button class="action-btn" onclick="pauseTimer()">Pause</button>
+        <button class="action-btn" onclick="resetTimer()">Reset</button>
+      </div>
     </div>
   </div>
-
-  <!-- 🛒 STORE MODAL -->
-  <div id="storeModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>🛒 Skin Store (24H Unlock via Smartlink)</h2>
-        <button class="btn-close" onclick="closeStore()">✕ CLOSE</button>
-      </div>
-      <div class="store-grid" id="storeGrid"></div>
-    </div>
-  </div>
-
-  <header>
-    <div class="header-container">
-      <div class="logo">Game Outway</div>
-      <button class="store-btn" onclick="openStore()">🛒 STORE</button>
-    </div>
-  </header>
-
-  <!-- NAVIGATION TABS -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('typing')">⌨️ Typing Test</button>
-    <button class="tab-btn" onclick="showTab('soundboard')">🔊 Meme Soundboard</button>
-    <button class="tab-btn" onclick="showTab('clicker')">⏱️ Click Speed Test</button>
-    <button class="tab-btn" onclick="showTab('love')">💖 Love Matcher</button>
-    <button class="tab-btn" onclick="showTab('wheel')">🎡 Truth & Dare</button>
-  </div>
-
-  <main>
-
-    <!-- 1️⃣ TYPING SPEED TEST TOOL -->
-    <section id="typing" class="tool-card">
-      <h2>⌨️ Typing Speed Test</h2>
-      <p style="color: #aaa; margin-bottom: 12px; font-size: 13px;">Type the passage below as fast as you can!</p>
-
-      <div class="stats-container">
-        <div class="stat-box"><h3 id="wpmDisplay">0</h3><p>WPM</p></div>
-        <div class="stat-box"><h3 id="accuracyDisplay">100%</h3><p>Accuracy</p></div>
-        <div class="stat-box"><h3 id="timerDisplay">60s</h3><p>Time Left</p></div>
-      </div>
-
-      <div class="typing-box" id="typingText">The quick brown fox jumps over the lazy dog. Programming and web tools help developers build amazing experiences for users around the world.</div>
-
-      <textarea class="typing-input" id="typingInput" placeholder="Start typing here to begin test..." oninput="processTyping()"></textarea>
-      
-      <button class="calc-btn" style="margin-top: 10px;" onclick="resetTypingTest()">Reset Typing Test</button>
-    </section>
-
-    <!-- 2️⃣ MEME SOUNDBOARD TOOL -->
-    <section id="soundboard" class="tool-card" style="display: none;">
-      <h2>🔊 Viral Meme Soundboard</h2>
-      <p style="color: #aaa; margin-bottom: 15px; font-size: 13px;">Tap buttons to play viral sound effects instantly!</p>
-      
-      <div class="sound-grid">
-        <button class="sound-btn" onclick="playSound('vineboom')"><span>💥</span> Vine Boom</button>
-        <button class="sound-btn" onclick="playSound('fart')"><span>💨</span> Fart Bass</button>
-        <button class="sound-btn" onclick="playSound('bruh')"><span>🗿</span> Bruh Sound</button>
-        <button class="sound-btn" onclick="playSound('airhorn')"><span>📢</span> Airhorn</button>
-        <button class="sound-btn" onclick="playSound('laser')"><span>🔫</span> Laser Blast</button>
-        <button class="sound-btn" onclick="playSound('coin')"><span>🪙</span> Coin Collect</button>
-        <button class="sound-btn" onclick="playSound('fail')"><span>🎺</span> Sad Horn</button>
-        <button class="sound-btn" onclick="playSound('victory')"><span>🎉</span> Victory Fanfare</button>
-      </div>
-    </section>
-
-    <!-- 3️⃣ CPS CLICK SPEED TEST TOOL -->
-    <section id="clicker" class="tool-card" style="display: none;">
-      <h2>⏱️ CPS Click Speed Test</h2>
-      <p style="color: #aaa; font-size: 13px;">Click as fast as you can in 10 seconds!</p>
-      
-      <div class="clicker-box" id="clickerBox" onclick="registerClick()">
-        <h1 id="clickScore" style="font-size: 42px;">TAP TO START</h1>
-        <p id="clickTimer" style="margin-top: 5px; color: #aaa;">Timer: 10s</p>
-      </div>
-      
-      <button class="calc-btn" onclick="resetClicker()">Reset Test</button>
-    </section>
-
-    <!-- 4️⃣ LOVE COMPATIBILITY CALCULATOR TOOL -->
-    <section id="love" class="tool-card" style="display: none;">
-      <h2>💖 Love & Crush Matcher</h2>
-      <p style="color: #aaa; margin-bottom: 15px; font-size: 13px;">Enter two names to calculate compatibility %</p>
-      
-      <div class="input-group">
-        <input type="text" id="name1" placeholder="Your Name">
-        <input type="text" id="name2" placeholder="Crush Name">
-      </div>
-      
-      <button class="calc-btn" onclick="calculateLove()">Check Match %</button>
-      
-      <div id="loveResult" style="margin-top: 20px; font-size: 22px; font-weight: bold; color: #ffcc00;"></div>
-    </section>
-
-    <!-- 5️⃣ TRUTH & DARE WHEEL -->
-    <section id="wheel" class="tool-card" style="display: none;">
-      <h2>🎡 Spin The Wheel (Truth or Dare)</h2>
-      <canvas id="wheelCanvas" width="280" height="280"></canvas>
-      <br>
-      <button class="calc-btn" onclick="spinWheel()">SPIN WHEEL!</button>
-      <div id="wheelResult" style="margin-top: 15px; font-size: 18px; font-weight: bold; color: #fff;"></div>
-    </section>
-
-  </main>
 
   <script>
-    // 🌐 WEB AUDIO SYNTHESIZER ENGINE (0% Dependancy)
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    function playPopSound() {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain); gain.connect(audioCtx.destination);
-      const now = audioCtx.currentTime;
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(400, now);
-      osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
-      gain.gain.setValueAtTime(0.3, now);
-      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
-      osc.start(now); osc.stop(now + 0.08);
-    }
-
-    function playSound(type) {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain); gain.connect(audioCtx.destination);
-      const now = audioCtx.currentTime;
-
-      if (type === 'vineboom') {
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(150, now);
-        osc.frequency.exponentialRampToValueAtTime(30, now + 0.4);
-        gain.gain.setValueAtTime(1, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
-        osc.start(now); osc.stop(now + 0.4);
-      } else if (type === 'fart') {
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(80, now);
-        osc.frequency.linearRampToValueAtTime(30, now + 0.3);
-        gain.gain.setValueAtTime(0.8, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
-        osc.start(now); osc.stop(now + 0.3);
-      } else if (type === 'laser') {
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(800, now);
-        osc.frequency.exponentialRampToValueAtTime(100, now + 0.15);
-        gain.gain.setValueAtTime(0.5, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
-        osc.start(now); osc.stop(now + 0.15);
-      } else if (type === 'coin') {
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(987, now);
-        osc.frequency.setValueAtTime(1318, now + 0.08);
-        gain.gain.setValueAtTime(0.4, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
-        osc.start(now); osc.stop(now + 0.25);
-      } else {
-        osc.type = 'square';
-        osc.frequency.setValueAtTime(300, now);
-        osc.frequency.setValueAtTime(450, now + 0.1);
-        gain.gain.setValueAtTime(0.3, now);
-        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
-        osc.start(now); osc.stop(now + 0.3);
-      }
-    }
-
-    // 🔀 TAB SWITCHING LOGIC
-    function showTab(tabId) {
+    // 🔀 TAB SWITCHER
+    function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
       event.target.classList.add('active');
-      document.querySelectorAll('.tool-card').forEach(c => c.style.display = 'none');
-      document.getElementById(tabId).style.display = 'block';
-      if(tabId === 'wheel') drawWheel();
+      document.getElementById(tabId).classList.add('active');
     }
 
     // ⌨️ TYPING TEST LOGIC
-    const samplePassage = "The quick brown fox jumps over the lazy dog. Programming and web tools help developers build amazing experiences for users around the world.";
-    let typingTimer = 60, typingInterval = null, typingStarted = false;
+    const passage = document.getElementById('passageText').innerText;
+    let tTimer = 60, tInterval = null, tStarted = false;
 
-    function processTyping() {
-      const inputVal = document.getElementById('typingInput').value;
-      if (!typingStarted && inputVal.length > 0) {
-        typingStarted = true;
-        typingInterval = setInterval(() => {
-          typingTimer--;
-          document.getElementById('timerDisplay').innerText = typingTimer + "s";
-          if (typingTimer <= 0) {
-            clearInterval(typingInterval);
+    function handleTyping() {
+      const val = document.getElementById('typingInput').value;
+      if (!tStarted && val.length > 0) {
+        tStarted = true;
+        tInterval = setInterval(() => {
+          tTimer--;
+          document.getElementById('timer').innerText = tTimer + 's';
+          if (tTimer <= 0) {
+            clearInterval(tInterval);
             document.getElementById('typingInput').disabled = true;
           }
         }, 1000);
       }
+      const words = val.trim().split(/\s+/).filter(w => w.length > 0).length;
+      const mins = (60 - tTimer) / 60 || 0.01;
+      document.getElementById('wpm').innerText = Math.round(words / mins);
 
-      // WPM Calculation
-      const wordsTyped = inputVal.trim().split(/\s+/).filter(w => w.length > 0).length;
-      const minutes = (60 - typingTimer) / 60 || 0.01;
-      const wpm = Math.round(wordsTyped / minutes);
-      document.getElementById('wpmDisplay').innerText = isNaN(wpm) ? 0 : wpm;
-
-      // Accuracy Calculation
-      let correctChars = 0;
-      for (let i = 0; i < inputVal.length; i++) {
-        if (inputVal[i] === samplePassage[i]) correctChars++;
+      let correct = 0;
+      for (let i = 0; i < val.length; i++) {
+        if (val[i] === passage[i]) correct++;
       }
-      const accuracy = inputVal.length > 0 ? Math.round((correctChars / inputVal.length) * 100) : 100;
-      document.getElementById('accuracyDisplay').innerText = accuracy + "%";
+      document.getElementById('acc').innerText = val.length > 0 ? Math.round((correct / val.length) * 100) + '%' : '100%';
     }
 
-    function resetTypingTest() {
-      clearInterval(typingInterval);
-      typingTimer = 60; typingStarted = false;
+    function resetTyping() {
+      clearInterval(tInterval);
+      tTimer = 60; tStarted = false;
       document.getElementById('typingInput').disabled = false;
-      document.getElementById('typingInput').value = "";
-      document.getElementById('wpmDisplay').innerText = "0";
-      document.getElementById('accuracyDisplay').innerText = "100%";
-      document.getElementById('timerDisplay').innerText = "60s";
+      document.getElementById('typingInput').value = '';
+      document.getElementById('wpm').innerText = '0';
+      document.getElementById('acc').innerText = '100%';
+      document.getElementById('timer').innerText = '60s';
     }
 
-    // ⏱️ CPS SPEED CLICKER LOGIC
-    let clicks = 0, clickTimer = 10, clickInterval = null, clickStarted = false;
+    // 🔤 TEXT UTILITY LOGIC
+    function updateTextStats() {
+      const text = document.getElementById('textInput').value;
+      const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+      document.getElementById('wordCount').innerText = 'Words: ' + words;
+      document.getElementById('charCount').innerText = 'Characters: ' + text.length;
+    }
 
-    function registerClick() {
-      playPopSound();
-      if (!clickStarted) {
-        clickStarted = true; clicks = 1;
-        clickInterval = setInterval(() => {
-          clickTimer--;
-          document.getElementById('clickTimer').innerText = `Timer: ${clickTimer}s`;
-          if (clickTimer <= 0) {
-            clearInterval(clickInterval);
-            const cps = (clicks / 10).toFixed(1);
-            document.getElementById('clickScore').innerText = `${cps} CPS!`;
-            document.getElementById('clickTimer').innerText = `Total Clicks: ${clicks} (Finished!)`;
-          }
+    function transformText(type) {
+      const el = document.getElementById('textInput');
+      if (type === 'upper') el.value = el.value.toUpperCase();
+      if (type === 'lower') el.value = el.value.toLowerCase();
+      if (type === 'capitalize') {
+        el.value = el.value.toLowerCase().replace(/(^\w{1}|\.\s*\w{1})/g, match => match.toUpperCase());
+      }
+      updateTextStats();
+    }
+
+    function clearText() {
+      document.getElementById('textInput').value = '';
+      updateTextStats();
+    }
+
+    // 🔑 PASSWORD GENERATOR LOGIC
+    function generatePassword() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*!";
+      let pass = "";
+      for (let i = 0; i < 14; i++) {
+        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById('passwordOutput').value = pass;
+    }
+
+    function copyPassword() {
+      const out = document.getElementById('passwordOutput');
+      navigator.clipboard.writeText(out.value);
+      alert("Password copied to clipboard!");
+    }
+
+    // ⏱️ STOPWATCH LOGIC
+    let seconds = 0, stopwatchInterval = null;
+    function updateDisplay() {
+      let hrs = Math.floor(seconds / 3600).toString().padStart(2, '0');
+      let mins = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+      let secs = (seconds % 60).toString().padStart(2, '0');
+      document.getElementById('stopwatchDisplay').innerText = `${hrs}:${mins}:${secs}`;
+    }
+
+    function startTimer() {
+      if (!stopwatchInterval) {
+        stopwatchInterval = setInterval(() => {
+          seconds++;
+          updateDisplay();
         }, 1000);
-      } else if (clickTimer > 0) {
-        clicks++;
-        document.getElementById('clickScore').innerText = clicks + " Clicks";
       }
     }
 
-    function resetClicker() {
-      clearInterval(clickInterval);
-      clicks = 0; clickTimer = 10; clickStarted = false;
-      document.getElementById('clickScore').innerText = "TAP TO START";
-      document.getElementById('clickTimer').innerText = "Timer: 10s";
+    function pauseTimer() {
+      clearInterval(stopwatchInterval);
+      stopwatchInterval = null;
     }
 
-    // 💖 LOVE CALCULATOR LOGIC
-    function calculateLove() {
-      const n1 = document.getElementById('name1').value.trim();
-      const n2 = document.getElementById('name2').value.trim();
-      if (!n1 || !n2) { alert("Please enter both names!"); return; }
-
-      let hash = 0;
-      const combined = (n1 + n2).toLowerCase();
-      for (let i = 0; i < combined.length; i++) hash += combined.charCodeAt(i);
-      const percentage = (hash % 41) + 60;
-
-      document.getElementById('loveResult').innerText = `${n1} 💕 ${n2} = ${percentage}% Match!`;
+    function resetTimer() {
+      pauseTimer();
+      seconds = 0;
+      updateDisplay();
     }
-
-    // 🎡 SPIN THE WHEEL LOGIC
-    const wheelCanvas = document.getElementById('wheelCanvas');
-    const wCtx = wheelCanvas ? wheelCanvas.getContext('2d') : null;
-    const wheelOptions = ["Truth", "Dare", "Truth", "Dare", "Double Dare", "Pass"];
-
-    function drawWheel(angle = 0) {
-      if(!wCtx) return;
-      const numOptions = wheelOptions.length;
-      const arcSize = (2 * Math.PI) / numOptions;
-
-      wCtx.clearRect(0, 0, 280, 280);
-      for(let i=0; i<numOptions; i++) {
-        wCtx.beginPath();
-        wCtx.fillStyle = (i % 2 === 0) ? '#ffffff' : '#222222';
-        wCtx.strokeStyle = '#ffffff';
-        wCtx.arc(140, 140, 130, i * arcSize + angle, (i + 1) * arcSize + angle);
-        wCtx.lineTo(140, 140);
-        wCtx.fill(); wCtx.stroke();
-
-        wCtx.save();
-        wCtx.translate(140, 140);
-        wCtx.rotate(i * arcSize + arcSize / 2 + angle);
-        wCtx.fillStyle = (i % 2 === 0) ? '#000000' : '#ffffff';
-        wCtx.font = "bold 14px Segoe UI";
-        wCtx.fillText(wheelOptions[i], 50, 5);
-        wCtx.restore();
-      }
-    }
-
-    function spinWheel() {
-      let currentAngle = 0;
-      let spinAngle = Math.random() * 20 + 30;
-      let spinTime = 0;
-
-      function rotate() {
-        spinTime += 30;
-        if (spinTime >= 3000) {
-          const selected = wheelOptions[Math.floor(Math.random() * wheelOptions.length)];
-          document.getElementById('wheelResult').innerText = "Result: " + selected;
-          return;
-        }
-        currentAngle += (spinAngle * Math.PI / 180);
-        drawWheel(currentAngle);
-        requestAnimationFrame(rotate);
-      }
-      rotate();
-    }
-
-    // 🛒 STORE SYSTEM LOGIC (20 SKINS + SMARTLINK AD INTEGRATION)
-    const defaultStoreItems = [
-      { id: 1, name: "Purple Ball", emoji: "🟣", adsWatched: 2, unlocked: true, unlockTime: null },
-      { id: 2, name: "Gold Coin", emoji: "🪙", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 3, name: "Cute Cat", emoji: "🐱", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 4, name: "Loyal Dog", emoji: "🐶", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 5, name: "Football", emoji: "⚽", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 6, name: "Basketball", emoji: "🏀", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 7, name: "Earth", emoji: "🌍", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 8, name: "Skull", emoji: "💀", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 9, name: "Alien", emoji: "👽", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 10, name: "Robot", emoji: "🤖", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 11, name: "Ghost", emoji: "👻", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 12, name: "Diamond", emoji: "💎", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 13, name: "Fire", emoji: "🔥", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 14, name: "Star", emoji: "⭐", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 15, name: "Magic 8", emoji: "🎱", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 16, name: "Burger", emoji: "🍔", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 17, name: "Ninja", emoji: "🥷", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 18, name: "Heart", emoji: "❤️", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 19, name: "Crown", emoji: "👑", adsWatched: 0, unlocked: false, unlockTime: null },
-      { id: 20, name: "Devil", emoji: "😈", adsWatched: 0, unlocked: false, unlockTime: null }
-    ];
-
-    let storeItems = JSON.parse(localStorage.getItem('gameOutwayStore')) || defaultStoreItems;
-    let currentEquipped = parseInt(localStorage.getItem('gameOutwayEquipped')) || 1;
-
-    function checkExpirations() {
-      const now = new Date().getTime();
-      let dataChanged = false;
-      const hours24 = 24 * 60 * 60 * 1000;
-
-      storeItems.forEach(item => {
-        if (item.id !== 1 && item.unlocked && item.unlockTime) {
-          if (now - item.unlockTime >= hours24) {
-            item.unlocked = false; item.adsWatched = 0; item.unlockTime = null;
-            dataChanged = true;
-            if (currentEquipped === item.id) currentEquipped = 1;
-          }
-        }
-      });
-      if (dataChanged) saveData();
-    }
-
-    function saveData() {
-      localStorage.setItem('gameOutwayStore', JSON.stringify(storeItems));
-      localStorage.setItem('gameOutwayEquipped', currentEquipped.toString());
-    }
-
-    function renderStore() {
-      checkExpirations();
-      const grid = document.getElementById('storeGrid');
-      grid.innerHTML = '';
-      
-      storeItems.forEach(item => {
-        const progressPercent = (item.adsWatched / 2) * 100;
-        let btnHTML = '', timerHTML = '';
-        
-        if (item.unlocked) {
-          if(item.id !== 1 && item.unlockTime) {
-            const timeLeft = (24 * 60 * 60 * 1000) - (new Date().getTime() - item.unlockTime);
-            const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60));
-            timerHTML = `<div style="font-size:10px; color:#aaa; margin-bottom:4px;">Locks in ${hoursLeft}h</div>`;
-          }
-          if (currentEquipped === item.id) btnHTML = `<button class="action-btn btn-equipped">Equipped</button>`;
-          else btnHTML = `<button class="action-btn btn-equip" onclick="equipSkin(${item.id})">Equip</button>`;
-        } else {
-          btnHTML = `<button class="action-btn btn-watch" onclick="watchAdToUnlock(${item.id})">🎥 Watch Ad (${item.adsWatched}/2)</button>`;
-        }
-
-        grid.innerHTML += `
-          <div class="skin-card">
-            <div class="skin-icon-display">${item.emoji}</div>
-            <h3 style="font-size:12px; margin-bottom: 2px;">${item.name}</h3>
-            ${timerHTML}
-            <div class="progress-bar"><div class="progress-fill" style="width: ${progressPercent}%;"></div></div>
-            ${btnHTML}
-          </div>
-        `;
-      });
-      applyCurrentSkin();
-    }
-
-    // 🎯 ADSTERRA SMARTLINK INTEGRATION (Non-Annoying Flow)
-    function watchAdToUnlock(id) {
-      // Open Smartlink in new tab
-      window.open('https://www.effectivecpmnetwork.com/epjcvmwybb?key=b7ed0ff295d20eac3d30c00e6d9a3e57', '_blank');
-
-      // Show Timer Modal on Main Tab
-      document.getElementById('adModal').style.display = 'flex';
-      let timeLeft = 15;
-      document.getElementById('adTimerText').innerText = timeLeft;
-      document.getElementById('adModalProgress').style.width = '0%';
-
-      const adInterval = setInterval(() => {
-        timeLeft--;
-        document.getElementById('adTimerText').innerText = timeLeft;
-        document.getElementById('adModalProgress').style.width = ((15 - timeLeft) / 15 * 100) + '%';
-
-        if (timeLeft <= 0) {
-          clearInterval(adInterval);
-          document.getElementById('adModal').style.display = 'none';
-
-          const item = storeItems.find(i => i.id === id);
-          if (item && item.adsWatched < 2) {
-            item.adsWatched++;
-            playSound('coin');
-            if (item.adsWatched === 2) {
-              item.unlocked = true;
-              item.unlockTime = new Date().getTime();
-              alert(`🎉 ${item.name} skin unlocked for 24 Hours!`);
-            }
-            saveData(); renderStore();
-          }
-        }
-      }, 1000);
-    }
-
-    function equipSkin(id) {
-      currentEquipped = id; 
-      playSound('coin');
-      saveData(); renderStore();
-    }
-
-    function applyCurrentSkin() {
-      const item = storeItems.find(i => i.id === currentEquipped) || storeItems[0];
-      const ballElement = document.getElementById('floatingBall');
-      ballElement.innerText = item.emoji;
-      if(item.emoji === '🟣') {
-        ballElement.style.background = '#000000'; ballElement.style.border = '2px solid #ffffff';
-      } else {
-        ballElement.style.background = '#111111'; ballElement.style.border = '2px solid #ffffff';
-      }
-    }
-
-    function openStore() { document.getElementById('storeModal').style.display = 'flex'; renderStore(); }
-    function closeStore() { document.getElementById('storeModal').style.display = 'none'; }
-
-    // 🔮 FLOATING DRAGGABLE BALL
-    const ballElement = document.getElementById('floatingBall');
-    let posX = window.innerWidth - 90, posY = window.innerHeight - 100;
-    let vx = 0, vy = 0, gravity = 0.5, bounce = 0.7, isDragging = false, lastX = 0, lastY = 0;
-
-    function animateBall() {
-      if (!isDragging) {
-        vy += gravity; posX += vx; posY += vy;
-        if (posY + 65 > window.innerHeight) { posY = window.innerHeight - 65; vy *= -bounce; vx *= 0.95; }
-        if (posY < 0) { posY = 0; vy *= -bounce; }
-        if (posX + 65 > window.innerWidth) { posX = window.innerWidth - 65; vx *= -bounce; }
-        if (posX < 0) { posX = 0; vx *= -bounce; }
-        ballElement.style.left = posX + 'px'; ballElement.style.top = posY + 'px';
-      }
-      requestAnimationFrame(animateBall);
-    }
-
-    function startTouch(e) {
-      isDragging = true;
-      lastX = e.touches ? e.touches[0].clientX : e.clientX;
-      lastY = e.touches ? e.touches[0].clientY : e.clientY;
-      vx = 0; vy = 0;
-    }
-
-    function moveTouch(e) {
-      if (!isDragging) return;
-      e.preventDefault();
-      const curX = e.touches ? e.touches[0].clientX : e.clientX;
-      const curY = e.touches ? e.touches[0].clientY : e.clientY;
-      vx = curX - lastX; vy = curY - lastY;
-      posX = curX - 32; posY = curY - 32; 
-      ballElement.style.left = posX + 'px'; ballElement.style.top = posY + 'px';
-      lastX = curX; lastY = curY;
-    }
-
-    function endTouch() { isDragging = false; }
-
-    ballElement.addEventListener('mousedown', startTouch);
-    window.addEventListener('mousemove', moveTouch, { passive: false });
-    window.addEventListener('mouseup', endTouch);
-    ballElement.addEventListener('touchstart', startTouch, { passive: false });
-    window.addEventListener('touchmove', moveTouch, { passive: false });
-    window.addEventListener('touchend', endTouch);
-
-    window.onload = () => {
-      checkExpirations();
-      applyCurrentSkin();
-      animateBall();
-    };
   </script>
 
   <!-- 🎯 Adsterra Social Bar Ad Code -->
