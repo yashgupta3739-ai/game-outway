@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Outway - Viral Fun Tools & Meme Soundboard</title>
+  <title>Game Outway - Viral Fun Tools & Typing Test</title>
   
-  <meta name="description" content="Play with Meme Soundboard, Click Speed Test, Love Calculator, Spin The Wheel and unlock cool skins on Game Outway!">
+  <meta name="description" content="Play with Meme Soundboard, Typing Speed Test, Click Speed Test, Love Calculator, Spin Wheel and unlock cool skins on Game Outway!">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://game-outway.yashgupta3739.workers.dev/">
 
@@ -84,14 +84,14 @@
     .tabs::-webkit-scrollbar { display: none; }
 
     .tab-btn {
-      padding: 10px 20px;
+      padding: 10px 18px;
       border: 1px solid #ffffff;
       background: #000000;
       color: #ffffff;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 13px;
       white-space: nowrap;
       transition: all 0.2s;
     }
@@ -113,7 +113,7 @@
 
     .tool-card h2 {
       font-size: 20px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       color: #ffffff;
       border-bottom: 1px solid #222222;
       padding-bottom: 10px;
@@ -150,11 +150,56 @@
 
     .sound-btn span { font-size: 28px; }
 
-    /* ⏱️ CPS SPEED CLICKER */
+    /* ⌨️ TYPING SPEED TEST */
+    .typing-box {
+      background: #111;
+      border: 1px solid #ffffff;
+      border-radius: 10px;
+      padding: 15px;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #aaa;
+      text-align: left;
+      user-select: none;
+    }
+
+    .typing-input {
+      width: 100%;
+      height: 90px;
+      background: #000;
+      border: 1px solid #444;
+      border-radius: 8px;
+      color: #fff;
+      padding: 10px;
+      font-size: 15px;
+      outline: none;
+      resize: none;
+    }
+
+    .typing-input:focus { border-color: #fff; }
+
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 15px 0;
+    }
+
+    .stat-box {
+      background: #111;
+      border: 1px solid #333;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+
+    .stat-box h3 { font-size: 22px; color: #fff; }
+    .stat-box p { font-size: 11px; color: #888; text-transform: uppercase; }
+
+    /* ⏱️ CPS CLICK SPEED TEST */
     .clicker-box {
       width: 100%;
       max-width: 400px;
-      height: 180px;
+      height: 160px;
       background: #111;
       border: 2px dashed #fff;
       border-radius: 12px;
@@ -197,9 +242,12 @@
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.2s;
     }
 
-    /* 🎡 SPIN WHEEL CANVAS */
+    .calc-btn:hover { background: #ccc; }
+
+    /* 🎡 SPIN WHEEL */
     #wheelCanvas {
       background: #111;
       border-radius: 50%;
@@ -208,8 +256,8 @@
       display: block;
     }
 
-    /* 🛒 STORE MODAL */
-    #storeModal {
+    /* 🛒 STORE MODAL & AD TIMER OVERLAY */
+    #storeModal, #adModal {
       display: none;
       position: fixed;
       top: 0; left: 0;
@@ -259,14 +307,29 @@
     }
 
     .skin-card {
-      border: 1px solid #444;
+      border: 1px solid #333;
       border-radius: 8px;
       padding: 12px;
       text-align: center;
       background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .skin-icon { font-size: 36px; margin-bottom: 8px; }
+    /* FIXED BALL SKIN DISPLAY ENHANCEMENT */
+    .skin-icon-display {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #000;
+      border: 1px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
 
     .progress-bar {
       width: 100%;
@@ -287,44 +350,55 @@
       font-weight: bold;
       cursor: pointer;
       margin-top: 5px;
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .btn-watch { background: #ffcc00; color: #000; }
     .btn-equip { background: #ffffff; color: #000; }
-    .btn-equipped { background: #444; color: #fff; cursor: not-allowed; }
+    .btn-equipped { background: #333; color: #888; cursor: not-allowed; }
 
-    /* 🔮 DRAGGABLE BALL */
+    /* 🔮 FIXED DRAGGABLE FLOATING BALL */
     #floatingBall {
       width: 65px;
       height: 65px;
-      background: #ffffff;
       border-radius: 50%;
       position: fixed;
       bottom: 30px;
       right: 20px;
       z-index: 9999;
-      box-shadow: 0 0 15px rgba(255,255,255,0.5);
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
       cursor: grab;
       touch-action: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 35px;
-      color: #000;
+      font-size: 32px;
+      line-height: 1;
+      user-select: none;
+      background: #000000;
+      border: 2px solid #ffffff;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔮 DRAGGABLE STORE BALL -->
-  <div id="floatingBall">🟣</div>
+  <!-- 🔮 FIXED DRAGGABLE STORE BALL -->
+  <div id="floatingBall" onclick="playPopSound()">🟣</div>
 
-  <!-- 🛒 STORE MODAL (24H UNLOCK SYSTEM) -->
+  <!-- 🎬 REWARD AD TIMER OVERLAY MODAL -->
+  <div id="adModal">
+    <div style="background: #111; border: 2px solid #fff; padding: 25px; border-radius: 12px; text-align: center; max-width: 380px;">
+      <h3 style="margin-bottom: 10px;">🎬 Ad Opened In New Tab</h3>
+      <p style="color: #aaa; font-size: 13px; margin-bottom: 15px;">Please wait <b id="adTimerText" style="color: #ffcc00;">15</b> seconds while we process your reward credit...</p>
+      <div class="progress-bar" style="height: 10px;"><div id="adModalProgress" class="progress-fill" style="width: 0%;"></div></div>
+    </div>
+  </div>
+
+  <!-- 🛒 STORE MODAL -->
   <div id="storeModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>🛒 Skin Store (Unlock via Reward Ads)</h2>
+        <h2>🛒 Skin Store (24H Unlock via Smartlink)</h2>
         <button class="btn-close" onclick="closeStore()">✕ CLOSE</button>
       </div>
       <div class="store-grid" id="storeGrid"></div>
@@ -340,16 +414,35 @@
 
   <!-- NAVIGATION TABS -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="showTab('soundboard')">🔊 Meme Soundboard</button>
+    <button class="tab-btn active" onclick="showTab('typing')">⌨️ Typing Test</button>
+    <button class="tab-btn" onclick="showTab('soundboard')">🔊 Meme Soundboard</button>
     <button class="tab-btn" onclick="showTab('clicker')">⏱️ Click Speed Test</button>
     <button class="tab-btn" onclick="showTab('love')">💖 Love Matcher</button>
-    <button class="tab-btn" onclick="showTab('wheel')">🎡 Truth & Dare Wheel</button>
+    <button class="tab-btn" onclick="showTab('wheel')">🎡 Truth & Dare</button>
   </div>
 
   <main>
 
-    <!-- 1️⃣ MEME SOUNDBOARD TOOL -->
-    <section id="soundboard" class="tool-card">
+    <!-- 1️⃣ TYPING SPEED TEST TOOL -->
+    <section id="typing" class="tool-card">
+      <h2>⌨️ Typing Speed Test</h2>
+      <p style="color: #aaa; margin-bottom: 12px; font-size: 13px;">Type the passage below as fast as you can!</p>
+
+      <div class="stats-container">
+        <div class="stat-box"><h3 id="wpmDisplay">0</h3><p>WPM</p></div>
+        <div class="stat-box"><h3 id="accuracyDisplay">100%</h3><p>Accuracy</p></div>
+        <div class="stat-box"><h3 id="timerDisplay">60s</h3><p>Time Left</p></div>
+      </div>
+
+      <div class="typing-box" id="typingText">The quick brown fox jumps over the lazy dog. Programming and web tools help developers build amazing experiences for users around the world.</div>
+
+      <textarea class="typing-input" id="typingInput" placeholder="Start typing here to begin test..." oninput="processTyping()"></textarea>
+      
+      <button class="calc-btn" style="margin-top: 10px;" onclick="resetTypingTest()">Reset Typing Test</button>
+    </section>
+
+    <!-- 2️⃣ MEME SOUNDBOARD TOOL -->
+    <section id="soundboard" class="tool-card" style="display: none;">
       <h2>🔊 Viral Meme Soundboard</h2>
       <p style="color: #aaa; margin-bottom: 15px; font-size: 13px;">Tap buttons to play viral sound effects instantly!</p>
       
@@ -365,7 +458,7 @@
       </div>
     </section>
 
-    <!-- 2️⃣ CPS CLICK SPEED TEST TOOL -->
+    <!-- 3️⃣ CPS CLICK SPEED TEST TOOL -->
     <section id="clicker" class="tool-card" style="display: none;">
       <h2>⏱️ CPS Click Speed Test</h2>
       <p style="color: #aaa; font-size: 13px;">Click as fast as you can in 10 seconds!</p>
@@ -378,7 +471,7 @@
       <button class="calc-btn" onclick="resetClicker()">Reset Test</button>
     </section>
 
-    <!-- 3️⃣ LOVE COMPATIBILITY CALCULATOR TOOL -->
+    <!-- 4️⃣ LOVE COMPATIBILITY CALCULATOR TOOL -->
     <section id="love" class="tool-card" style="display: none;">
       <h2>💖 Love & Crush Matcher</h2>
       <p style="color: #aaa; margin-bottom: 15px; font-size: 13px;">Enter two names to calculate compatibility %</p>
@@ -393,7 +486,7 @@
       <div id="loveResult" style="margin-top: 20px; font-size: 22px; font-weight: bold; color: #ffcc00;"></div>
     </section>
 
-    <!-- 4️⃣ TRUTH & DARE WHEEL -->
+    <!-- 5️⃣ TRUTH & DARE WHEEL -->
     <section id="wheel" class="tool-card" style="display: none;">
       <h2>🎡 Spin The Wheel (Truth or Dare)</h2>
       <canvas id="wheelCanvas" width="280" height="280"></canvas>
@@ -405,17 +498,28 @@
   </main>
 
   <script>
-    // 🌐 WEB AUDIO SYNTHESIZER ENGINE (0% External Dependencies - Never Breaks!)
+    // 🌐 WEB AUDIO SYNTHESIZER ENGINE (0% Dependancy)
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playPopSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      const now = audioCtx.currentTime;
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(400, now);
+      osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
+      gain.gain.setValueAtTime(0.3, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+      osc.start(now); osc.stop(now + 0.08);
+    }
 
     function playSound(type) {
       if (audioCtx.state === 'suspended') audioCtx.resume();
-      
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
+      osc.connect(gain); gain.connect(audioCtx.destination);
       const now = audioCtx.currentTime;
 
       if (type === 'vineboom') {
@@ -425,32 +529,28 @@
         gain.gain.setValueAtTime(1, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
         osc.start(now); osc.stop(now + 0.4);
-      } 
-      else if (type === 'fart') {
+      } else if (type === 'fart') {
         osc.type = 'sawtooth';
         osc.frequency.setValueAtTime(80, now);
         osc.frequency.linearRampToValueAtTime(30, now + 0.3);
         gain.gain.setValueAtTime(0.8, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
         osc.start(now); osc.stop(now + 0.3);
-      }
-      else if (type === 'laser') {
+      } else if (type === 'laser') {
         osc.type = 'sawtooth';
         osc.frequency.setValueAtTime(800, now);
         osc.frequency.exponentialRampToValueAtTime(100, now + 0.15);
         gain.gain.setValueAtTime(0.5, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
         osc.start(now); osc.stop(now + 0.15);
-      }
-      else if (type === 'coin') {
+      } else if (type === 'coin') {
         osc.type = 'sine';
         osc.frequency.setValueAtTime(987, now);
         osc.frequency.setValueAtTime(1318, now + 0.08);
         gain.gain.setValueAtTime(0.4, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
         osc.start(now); osc.stop(now + 0.25);
-      }
-      else if (type === 'bruh' || type === 'airhorn' || type === 'fail' || type === 'victory') {
+      } else {
         osc.type = 'square';
         osc.frequency.setValueAtTime(300, now);
         osc.frequency.setValueAtTime(450, now + 0.1);
@@ -469,13 +569,56 @@
       if(tabId === 'wheel') drawWheel();
     }
 
+    // ⌨️ TYPING TEST LOGIC
+    const samplePassage = "The quick brown fox jumps over the lazy dog. Programming and web tools help developers build amazing experiences for users around the world.";
+    let typingTimer = 60, typingInterval = null, typingStarted = false;
+
+    function processTyping() {
+      const inputVal = document.getElementById('typingInput').value;
+      if (!typingStarted && inputVal.length > 0) {
+        typingStarted = true;
+        typingInterval = setInterval(() => {
+          typingTimer--;
+          document.getElementById('timerDisplay').innerText = typingTimer + "s";
+          if (typingTimer <= 0) {
+            clearInterval(typingInterval);
+            document.getElementById('typingInput').disabled = true;
+          }
+        }, 1000);
+      }
+
+      // WPM Calculation
+      const wordsTyped = inputVal.trim().split(/\s+/).filter(w => w.length > 0).length;
+      const minutes = (60 - typingTimer) / 60 || 0.01;
+      const wpm = Math.round(wordsTyped / minutes);
+      document.getElementById('wpmDisplay').innerText = isNaN(wpm) ? 0 : wpm;
+
+      // Accuracy Calculation
+      let correctChars = 0;
+      for (let i = 0; i < inputVal.length; i++) {
+        if (inputVal[i] === samplePassage[i]) correctChars++;
+      }
+      const accuracy = inputVal.length > 0 ? Math.round((correctChars / inputVal.length) * 100) : 100;
+      document.getElementById('accuracyDisplay').innerText = accuracy + "%";
+    }
+
+    function resetTypingTest() {
+      clearInterval(typingInterval);
+      typingTimer = 60; typingStarted = false;
+      document.getElementById('typingInput').disabled = false;
+      document.getElementById('typingInput').value = "";
+      document.getElementById('wpmDisplay').innerText = "0";
+      document.getElementById('accuracyDisplay').innerText = "100%";
+      document.getElementById('timerDisplay').innerText = "60s";
+    }
+
     // ⏱️ CPS SPEED CLICKER LOGIC
     let clicks = 0, clickTimer = 10, clickInterval = null, clickStarted = false;
 
     function registerClick() {
+      playPopSound();
       if (!clickStarted) {
-        clickStarted = true;
-        clicks = 1;
+        clickStarted = true; clicks = 1;
         clickInterval = setInterval(() => {
           clickTimer--;
           document.getElementById('clickTimer').innerText = `Timer: ${clickTimer}s`;
@@ -508,7 +651,7 @@
       let hash = 0;
       const combined = (n1 + n2).toLowerCase();
       for (let i = 0; i < combined.length; i++) hash += combined.charCodeAt(i);
-      const percentage = (hash % 41) + 60; // Returns 60% to 100%
+      const percentage = (hash % 41) + 60;
 
       document.getElementById('loveResult').innerText = `${n1} 💕 ${n2} = ${percentage}% Match!`;
     }
@@ -561,7 +704,7 @@
       rotate();
     }
 
-    // 🛒 STORE SYSTEM LOGIC (20 SKINS + 24H AUTO-LOCK)
+    // 🛒 STORE SYSTEM LOGIC (20 SKINS + SMARTLINK AD INTEGRATION)
     const defaultStoreItems = [
       { id: 1, name: "Purple Ball", emoji: "🟣", adsWatched: 2, unlocked: true, unlockTime: null },
       { id: 2, name: "Gold Coin", emoji: "🪙", adsWatched: 0, unlocked: false, unlockTime: null },
@@ -633,8 +776,8 @@
 
         grid.innerHTML += `
           <div class="skin-card">
-            <div class="skin-icon">${item.emoji}</div>
-            <h3 style="font-size:12px;">${item.name}</h3>
+            <div class="skin-icon-display">${item.emoji}</div>
+            <h3 style="font-size:12px; margin-bottom: 2px;">${item.name}</h3>
             ${timerHTML}
             <div class="progress-bar"><div class="progress-fill" style="width: ${progressPercent}%;"></div></div>
             ${btnHTML}
@@ -644,24 +787,45 @@
       applyCurrentSkin();
     }
 
+    // 🎯 ADSTERRA SMARTLINK INTEGRATION (Non-Annoying Flow)
     function watchAdToUnlock(id) {
-      window.open('https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js', '_blank');
-      setTimeout(() => {
-        const item = storeItems.find(i => i.id === id);
-        if (item.adsWatched < 2) {
-          item.adsWatched++;
-          if (item.adsWatched === 2) {
-            item.unlocked = true;
-            item.unlockTime = new Date().getTime();
-            alert(`🎉 ${item.name} unlocked for 24 Hours!`);
+      // Open Smartlink in new tab
+      window.open('https://www.effectivecpmnetwork.com/epjcvmwybb?key=b7ed0ff295d20eac3d30c00e6d9a3e57', '_blank');
+
+      // Show Timer Modal on Main Tab
+      document.getElementById('adModal').style.display = 'flex';
+      let timeLeft = 15;
+      document.getElementById('adTimerText').innerText = timeLeft;
+      document.getElementById('adModalProgress').style.width = '0%';
+
+      const adInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById('adTimerText').innerText = timeLeft;
+        document.getElementById('adModalProgress').style.width = ((15 - timeLeft) / 15 * 100) + '%';
+
+        if (timeLeft <= 0) {
+          clearInterval(adInterval);
+          document.getElementById('adModal').style.display = 'none';
+
+          const item = storeItems.find(i => i.id === id);
+          if (item && item.adsWatched < 2) {
+            item.adsWatched++;
+            playSound('coin');
+            if (item.adsWatched === 2) {
+              item.unlocked = true;
+              item.unlockTime = new Date().getTime();
+              alert(`🎉 ${item.name} skin unlocked for 24 Hours!`);
+            }
+            saveData(); renderStore();
           }
-          saveData(); renderStore();
         }
-      }, 2000); 
+      }, 1000);
     }
 
     function equipSkin(id) {
-      currentEquipped = id; saveData(); renderStore();
+      currentEquipped = id; 
+      playSound('coin');
+      saveData(); renderStore();
     }
 
     function applyCurrentSkin() {
@@ -669,9 +833,9 @@
       const ballElement = document.getElementById('floatingBall');
       ballElement.innerText = item.emoji;
       if(item.emoji === '🟣') {
-        ballElement.style.background = '#ffffff'; ballElement.style.border = 'none';
+        ballElement.style.background = '#000000'; ballElement.style.border = '2px solid #ffffff';
       } else {
-        ballElement.style.background = '#0a0a0a'; ballElement.style.border = '2px solid #ffffff';
+        ballElement.style.background = '#111111'; ballElement.style.border = '2px solid #ffffff';
       }
     }
 
