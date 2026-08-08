@@ -6,7 +6,7 @@
   
   <!-- 🚀 ADVANCED SEO META TAGS -->
   <title>EarnRewards Pro — Free Daily Redeem Codes India</title>
-  <meta name="description" content="Complete simple daily captchas, scratch cards, and offers to claim free ₹20, ₹50, and ₹100 Redeem Codes in India instantly." />
+  <meta name="description" content="Complete simple daily captchas, scratch cards, video ads, and offers to claim free ₹20, ₹50, and ₹100 Redeem Codes in India instantly." />
   <meta name="keywords" content="earn redeem code, free google play code india, daily captcha earn, free play code app, earnrewards pro" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="EarnRewards Pro" />
@@ -18,12 +18,6 @@
   <meta property="og:title" content="EarnRewards Pro — Free Daily Redeem Codes" />
   <meta property="og:description" content="Solve simple captchas & daily tasks to earn free ₹20, ₹50, ₹100 Redeem Codes daily!" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" />
-
-  <!-- 🐦 TWITTER CARD META TAGS -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="EarnRewards Pro — Daily Free Redeem Codes" />
-  <meta name="twitter:description" content="Solve simple captchas & daily tasks to earn free Redeem Codes daily!" />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200" />
 
   <!-- 🎯 HIGH PROFIT AD 1: Adsterra Popunder Script -->
   <script src="https://pl30634564.effectivecpmnetwork.com/75/79/42/757942df229ca98d773c9bb85051c183.js"></script>
@@ -303,6 +297,7 @@
     .btn-gold { background: linear-gradient(135deg, #facc15, #f59e0b); color: #000; }
     .btn-green { background: linear-gradient(135deg, #22c55e, #16a34a); color: #000; }
     .btn-blue { background: linear-gradient(135deg, #38bdf8, #0ea5e9); color: #000; }
+    .btn-purple { background: linear-gradient(135deg, #a855f7, #7c3aed); color: #fff; }
     .btn-outline { background: transparent; border: 1px solid rgba(255, 255, 255, 0.08); color: #a1a1aa; }
 
     /* ========== REDEEM GRID ========== */
@@ -354,11 +349,19 @@
       padding: 28px 24px 24px;
       width: 92%;
       max-width: 380px;
+      text-align: center;
     }
     .modal-box h3 { font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 4px; }
     .modal-box .sub { font-size: 12px; color: #71717a; margin-bottom: 18px; }
 
-    .modal-actions { display: flex; flex-direction: column; gap: 8px; }
+    .modal-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+
+    .timer-circle {
+      font-size: 32px;
+      font-weight: 900;
+      color: #facc15;
+      margin: 16px 0;
+    }
 
     .footer-note {
       margin-top: 24px;
@@ -414,6 +417,16 @@
 
     <!-- ===== TASKS ===== -->
     <div class="section-title">⚡ Available Offers &amp; Tasks</div>
+
+    <!-- 🎥 NEW: REWARDED VIDEO AD -->
+    <div class="card" style="border-color: rgba(168, 85, 247, 0.25);">
+      <div class="card-head">
+        <div class="card-title">🎥 Watch Video Ad</div>
+        <div class="pts-badge" style="background: rgba(168, 85, 247, 0.2); color: #c084fc;">+20 PTS</div>
+      </div>
+      <div class="card-desc">Watch a 15-second sponsor video ad to earn 20 PTS instantly.</div>
+      <button class="btn btn-purple" onclick="startVideoAd()">Watch Video Ad (+20 PTS)</button>
+    </div>
 
     <!-- FEATURED CPA -->
     <div class="card card-featured">
@@ -532,6 +545,20 @@
 
   </div>
 
+  <!-- ===== REWARDED VIDEO MODAL ===== -->
+  <div id="videoModal" class="modal">
+    <div class="modal-box">
+      <h3>🎥 Watching Sponsor Video Ad</h3>
+      <p class="sub">Please wait for timer to finish to receive your +20 PTS.</p>
+      
+      <div class="timer-circle" id="videoTimer">15s</div>
+
+      <div class="modal-actions">
+        <button class="btn btn-green" id="claimVideoBtn" disabled onclick="claimVideoReward()">Please Wait...</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== REDEEM MODAL ===== -->
   <div id="redeemModal" class="modal">
     <div class="modal-box">
@@ -631,6 +658,40 @@
     }
 
     function triggerAd() { window.open(adsterraSmartlink, '_blank'); }
+
+    // 🎥 REWARDED VIDEO AD SYSTEM
+    function startVideoAd() {
+      triggerAd();
+      
+      const modal = document.getElementById('videoModal');
+      const timerEl = document.getElementById('videoTimer');
+      const btn = document.getElementById('claimVideoBtn');
+      
+      modal.style.display = 'flex';
+      btn.disabled = true;
+      btn.innerText = 'Watching Video...';
+
+      let count = 15;
+      timerEl.innerText = `${count}s`;
+
+      const videoInterval = setInterval(() => {
+        count--;
+        timerEl.innerText = `${count}s`;
+        if (count <= 0) {
+          clearInterval(videoInterval);
+          timerEl.innerText = '✅ Complete!';
+          btn.disabled = false;
+          btn.innerText = 'Claim +20 PTS Now!';
+        }
+      }, 1000);
+    }
+
+    function claimVideoReward() {
+      points += 20;
+      updateDisplay();
+      document.getElementById('videoModal').style.display = 'none';
+      alert('🎉 +20 Points added to your balance!');
+    }
 
     function doCPATask() {
       const randomOffer = cpaOfferLinks[Math.floor(Math.random() * cpaOfferLinks.length)];
