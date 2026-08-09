@@ -251,6 +251,36 @@
       line-height: 1.5;
     }
 
+    /* GUIDE STEPS LIST */
+    .guide-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .guide-step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+    .step-num {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 10px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
     /* ========== CAPTCHA ========== */
     .captcha-display {
       background: rgba(0, 0, 0, 0.6);
@@ -401,6 +431,28 @@
       </div>
     </header>
 
+    <!-- 📖 HOW TO EARN GUIDE CARD (NEW) -->
+    <div class="card" style="border-color: rgba(56, 189, 248, 0.2); background: linear-gradient(145deg, rgba(17,17,21,0.9), rgba(56,189,248,0.03));">
+      <div class="card-head">
+        <div class="card-title" style="color: #38bdf8;">📖 How to Earn &amp; Claim?</div>
+        <div class="pts-badge" style="background: rgba(56,189,248,0.15); color: #38bdf8;">Guide</div>
+      </div>
+      <div class="guide-steps">
+        <div class="guide-step-item">
+          <div class="step-num">1</div>
+          <div><strong>Collect Points:</strong> Complete Daily Check-in, watch Video Ads, solve Captchas, and finish Scratch Cards daily.</div>
+        </div>
+        <div class="guide-step-item">
+          <div class="step-num">2</div>
+          <div><strong>Reach Target:</strong> Collect enough points (4,000 PTS for ₹20, 9,000 PTS for ₹50).</div>
+        </div>
+        <div class="guide-step-item">
+          <div class="step-num">3</div>
+          <div><strong>Claim Code:</strong> Click 'CLAIM', enter your WhatsApp Number, and receive your code instantly!</div>
+        </div>
+      </div>
+    </div>
+
     <!-- 🎯 BANNER AD SLOT 1 (Top Banner) -->
     <div class="ad-banner-slot">
       <script type="text/javascript">
@@ -418,7 +470,7 @@
     <!-- ===== TASKS ===== -->
     <div class="section-title">⚡ Available Offers &amp; Tasks</div>
 
-    <!-- 🎥 NEW: REWARDED VIDEO AD -->
+    <!-- 🎥 REWARDED VIDEO AD -->
     <div class="card" style="border-color: rgba(168, 85, 247, 0.25);">
       <div class="card-head">
         <div class="card-title">🎥 Watch Video Ad</div>
